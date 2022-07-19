@@ -6,14 +6,14 @@ Projektin esittely lyhyesti
 
 ## Dokumentaatio
 
-- [ ] Määrittelydokumentti
+- [ ] [Määrittelydokumentti](dokumentaatio/maarittely.md)
 - [ ] Toteutusdokumentti
 - [ ] Testausdokumentti
 - [ ] Käyttöohje
 
 ## Viikkoraportit
 
-- [ ] Viikko 1
+- [ ] [Viikko 1](dokumentaatio/viikko1.md)
 - [ ] Viikko 2       
 - [ ] Viikko 3
 - [ ] Viikko 4

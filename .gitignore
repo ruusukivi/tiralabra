@@ -1,0 +1,13 @@
+.gradle
+build
+
+.vscode
+
+*.class
+*.war
+*.ear
+*.nar
+
+bin/
+
+.DS_Store

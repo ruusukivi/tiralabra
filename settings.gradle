@@ -9,4 +9,4 @@
  */
 
 rootProject.name = 'tiralabra'
-include('app')
+include('reitinhakusovellus')

@@ -23,6 +23,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.0.1-jre'
+    testImplementation 'junit:junit:4.13.2'
 }
 
 testing {
@@ -37,5 +38,15 @@ testing {
 
 application {
     // Define the main class for the application.
-    mainClass = 'tiralabra.App'
+    mainClass = 'tiralabra.Sovellus'
+}
+
+run {
+    standardInput = System.in
+}
+
+test {
+	testLogging {
+		events "PASSED", "SKIPPED", "FAILED"
+	}
 }

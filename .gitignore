@@ -11,3 +11,7 @@ build
 bin/
 
 .DS_Store
+
+gradle.properties
+
+temp/

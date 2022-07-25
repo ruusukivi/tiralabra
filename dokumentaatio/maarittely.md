@@ -2,7 +2,7 @@
 
 Sovellus on toteutettu Helsingin Yliopiston Tietorakenteet ja algoritmit -laboratoriokurssilla, joka on osa tietojenkäsittelytieteen kandidaatin (TKT) opintoja.
 
-Sovelluksessa tulostetaan kartta, valitaan reitin alku ja loppu sekä vertaillaan kahden eri algoritmin toimivuutta reitinhaussa tavoitteena löytää lyhyin reitti nopeasti.  
+Sovelluksessa tulostetaan käyttäjän antamien parametrien mukainen kartta sekä vertaillaan kahden eri algoritmin toimivuutta reitinhaussa tavoitteena löytää lyhyin reitti nopeasti.  
 
 ## Mitä ohjelmointikieltä käytät?
 
@@ -51,6 +51,8 @@ Improving Jump Point Search. NICTA and The Australian National University.
 https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf 
 
 Laaksonen, A. 2021. Tietorakenteet ja algoritmit. https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/ 
+
+Sedgewick, R & Wayne, K https://introcs.cs.princeton.edu/java/15inout/RandomWalk.java.html
 
 Witmer, N. 2014. A Visual Explanation of Jump Point Search. Zerowidth positive lookahead.
 https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html

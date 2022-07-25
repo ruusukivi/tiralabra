@@ -2,19 +2,19 @@
 
 ## Aihe: Reitinhakualgoritmien vertailu
 
-Projektin esittely lyhyesti
+Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijkstra- ja Jump Poin Search -algoritmien tehokkuutta lyhyimmän reitin haussa. 
 
 ## Dokumentaatio
 
 - [ ] [Määrittelydokumentti](dokumentaatio/maarittely.md)
 - [ ] Toteutusdokumentti
 - [ ] Testausdokumentti
-- [ ] Käyttöohje
+- [ ] [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Viikkoraportit
 
-- [ ] [Viikko 1](dokumentaatio/viikko1.md)
-- [ ] Viikko 2       
+- [x] [Viikko 1](dokumentaatio/viikko1.md)
+- [ ] [Viikko 2](dokumentaatio/viikko2.md)       
 - [ ] Viikko 3
 - [ ] Viikko 4
 - [ ] Viikko 5

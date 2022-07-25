@@ -41,12 +41,13 @@ application {
     mainClass = 'tiralabra.Sovellus'
 }
 
-run {
-    standardInput = System.in
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'tiralabra.Sovellus'
+    }
 }
 
-test {
-	testLogging {
-		events "PASSED", "SKIPPED", "FAILED"
-	}
+run {
+    standardInput = System.in
 }

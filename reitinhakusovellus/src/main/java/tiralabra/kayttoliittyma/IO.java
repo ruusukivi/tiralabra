@@ -18,7 +18,7 @@ public class IO {
      * @param s tulostettava syöte
      */
     public void tulosta(String s) {
-        System.out.println(s);
+        System.out.print(s);
     }
 
     /**

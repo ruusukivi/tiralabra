@@ -2,24 +2,38 @@
 
 ## Sovelluksen käynnistys ja testaus
 
-Sovelluksen käynnistys komentoriviltä.
+### Sovellusprojektin käynnistys jar-tiedostosta
+
+- Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla.
+
+    java -jar Polunhakija.jar
+
+### Sovellusprojektin käynnistys komentoriviltä
+
+- Kloonaa tai forkkaa projekti ensin omalle koneellesi.  Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
 
     ./gradlew run
 
-Sovelluksen koodin tarkistus.
+### Sovelluksen yksikkötestien ajo
+
+    ./gradlew clean test
+
+### Sovelluksen koodin tarkistus
 
     ./gradlew checkstyleMain
 
-Sovelluksen yksikkötestien ajo.
+- Raportit löytyvät tämän jälkeen projektin hakemistosta:  /tiralabra/reitinhakusovellus/build/reports/checkstyle/
 
-    ./gradlew test
-
-Sovelluksen testikattavuuden tarkistaminen.
+### Sovelluksen testikattavuusraportin päivitys
 
     ./gradlew jacocoTestReport
 
-Sovelluksen javadoc-dokumentaation päivitys
+- Raportit löytyvät tämän jälkeen projektin hakemistosta tiralabra/reitinhakusovellus/build/reports/jacoco/test/
+
+### Sovelluksen javadoc-dokumentaation tarkistaminen ja päivitys
 
     ./gradlew javadoc
+
+- Raportit löytyvät tämän jälkeen projektin hakemistosta: /tiralabra/reitinhakusovellus/build/docs/javadoc/
 
 ## Sovelluksen käyttö

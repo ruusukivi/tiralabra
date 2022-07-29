@@ -11,8 +11,9 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'java'
     id 'application'
-    id 'jacoco'
+    id 'jacoco-report-aggregation' 
     id 'checkstyle'
+     id 'com.adarshr.test-logger' version '3.2.0'
 }
 
 repositories {
@@ -32,6 +33,25 @@ testing {
         test {
             // Use JUnit4 test framework
             useJUnit('4.13.2')
+            testlogger {
+                theme 'standard'
+                showExceptions true
+                showStackTraces true
+                showFullStackTraces false
+                showCauses true
+                slowThreshold 2000
+                showSummary true
+                showSimpleNames false
+                showPassed true
+                showSkipped true
+                showFailed true
+                showOnlySlow false
+                showStandardStreams false
+                showPassedStandardStreams true
+                showSkippedStandardStreams true
+                showFailedStandardStreams true
+                logLevel 'lifecycle'
+            }
         }
     }
 }
@@ -50,4 +70,18 @@ jar {
 
 run {
     standardInput = System.in
+    standardOutput = System.out
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('testCodeCoverageReport', JacocoReport) 
+}
+
+task myJavadocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+}
+
+test {
+    testLogging.showStandardStreams = true
+    testLogging.exceptionFormat = 'full'
 }

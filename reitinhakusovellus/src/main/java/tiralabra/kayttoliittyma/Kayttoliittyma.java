@@ -42,7 +42,9 @@ public class Kayttoliittyma {
         io.tulosta("0 -- Sulje sovellus\n");
     }
 
-    /** Toimintojen käsittely */
+    /** Toimintojen käsittely
+     * @param toiminto toiminnon nimi 
+     */
     public void valitseToiminto(String toiminto) {
         if (toiminto.equalsIgnoreCase("1")){
             io.tulosta("Anna kartan nimi: \n");

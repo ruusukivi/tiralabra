@@ -28,15 +28,14 @@ public class IO {
      */
 
     public String lue() {
-        {
-            try {
-                String syote = lukija.nextLine();
-                return syote;
-            } catch (Exception e) {
-                System.out.println("Virhe: " + e);
-            }
-            return "0";
+        try {
+            String syote = lukija.nextLine();
+            return syote;
+        } catch (Exception e) {
+            System.out.println("Virhe: " + e);
         }
+        return "0";
+
     }
 
 }

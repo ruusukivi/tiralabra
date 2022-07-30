@@ -6,6 +6,6 @@ public class Dijkstra {
 
     public Dijkstra(Verkko verkko) {
         this.verkko = verkko;
-        this.keko = new Keko(verkko.getKoko());
+        this.keko = new Keko(verkko.solmujenMaara());
     }
 }

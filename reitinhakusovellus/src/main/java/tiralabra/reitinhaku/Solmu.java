@@ -21,7 +21,8 @@ public class Solmu {
      * etaisyys alustetaan mahdollisimman isoksi
     */
 
-    public Solmu(int x, int y, boolean seina, boolean kuljettava) {
+    public Solmu(int x, int y, boolean seina, boolean kuljettava) throws IllegalArgumentException  {
+        if(seina && kuljettava || !seina && !kuljettava ) throw new IllegalArgumentException("Virhe: Ruutu ei voi olla sekä seinä että kuljettava.");
         this.x = x;
         this.y = y;
         this.seina = seina;
@@ -29,7 +30,28 @@ public class Solmu {
         this.etaisyys = Integer.MAX_VALUE;
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean getKuljettava() {
         return kuljettava;
     }
+
+    
+    /** 
+     * @return int
+     */
+    public int getEtaisyys() {
+        return etaisyys;
+    }
+
+    
+    /** 
+     * @param etaisyys
+     */
+    public void paivitaEtaisyys(int etaisyys) {
+        this.etaisyys = etaisyys;
+    }
+    
 }

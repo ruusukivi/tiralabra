@@ -36,8 +36,12 @@ public class Verkko {
         this.solmut[x][y] = new Solmu(x, y, seina, kuljettava);
     }
 
-    public int getKoko() {
-        return this.koko;
+    
+    /** Solmujen määrä.
+     * @return int palauttaa verkossa olevien solmujen määrän.
+     */
+    public int solmujenMaara() {
+        return this.koko*this.koko;
     }
 
 }

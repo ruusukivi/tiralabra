@@ -4,7 +4,7 @@
 
 ### Sovellusprojektin käynnistys jar-tiedostosta
 
-- Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla.
+- Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla. 
 
     java -jar reitinhakusovellus.jar
 

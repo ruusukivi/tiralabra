@@ -6,11 +6,11 @@
 
 - Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla.
 
-    java -jar Polunhakija.jar
+    java -jar reitinhakusovellus.jar
 
 ### Sovellusprojektin käynnistys komentoriviltä
 
-- Kloonaa tai forkkaa projekti ensin omalle koneellesi.  Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
+- Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
 
     ./gradlew run
 
@@ -22,13 +22,13 @@
 
     ./gradlew checkstyleMain
 
-- Raportit löytyvät tämän jälkeen projektin hakemistosta:  /tiralabra/reitinhakusovellus/build/reports/checkstyle/
+- Raportit löytyvät tämän jälkeen projektin hakemistosta: /tiralabra/reitinhakusovellus/build/reports/checkstyle/
 
 ### Sovelluksen testikattavuusraportin päivitys
 
     ./gradlew jacocoTestReport
 
-- Raportit löytyvät tämän jälkeen projektin hakemistosta tiralabra/reitinhakusovellus/build/reports/jacoco/test/
+- Raportit löytyvät tämän jälkeen projektin hakemistosta: /tiralabra/reitinhakusovellus/build/reports/jacoco/test/
 
 ### Sovelluksen javadoc-dokumentaation tarkistaminen ja päivitys
 
@@ -37,3 +37,7 @@
 - Raportit löytyvät tämän jälkeen projektin hakemistosta: /tiralabra/reitinhakusovellus/build/docs/javadoc/
 
 ## Sovelluksen käyttö
+
+Sovelluksessa tällä hetkellä kaksi toimintoa:
+1) Uuden kartan luonti ja tulostus
+2) Session aikana luotujen karttojen uudelleen tulostus

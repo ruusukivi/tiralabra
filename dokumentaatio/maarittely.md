@@ -59,3 +59,7 @@ Sumit, J. 2018. Dijkstra’s – Shortest Path Algorithm (SPT) – Adjacency Lis
 Witmer, N. 2014. A Visual Explanation of Jump Point Search. Zerowidth positive lookahead.
 https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
 
+Muita Tira-kurssin harjoitustöitä:
+https://github.com/sinisaarinen/tira-labra
+https://github.com/NooraVino/GetMeOut-tiralabra
+https://github.com/ALindroos/Polunhakija 

@@ -41,7 +41,7 @@ public class Verkko {
      * @return int palauttaa verkossa olevien solmujen määrän.
      */
     public int solmujenMaara() {
-        return this.koko*this.koko;
+        return this.koko * this.koko;
     }
 
 }

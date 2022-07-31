@@ -19,13 +19,13 @@ public class KekoTest {
         for (int i = 0; i < verkko.koko; i++) {
             for (int j = 0; j < verkko.koko; j++) {
                 verkko.lisaaSolmu(i, j, false, true);
+                verkko.solmut[i][j].paivitaEtaisyys(100 - (i - j));
             }
         }
-        verkko.solmut[9][9].paivitaEtaisyys(10);
-        pieninEtaisyys = verkko.solmut[9][9].getEtaisyys();
+        verkko.solmut[5][5].paivitaEtaisyys(10);
+        pieninEtaisyys = verkko.solmut[5][5].getEtaisyys();
     }
 
-    // Tämä testi ei toimi vielä oikein. Korjattava.
     @Test
     public void PieninSolmuLoytyy() {
         Keko testikeko = new Keko(100);

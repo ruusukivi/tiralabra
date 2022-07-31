@@ -29,14 +29,16 @@ public class Keko {
      * @param solmu kekoon lisättävä solmu.
      */
     public void lisaaKekoon(Solmu solmu) throws Error {
-        if (nykyinenKoko >= maxKoko)
+        if (nykyinenKoko >= maxKoko) {
             throw new Error("Virhe: Keko täynnä!");
+        }
         nykyinenKoko++;
         int indeksi = nykyinenKoko;
         keko[indeksi] = solmu;
-        System.out.print("Lisää kekoon - solmu sijoitettiin indeksiin:  " + indeksi + "\n");
-        if (nykyinenKoko > 1)
+        System.out.print("Lisää kekoon - solmu sijoitettiin indeksiin: " + indeksi + ", etaisyys " + keko[indeksi].getEtaisyys() + "\n");
+        if (nykyinenKoko > 1) {
             nostaKeossa(indeksi);
+        }
     }
 
     /**
@@ -48,7 +50,6 @@ public class Keko {
         int vanhemmanIndeksi = indeksi / 2;
         int nykyinenIndeksi = indeksi;
         while (nykyinenIndeksi > 0 && keko[vanhemmanIndeksi].getEtaisyys() > keko[nykyinenIndeksi].getEtaisyys()) {
-            System.out.print("Etäisyys pienempi kuin vanhemmalla - nostetaan indeksiin  " + vanhemmanIndeksi + "\n");
             swap(nykyinenIndeksi, vanhemmanIndeksi);
             if (vanhemmanIndeksi > 1) {
                 nykyinenIndeksi = vanhemmanIndeksi;
@@ -64,11 +65,10 @@ public class Keko {
      * @param vanhemmanIndeksi solmun vanhemman sijainti keossa
      */
     private void swap(int nykyinenIndeksi, int vanhemmanIndeksi) {
-        System.out.print("Tehdään swap " + nykyinenIndeksi + "<>" + vanhemmanIndeksi + "\n");
+        System.out.print("Tehdään swap " + nykyinenIndeksi + "<>" + vanhemmanIndeksi + ", etäisyydet " + keko[nykyinenIndeksi].getEtaisyys() + "><" + keko[vanhemmanIndeksi].getEtaisyys()+ "\n");
         Solmu temp = keko[nykyinenIndeksi];
         keko[nykyinenIndeksi] = keko[vanhemmanIndeksi];
         keko[vanhemmanIndeksi] = temp;
-        System.out.print("Paras etäisyys tällä hetkellä " + temp.getEtaisyys() + "\n");
     }
 
     /**
@@ -77,8 +77,9 @@ public class Keko {
      * @return palauttaa keosta solmun jonka etäisyys pienin
      */
     public Solmu pienin() throws Error {
-        if (this.keko[1] == null)
+        if (this.keko[1] == null) {
             throw new Error("Virhe: Solmua ei löydy!");
+        }
         System.out.print("Pienin etäisyys " + keko[1].getEtaisyys() + "\n");
         return this.keko[1];
     }

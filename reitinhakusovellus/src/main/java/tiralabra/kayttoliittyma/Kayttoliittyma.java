@@ -7,12 +7,13 @@ import java.util.ArrayList;
 /**
  * Luokka sovelluksen komentorivikäyttöliittymälle.
  * 
+ * @see RajapintaIO
  * @see IO
  * @see Kartat
  */
 
 public class Kayttoliittyma {
-    private IO io;
+    private RajapintaIO io;
     private Kartat kartat;
 
     /**
@@ -21,7 +22,7 @@ public class Kayttoliittyma {
      * @param io     luokka joka hoitaa tulostuksen ja käyttäjän syötteiden lukemisen
      * @param kartat luokka karttojen säilöntään ja käsittelyyn session aikana
      */
-    public Kayttoliittyma(IO io, Kartat kartat) {
+    public Kayttoliittyma(RajapintaIO io, Kartat kartat) {
         this.io = io;
         this.kartat = kartat;
     }

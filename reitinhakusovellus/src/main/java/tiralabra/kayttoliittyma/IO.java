@@ -4,8 +4,10 @@ import java.util.*;
 
 /**
  * Luokka käyttäjän syötteiden ja tulosteiden käsittelyyn
+ * 
+ * @see RajapintaIO
  */
-public class IO {
+public class IO implements RajapintaIO {
     private Scanner lukija;
 
     public IO() {

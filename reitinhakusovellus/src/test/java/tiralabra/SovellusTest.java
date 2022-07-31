@@ -10,7 +10,7 @@ import tiralabra.kayttoliittyma.Kayttoliittyma;
 public class SovellusTest {
     @Test public void SovellusKaynnistyy() {
         IO io = new IO();
-        Kartat kartat = new Kartat();
+        Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         assertTrue(true);
     }

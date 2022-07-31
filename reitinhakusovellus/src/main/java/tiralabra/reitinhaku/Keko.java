@@ -30,12 +30,12 @@ public class Keko {
      */
     public void lisaaKekoon(Solmu solmu) throws Error {
         if (nykyinenKoko >= maxKoko) {
-            throw new Error("Virhe: Keko täynnä!");
+            throw new Error("Ups! Keko täynnä.");
         }
         nykyinenKoko++;
         int indeksi = nykyinenKoko;
         keko[indeksi] = solmu;
-        System.out.print("Lisää kekoon - solmu sijoitettiin indeksiin: " + indeksi + ", etaisyys " + keko[indeksi].getEtaisyys() + "\n");
+        //System.out.print("Lisää kekoon - solmu sijoitettiin indeksiin: " + indeksi + ", etaisyys " + keko[indeksi].getEtaisyys() + "\n");
         if (nykyinenKoko > 1) {
             nostaKeossa(indeksi);
         }
@@ -65,7 +65,7 @@ public class Keko {
      * @param vanhemmanIndeksi solmun vanhemman sijainti keossa
      */
     private void swap(int nykyinenIndeksi, int vanhemmanIndeksi) {
-        System.out.print("Tehdään swap " + nykyinenIndeksi + "<>" + vanhemmanIndeksi + ", etäisyydet " + keko[nykyinenIndeksi].getEtaisyys() + "><" + keko[vanhemmanIndeksi].getEtaisyys()+ "\n");
+        //System.out.print("Tehdään swap " + nykyinenIndeksi + "<>" + vanhemmanIndeksi + ", etäisyydet " + keko[nykyinenIndeksi].getEtaisyys() + "><" + keko[vanhemmanIndeksi].getEtaisyys()+ "\n");
         Solmu temp = keko[nykyinenIndeksi];
         keko[nykyinenIndeksi] = keko[vanhemmanIndeksi];
         keko[vanhemmanIndeksi] = temp;
@@ -78,7 +78,7 @@ public class Keko {
      */
     public Solmu pienin() throws Error {
         if (this.keko[1] == null) {
-            throw new Error("Virhe: Solmua ei löydy!");
+            throw new Error("Ups! Keko on tyhjä.");
         }
         System.out.print("Pienin etäisyys " + keko[1].getEtaisyys() + "\n");
         return this.keko[1];

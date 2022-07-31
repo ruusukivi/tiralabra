@@ -39,7 +39,7 @@ public class KekoTest {
     }
 
     @Test
-    public void LikaaSolmujaKeossa() {
+    public void LiikaaSolmujaKeossa() {
         Throwable virhe = assertThrows(
                 Error.class, () -> {
                     Keko keko = new Keko(5);
@@ -50,7 +50,18 @@ public class KekoTest {
                     }
                 });
 
-        assertEquals("Virhe: Keko täynnä!", virhe.getMessage());
+        assertEquals("Ups! Keko täynnä.", virhe.getMessage());
+    }
+
+    @Test
+    public void PieninEiLöydyTyhjastaKeosta() {
+        Throwable virhe = assertThrows(
+                Error.class, () -> {
+                    Keko keko = new Keko(1);
+                    keko.pienin();
+                });
+
+        assertEquals("Ups! Keko on tyhjä.", virhe.getMessage());
     }
 
 }

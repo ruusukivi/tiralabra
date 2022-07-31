@@ -12,7 +12,7 @@ import tiralabra.kayttoliittyma.IO;
 public class Sovellus {
     public static void main(String[] args) {
         IO io = new IO();
-        Kartat kartat = new Kartat();
+        Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
     }

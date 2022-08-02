@@ -81,7 +81,7 @@ public class Solmu {
     /**
      * @param double
      */
-    public void setEtaisyys(double etaisyys) {
+    public void paivitaEtaisyys(double etaisyys) {
         this.etaisyys = etaisyys;
     }
 

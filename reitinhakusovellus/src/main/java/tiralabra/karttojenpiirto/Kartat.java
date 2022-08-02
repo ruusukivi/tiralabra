@@ -61,8 +61,9 @@ public class Kartat {
         }
             Verkko kartta = kartat.get(nimi);
             Dijkstra reitti = new Dijkstra(kartta);
-            reitti.etsiLyhyinReitti();
-            io.tulosta("\nKartta: " + kartta.nimi + ", koko " + kartta.koko + "*" + kartta.koko + "\n");
+            boolean loytyykoReitti = reitti.etsiLyhyinReitti();
+            io.tulosta("\nKartan nimi: " + kartta.nimi + ", koko " + kartta.koko + "*" + kartta.koko);
+            io.tulosta("\nLöytääkö Dijkstra reitti? " + loytyykoReitti+ "\n");
             for (int i = 0; i < kartta.koko; i++) {
                 for (int j = 0; j < kartta.koko; j++) {
                     if (!kartta.solmut[i][j].getKuljettava()) {

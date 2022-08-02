@@ -2,17 +2,20 @@ package tiralabra.reitinhaku;
 
 public class Dijkstra {
     private Solmu[][] kartta;
+    private int sivu;
     private int solmuja;
     private Keko keko;
     private Solmu aloitus;
     private Solmu lopetus;
+   
 
     public Dijkstra(Verkko verkko) {
         this.kartta = verkko.solmut;
+        this.sivu = verkko.koko;
         this.solmuja = verkko.solmujenMaara();
         this.keko = new Keko(solmuja);
-        this.aloitus = kartta[1][1]; // korjaa
-        this.lopetus = kartta[9][9]; // korjaa
+        this.aloitus = kartta[0][0];
+        this.lopetus = kartta[sivu-1][sivu-1]; 
         System.out.print("\nDijkstra: luonti onnistuu");
     }
 
@@ -21,7 +24,7 @@ public class Dijkstra {
      * @return boolean
      */
     public boolean etsiLyhyinReitti() {
-        aloitus.setEtaisyys(0);
+        aloitus.paivitaEtaisyys(0);
         this.keko.lisaaKekoon(aloitus);
 
         while (!keko.onTyhja()) {
@@ -63,7 +66,7 @@ public class Dijkstra {
         int naapurinX = kasiteltava.getX() + x;
         int naapurinY = kasiteltava.getY() + y;
         if (!onkoKuljettava(naapurinX, naapurinY)) {
-            System.out.print("\nDijkstra: ei kuljettava " + kasiteltava.getX()+ "," + kasiteltava.getY() + ".");
+            System.out.print("\nDijkstra: ei kuljettava " + naapurinX + "," + naapurinY + ".");
             return null;
         }
         Solmu naapuri = kartta[naapurinX][naapurinY];
@@ -72,7 +75,7 @@ public class Dijkstra {
             etaisyysNaapuriin = Math.sqrt(2);
         }
         if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + etaisyysNaapuriin) {
-            naapuri.setEtaisyys(kasiteltava.getEtaisyys() + etaisyysNaapuriin);
+            naapuri.paivitaEtaisyys(kasiteltava.getEtaisyys() + etaisyysNaapuriin);
             naapuri.setVanhempi(kasiteltava);
             return naapuri;
         }
@@ -87,7 +90,7 @@ public class Dijkstra {
     private boolean onkoKuljettava(int uusiX, int uusiY) {
         System.out.print("\nDijkstra: varmistetaan että on kuljettava " + uusiX + "," + uusiY + ".");
         
-        if (uusiX <= 0 || uusiY <= 0 || uusiX > solmuja / 2 || uusiY < solmuja / 2) {
+        if (uusiX < 0 || uusiY < 0 || uusiX > solmuja / 2 || uusiY < solmuja / 2) {
             return false;
         }
         if (!kartta[uusiX][uusiY].getKuljettava()) {

@@ -2,21 +2,13 @@ package tiralabra;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import tiralabra.karttojenpiirto.Kartat;
-import tiralabra.karttojenpiirto.RandomWalk;
 import tiralabra.kayttoliittyma.Kayttoliittyma;
-import tiralabra.reitinhaku.Verkko;
 
 public class KayttoliittymaTest {
 
-    @Before
-    public void testinAlustus(){
-        RandomWalk nelio = new RandomWalk(2, 0, 0, "nelio");
-        Verkko verkko = nelio.luoUusi();
-    }
 
     @Test
     public void KayttoliittymaKaynnistyy(){
@@ -40,12 +32,12 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartta: Nelio, koko 2*2\n", io.tulosteet.get(10));
-        assertEquals("x", io.tulosteet.get(11));
+        assertEquals("\nKartan nimi: Nelio, koko 2*2", io.tulosteet.get(10));
         assertEquals("x", io.tulosteet.get(12));
-        assertEquals("\n", io.tulosteet.get(13));
-        assertEquals("x", io.tulosteet.get(14));
+        assertEquals("x", io.tulosteet.get(13));
+        assertEquals("\n", io.tulosteet.get(14));
         assertEquals("x", io.tulosteet.get(15));
+        assertEquals("x", io.tulosteet.get(16));
     }
 
     @Test
@@ -63,7 +55,7 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartta: Nelio, koko 2*2\n", io.tulosteet.get(25));
+        assertEquals("\nKartan nimi: Nelio, koko 2*2", io.tulosteet.get(26));
     }
 
     @Test

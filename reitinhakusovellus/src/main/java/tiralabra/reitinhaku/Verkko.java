@@ -44,4 +44,11 @@ public class Verkko {
         return this.koko * this.koko;
     }
 
+    /** 
+     * @return int palauttaa verkon koon.
+     */
+    public int getKoko() {
+        return this.koko;
+    }
+
 }

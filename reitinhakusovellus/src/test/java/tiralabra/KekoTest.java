@@ -11,7 +11,7 @@ import tiralabra.reitinhaku.Verkko;
 public class KekoTest {
 
     private Verkko verkko;
-    private int pieninEtaisyys;
+    private double pieninEtaisyys;
 
     @Before
     public void VerkonLuonti() {
@@ -34,8 +34,8 @@ public class KekoTest {
                 testikeko.lisaaKekoon(verkko.solmut[i][j]);
             }
         }
-        int pienin = testikeko.pienin().getEtaisyys();
-        assertEquals(pieninEtaisyys, pienin);
+        double pienin = testikeko.pienin().getEtaisyys();
+        assertEquals(pieninEtaisyys, pienin, 0.01);;
     }
 
     @Test

@@ -22,17 +22,16 @@ https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf
 
 Laaksonen, A. 2021. Tietorakenteet ja algoritmit. https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/ 
 
-Sedgewick, R & Wayne, K https://introcs.cs.princeton.edu/java/15inout/RandomWalk.java.html
+Sumit, J. 2018. Dijkstra’s – Shortest Path Algorithm (SPT) https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt/
 
 Sumit, J. 2018. Dijkstra’s – Shortest Path Algorithm (SPT) – Adjacency List and Min Heap – Java Implementation. https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt-adjacency-list-and-min-heap-java-implementation/ 
 
-Sumit, J. 2015. Binary Min-Max Heap Implementation
- https://algorithms.tutorialhorizon.com/binary-min-max-heap/
+Sumit, J. 2015. Binary Min-Max Heap Implementation https://algorithms.tutorialhorizon.com/binary-min-max-heap/
 
 Witmer, N. 2014. A Visual Explanation of Jump Point Search. Zerowidth positive lookahead.
 https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
 
 Muita Tira-kurssin harjoitustöitä:
-https://github.com/sinisaarinen/tira-labra
-https://github.com/NooraVino/GetMeOut-tiralabra
-https://github.com/ALindroos/Polunhakija 
+- https://github.com/sinisaarinen/tira-labra
+- https://github.com/NooraVino/GetMeOut-tiralabra
+- https://github.com/ALindroos/Polunhakija 

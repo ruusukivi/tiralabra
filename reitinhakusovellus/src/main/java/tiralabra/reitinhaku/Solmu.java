@@ -10,9 +10,12 @@ public class Solmu {
 
     private int x;
     private int y;
-    private int etaisyys;
+    private Solmu vanhempi;
+    private double etaisyys;
     private boolean seina;
     private boolean kuljettava;
+    private boolean dijkstra;
+    private boolean jps;
 
     /**
      * @param x          solmun x-koordinaatin arvo
@@ -31,6 +34,21 @@ public class Solmu {
         this.seina = seina;
         this.kuljettava = kuljettava;
         this.etaisyys = Integer.MAX_VALUE;
+        this.dijkstra = false;
+    }
+
+    /**
+     * @return int
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @return int
+     */
+    public int getX() {
+        return x;
     }
 
     /**
@@ -40,18 +58,39 @@ public class Solmu {
         return kuljettava;
     }
 
-    /**
-     * @return int
-     */
-    public int getEtaisyys() {
-        return etaisyys;
+    public void setVanhempi(Solmu vanhempi){
+        this.vanhempi = vanhempi;
+    }
+
+    public Solmu getVanhempi(){
+        return vanhempi;
+    }
+
+    public void setDijkstra(boolean reitilla) {
+        this.dijkstra = true;
+    }
+
+    public boolean getDijkstra() {
+        return true;
+    }
+
+    public void setJps(boolean reitilla) {
+        this.jps = true;
     }
 
     /**
-     * @param etaisyys
+     * @param double
      */
-    public void paivitaEtaisyys(int etaisyys) {
+    public void setEtaisyys(double etaisyys) {
         this.etaisyys = etaisyys;
     }
+
+    /**
+     * @return double
+     */
+    public double getEtaisyys() {
+        return etaisyys;
+    }
+
 
 }

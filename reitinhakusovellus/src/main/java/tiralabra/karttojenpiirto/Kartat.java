@@ -1,6 +1,7 @@
 package tiralabra.karttojenpiirto;
 
 import tiralabra.kayttoliittyma.RajapintaIO;
+import tiralabra.reitinhaku.Dijkstra;
 import tiralabra.reitinhaku.Verkko;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -59,13 +60,19 @@ public class Kartat {
             throw new Error("Ups! Kartan tulostus ei onnistunut. Tarkista nimi.");
         }
             Verkko kartta = kartat.get(nimi);
+            Dijkstra reitti = new Dijkstra(kartta);
+            reitti.etsiLyhyinReitti();
             io.tulosta("\nKartta: " + kartta.nimi + ", koko " + kartta.koko + "*" + kartta.koko + "\n");
             for (int i = 0; i < kartta.koko; i++) {
                 for (int j = 0; j < kartta.koko; j++) {
                     if (!kartta.solmut[i][j].getKuljettava()) {
                         io.tulosta("x");
                     } else {
-                        io.tulosta(".");
+                        if (kartta.solmut[i][j].getDijkstra()) {
+                            io.tulosta("D");
+                        } else {
+                            io.tulosta(".");
+                        }
                     }
                 }
                 io.tulosta("\n");

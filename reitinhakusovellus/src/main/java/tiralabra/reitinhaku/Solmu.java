@@ -10,10 +10,11 @@ public class Solmu {
 
     private int x;
     private int y;
-    private Solmu vanhempi;
-    private double etaisyys;
     private boolean seina;
     private boolean kuljettava;
+    private Solmu edeltaja;
+    private boolean kasitelty;
+    private double etaisyys;
     private boolean dijkstra;
     private boolean jps;
 
@@ -35,6 +36,7 @@ public class Solmu {
         this.kuljettava = kuljettava;
         this.etaisyys = Integer.MAX_VALUE;
         this.dijkstra = false;
+        this.kasitelty = false;
     }
 
     /**
@@ -55,27 +57,49 @@ public class Solmu {
      * @return boolean
      */
     public boolean getKuljettava() {
-        return kuljettava;
+        return this.kuljettava;
     }
 
-    public void setVanhempi(Solmu vanhempi){
-        this.vanhempi = vanhempi;
+    /**
+     * @param edeltaja
+     */
+    public void setEdeltaja(Solmu edeltaja) {
+        this.edeltaja = edeltaja;
     }
 
-    public Solmu getVanhempi(){
-        return vanhempi;
+    /**
+     * @return Solmu
+     */
+    public Solmu getEdeltaja() {
+        return edeltaja;
     }
 
+    /**
+     * @param reitilla
+     */
     public void setDijkstra(boolean reitilla) {
         this.dijkstra = true;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean getDijkstra() {
-        return true;
+        return this.dijkstra;
     }
 
-    public void setJps(boolean reitilla) {
-        this.jps = true;
+    /**
+     * @param kasitelty
+     */
+    public void paivitaKasitelty(boolean kasitelty) {
+        this.kasitelty = true;
+    }
+
+    /**
+     * @return boolean
+     */
+    public boolean getKasitelty() {
+        return this.kasitelty;
     }
 
     /**
@@ -91,6 +115,5 @@ public class Solmu {
     public double getEtaisyys() {
         return etaisyys;
     }
-
 
 }

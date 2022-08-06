@@ -7,16 +7,16 @@ Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijk
 ## Dokumentaatio
 
 - [ ] [Määrittelydokumentti](dokumentaatio/maarittely.md)
-- [ ] Toteutusdokumentti
-- [ ] Testausdokumentti
+- [ ] [Toteutusdokumentti] (dokumentaatio/toteutus.md)
+- [ ] [Testausdokumentti] (dokumentaatio/testaus.md)
 - [ ] [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Viikkoraportit
 
 - [x] [Viikko 1](dokumentaatio/viikko1.md)
 - [x] [Viikko 2](dokumentaatio/viikko2.md)       
-- [ ] [Viikko 3](dokumentaatio/viikko3.md)   
-- [ ] Viikko 4
+- [x] [Viikko 3](dokumentaatio/viikko3.md)   
+- [ ] Viikko 4 
 - [ ] Viikko 5
 - [ ] Viikko 6
 - [ ] Viikko 7  

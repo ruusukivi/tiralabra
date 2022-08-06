@@ -2,12 +2,18 @@
 
 ## Ohjelman yleisrakenne
 
+Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen piirrolle, käyttöliittymälle ja reitinhaulle.
+
+![Ohjelman rakenne](kuvat/rakenne.png)
+
+
 ## Saavutetut aika- ja tilavaativuudet (m.m. O-analyysit pseudokoodista)
 
 ## Suorituskyky- ja O-analyysivertailu (mikäli työ vertailupainotteinen)
 
 ## Puutteet ja parannusehdotukset
 
+Käyttöliittymän virheensieto ei vielä ole kovin hyvä, koska syötteitä ei validoida.
 
 ## Lähteet
 

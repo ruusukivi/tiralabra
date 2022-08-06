@@ -7,8 +7,8 @@ Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijk
 ## Dokumentaatio
 
 - [ ] [Määrittelydokumentti](dokumentaatio/maarittely.md)
-- [ ] [Toteutusdokumentti] (dokumentaatio/toteutus.md)
-- [ ] [Testausdokumentti] (dokumentaatio/testaus.md)
+- [ ] [Toteutusdokumentti](dokumentaatio/toteutus.md)
+- [ ] [Testausdokumentti](dokumentaatio/testaus.md)
 - [ ] [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Viikkoraportit

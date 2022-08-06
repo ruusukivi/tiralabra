@@ -3,9 +3,10 @@ package tiralabra.kayttoliittyma;
 import java.util.*;
 
 /**
- * Luokka käyttäjän syötteiden ja tulosteiden käsittelyyn
+ * Luokka käyttäjän syötteiden ja tulosteiden käsittelyyn.
+ * Muodostetaan rajapintaoliota hyödyntäen, jotta yksikkötestien tekeminen on helpompaa.
  * 
- * @see RajapintaIO
+ * @see RajapintaIO 
  */
 public class IO implements RajapintaIO {
     private Scanner lukija;
@@ -15,18 +16,19 @@ public class IO implements RajapintaIO {
     }
 
     /**
-     * Tulostaa tekstisyötteen käyttäjän näkyville
+     * Tulostaa tekstisyötteen käyttäjän näkyville.
      *
-     * @param s tulostettava syöte
+     * @param s Tulostettava teksti annetaan stringinä, 
+     * ei tee rivinvaihtoa automaattisesti
      */
     public void tulosta(String s) {
         System.out.print(s);
     }
 
     /**
-     * Lukee käyttäjän syötteen
+     * Lukee käyttäjän syötteen.
      *
-     * @return käyttäjän antama syöte
+     * @return Palauttaa tekstimuodossa käyttäjän antaman syötteen. 
      */
 
     public String lue() {

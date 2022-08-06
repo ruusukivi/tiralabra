@@ -2,9 +2,9 @@ package tiralabra.karttojenpiirto;
 import tiralabra.reitinhaku.Verkko;
 
 /**
- * Random Walk -kartan luontiin käytettävä luokka
+ * Random Walk -kartan luontiin käytettävä luokka.
  *
- * Luokka piirtää kartan Random Walk -algoritmia hyödyntäen
+ * Luokka piirtää kartan Random Walk -algoritmia hyödyntäen.
  * ks.  https://www.freecodecamp.org/news/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a/
  * 
  */
@@ -18,12 +18,12 @@ public class RandomWalk {
 
 
     /**
-     * Random Walk -kartan konstruktori
-     *
-     * @param sivu määrittelee neliönmuotoisen kartan sivun pituuden
-     * @param tunnelit määrittelee kuinka monta tunnelia karttaan piirretään
-     * @param pituus määrittelee yksittäisen tunnelin maksimipituuden
-     * @param nimi määrittelee kartan nimen
+     * Random Walk -kartan konstruktori.
+     * Luo neliön muotoisia karttoja.
+     * @param sivu Neliönmuotoisen kartan sivun pituus.
+     * @param tunnelit Karttaan piirrettävien tunnelien määrä.
+     * @param pituus Yksittäisen tunnelin maksimipituus.
+     * @param nimi Kartan nimi, jolla karttaa voi hakea session aikana.
      */
 
     public RandomWalk(int sivu, int tunnelit, int pituus, String nimi) {
@@ -34,8 +34,8 @@ public class RandomWalk {
         this.verkko = new Verkko(sivu, nimi);
     }
 
-    /** Uuden kartan luonti ja muunto verkoksi
-    * @return Verkko palauttaa Random Walk -kartasta muodostetun verkon 
+    /** Uuden kartan luonti ja muunto verkoksi.
+    * @return Verkko Palauttaa Random Walk -kartasta muodostetun verkon, jossa yksittäiset pisteet Solmu-olioita. 
     */
     public Verkko luoUusi() {
         piirraKartta();
@@ -51,7 +51,6 @@ public class RandomWalk {
         return this.verkko;
     }
 
-    //** Kartan piirtäminen Random Walk-algoritmillä */
     public void piirraKartta() {
         int nykyinenRivi = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitusrivi
         int nykyinenSarake = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitussarake

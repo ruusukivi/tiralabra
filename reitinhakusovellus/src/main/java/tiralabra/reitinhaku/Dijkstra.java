@@ -1,54 +1,56 @@
 package tiralabra.reitinhaku;
 
+/**
+ * Luokka Dijkstran reitinhaku-algoritmille.
+ * 
+ */
 public class Dijkstra {
+    private Verkko verkko;
     private Solmu[][] kartta;
     private int sivu;
     private Keko keko;
     private Solmu aloitus;
     private Solmu lopetus;
 
+    /**
+     * Konstruktori Dijkstran reitinhaku-algoritmille.
+     * 
+     * @param verkko Neliönmuotoinen kartta annetaan luokalle Verkko-oliona. 
+     */
     public Dijkstra(Verkko verkko) {
-        this.kartta = verkko.solmut;
-        this.sivu = verkko.koko;
+        this.verkko = verkko;
+        this.kartta = verkko.getSolmut();
+        this.sivu = verkko.getKoko();
         this.keko = new Keko(sivu * sivu);
         this.aloitus = kartta[0][0];
         this.lopetus = kartta[sivu - 1][sivu - 1];
-        System.out.print("\nDijkstra: luonti onnistuu");
-        System.out.print("\nDijkstra: aloitussolmu " + aloitus.getX() + "," + aloitus.getY());
-        System.out.print("\nDijkstra: lopetussolmu " + lopetus.getX() + "," + lopetus.getY());
     }
 
     /**
-     * @return boolean
+     * @return boolean Metodi palauttaa totuusarvona tiedon siitä löytyykö 
+     * algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
      */
     public boolean etsiLyhyinReitti() {
         aloitus.paivitaEtaisyys(0);
-        this.keko.lisaaKekoon(aloitus);
+        keko.lisaaKekoon(aloitus);
 
         while (!keko.onTyhja()) {
             Solmu kasiteltava = keko.poistaPienin();
             if (!kasiteltava.getKasitelty()) {
-                System.out.print(
-                        "\nDijkstra: uusi solmu käsittelyyn " + kasiteltava.getX() + "," + kasiteltava.getY() + ".");
                 if (kasiteltava.getX() == lopetus.getX() && kasiteltava.getY() == lopetus.getY()) {
-                    lisaaReittiKarttaan();
+                    tallennaReitti();
                     return true;
                 }
                 tutkiNaapurit(kasiteltava);
-            } else {
-                System.out.print("\nDijkstra: solmu on jo käsiltelty aiemmin " + kasiteltava.getX() + ","
-                        + kasiteltava.getY() + ".");
             }
         }
-        System.out.print("\nDijkstra: onko keko tyhjä?" + keko.onTyhja());
         return false;
     }
 
     /**
-     * @param kasiteltava
+     * @param kasiteltava Metodi tarkistaa kaikki solmut, joita ole vielä käsitelty.
      */
     private void tutkiNaapurit(Solmu kasiteltava) {
-        // System.out.print("\nDijkstra: tutkitaan naapurit.");
         keko.lisaaKekoon(laskeEtaisyysNaapuriin(kasiteltava, 0, -1)); // ylös
         keko.lisaaKekoon(laskeEtaisyysNaapuriin(kasiteltava, 0, 1)); // alas
         keko.lisaaKekoon(laskeEtaisyysNaapuriin(kasiteltava, 1, 0)); // oikealle
@@ -60,30 +62,26 @@ public class Dijkstra {
     }
 
     /**
-     * @param kasiteltava
-     * @param x
-     * @param y
-     * @return Solmu
+     * 
+     * @param kasiteltava Solmu jonka naapurisolmuja tutkitaan seuraavaksi.
+     * @param x  Siirtyminen x-koordinaatistossa.
+     * @param y Siirtyminen y-koordinaatistossa.
+     * @return Solmu Palautetaan naapurisolmu, johon löytynyt tiedettyä lyhyempi etäisyys.
      */
     private Solmu laskeEtaisyysNaapuriin(Solmu kasiteltava, int x, int y) {
-        System.out.print("\nDijkstra: lasketaan etaisyysnaapuriin solmulle " + kasiteltava.getX() + ","
-                + kasiteltava.getY() + " arvoilla: " + x + "," + y);
-        kasiteltava.paivitaKasitelty(true);
+        kasiteltava.setKasitelty(true);
         int naapurinX = kasiteltava.getX() + x;
         int naapurinY = kasiteltava.getY() + y;
         if (!onkoKuljettava(naapurinX, naapurinY)) {
-            System.out.print("\nDijkstra: ei kuljettava " + naapurinX + "," + naapurinY + ".");
             return null;
         }
         Solmu naapuri = kartta[naapurinX][naapurinY];
         double etaisyysNaapuriin = 1;
-        if (naapurinX != 0 && naapurinY != 0) {
+        if (x != 0 && y != 0) {
             etaisyysNaapuriin = Math.sqrt(2);
         }
         if (naapuri.getEtaisyys() > kasiteltava.getEtaisyys() + etaisyysNaapuriin) {
             naapuri.paivitaEtaisyys(kasiteltava.getEtaisyys() + etaisyysNaapuriin);
-            System.out.print("\nDijkstra: löydettiin naapurisolmuun " + naapurinX + "," + naapurinY
-                    + " aiempaa lyhyempi etäisyys " + naapuri.getEtaisyys() + ".");
             naapuri.setEdeltaja(kasiteltava);
             return naapuri;
         }
@@ -91,9 +89,12 @@ public class Dijkstra {
     }
 
     /**
-     * @param uusiX
-     * @param uusiY
-     * @return boolean
+     * Metodi varmistaa, ettei käsiteltävä solmu ole kartan ulkopuolella tai sisällä
+     * seinää.
+     * 
+     * @param uusiX Potentiaalisen naapurin x-koordinaatti.
+     * @param uusiY Potentiaalisen naapurin y-koordinaatti.
+     * @return boolean Palauttaa tiedon siitä, onko sijainti mahdollinen.
      */
     private boolean onkoKuljettava(int uusiX, int uusiY) {
         if (uusiX < 0 || uusiY < 0 || uusiX > sivu - 1 || uusiY > sivu - 1) {
@@ -105,15 +106,25 @@ public class Dijkstra {
         return true;
     }
 
-    public void lisaaReittiKarttaan() {
+    /**
+     * Metodi päivittää solmuihin tiedon reitillä olosta 
+     * sekä tallentaa yksityiskohtaiset tiedot reitin pisteistä ja 
+     * etäisyyksistä tulostusta varten.
+     */
+
+    public void tallennaReitti() {
+        aloitus.setDijkstra(true);
         Solmu solmu = kartta[lopetus.getX()][lopetus.getY()];
+        verkko.lisaaReittiDijkstra("\nReitti päättyy pisteeseen " + solmu.getX() + "," + solmu.getY()
+                + " ja etäisyys alusta on: " + solmu.getEtaisyys());
         solmu.setDijkstra(true);
-        System.out.print("\nDijkstra: lopetussolmun koordinaatit " + solmu.getX() + "," + solmu.getY() + " ja etäisyys "
-                + solmu.getEtaisyys() + ".");
         while (solmu.getEdeltaja() != null) {
-            solmu.setDijkstra(true);
             solmu = solmu.getEdeltaja();
+            solmu.setDijkstra(true);
+            verkko.lisaaReittiDijkstra("\nSeuraava piste reitillä " + solmu.getX() + "," + solmu.getY()
+                    + " ja etäisyys alusta on: " + solmu.getEtaisyys());
         }
+        verkko.lisaaReittiDijkstra("\nReitti alkaa pisteestä 0.0 ");
     }
 
 }

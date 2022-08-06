@@ -5,7 +5,7 @@ import tiralabra.karttojenpiirto.RandomWalk;
 import java.util.ArrayList;
 
 /**
- * Luokka sovelluksen komentorivikäyttöliittymälle.
+ * Luokka reitihakusovelluksen komentorivikäyttöliittymälle.
  * 
  * @see RajapintaIO
  * @see IO
@@ -17,17 +17,16 @@ public class Kayttoliittyma {
     private Kartat kartat;
 
     /**
-     * Käyttöliittymän konstruktori
+     * Käyttöliittymän konstruktori.
      *
-     * @param io     luokka joka hoitaa tulostuksen ja käyttäjän syötteiden lukemisen
-     * @param kartat luokka karttojen säilöntään ja käsittelyyn session aikana
+     * @param io     Luokka joka hoitaa tulostuksen ja käyttäjän syötteiden lukemisen.
+     * @param kartat Luokka karttojen säilöntään ja käsittelyyn session aikana.
      */
     public Kayttoliittyma(RajapintaIO io, Kartat kartat) {
         this.io = io;
         this.kartat = kartat;
     }
 
-    /** Käyttöliittymän käynnistys */
     public void kaynnista() {
         io.tulosta("\na->>-b->>-a->>-b->>-a->>-b->> REITINHAKU <<-a-<<-b-<<-a-<<-b-<<-a-<<-b\n");
 
@@ -53,7 +52,7 @@ public class Kayttoliittyma {
     /**
      * Toimintojen käsittely
      * 
-     * @param toiminto toiminnon nimi
+     * @param toiminto toiminnon numero, käsitellään stringinä
      */
     public void valitseToiminto(String toiminto) {
         if (toiminto.equalsIgnoreCase("1")) {
@@ -64,7 +63,7 @@ public class Kayttoliittyma {
         }
     }
 
-    /** Uuden kartan luonti ja tulostus */
+    /* Uuden kartan luonti ja tulostus */
     public void luoKartta() {
         io.tulosta("Anna kartan nimi: \n");
         String nimi = io.lue();
@@ -72,7 +71,7 @@ public class Kayttoliittyma {
         int leveys = Integer.valueOf(io.lue());
         io.tulosta("Anna tunneleiden määrä, esim. 500: \n");
         int tunnelit = Integer.valueOf(io.lue());
-        io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim 15: \n");
+        io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim. 100: \n");
         int pituus = Integer.valueOf(io.lue());
 
         RandomWalk kartta = new RandomWalk(leveys, tunnelit, pituus, nimi);
@@ -80,7 +79,7 @@ public class Kayttoliittyma {
         kartat.tulostaKartta(nimi);
     }
 
-    /** Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
+    /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
     public void listaaKartat() {
         if (kartat.karttojenMaara() < 1) {
             io.tulosta("Yhtään karttaa ei ole vielä luotu. \n");

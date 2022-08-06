@@ -16,14 +16,14 @@ public class KekoTest {
     @Before
     public void VerkonLuonti() {
         verkko = new Verkko(10, "testiverkko10");
-        for (int i = 0; i < verkko.koko; i++) {
-            for (int j = 0; j < verkko.koko; j++) {
+        for (int i = 0; i < verkko.getKoko(); i++) {
+            for (int j = 0; j < verkko.getKoko(); j++) {
                 verkko.lisaaSolmu(i, j, false, true);
-                verkko.solmut[i][j].paivitaEtaisyys(100 - (i - j));
+                verkko.getSolmut()[i][j].paivitaEtaisyys(100 - (i - j));
             }
         }
-        verkko.solmut[5][5].paivitaEtaisyys(10);
-        pieninEtaisyys = verkko.solmut[5][5].getEtaisyys();
+        verkko.getSolmut()[5][5].paivitaEtaisyys(10);
+        pieninEtaisyys = verkko.getSolmut()[5][5].getEtaisyys();
     }
 
     @Test
@@ -31,7 +31,7 @@ public class KekoTest {
         Keko testikeko = new Keko(100);
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                testikeko.lisaaKekoon(verkko.solmut[i][j]);
+                testikeko.lisaaKekoon(verkko.getSolmut()[i][j]);
             }
         }
         double pienin = testikeko.pienin().getEtaisyys();
@@ -45,7 +45,7 @@ public class KekoTest {
                     Keko keko = new Keko(5);
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 10; j++) {
-                            keko.lisaaKekoon(verkko.solmut[i][j]);
+                            keko.lisaaKekoon(verkko.getSolmut()[i][j]);
                         }
                     }
                 });
@@ -54,7 +54,7 @@ public class KekoTest {
     }
 
     @Test
-    public void PieninEiLöydyTyhjastaKeosta() {
+    public void PieninEiLoydyTyhjastaKeosta() {
         Throwable virhe = assertThrows(
                 Error.class, () -> {
                     Keko keko = new Keko(1);

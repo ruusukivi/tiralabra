@@ -1,21 +1,21 @@
 package tiralabra.kayttoliittyma;
 
 /**
- * Rajapinta käyttäjän syötteiden ja tulosteiden käsittelyyn
+ * Rajapinta käyttäjän syötteiden ja tulosteiden käsittelyyn.
  */
 public interface RajapintaIO {
 
     /**
-     * Tulostaa tekstisyötteen käyttäjän näkyville
-     *
-     * @param s tulostettava syöte
+     * Tulostaa tekstisyötteen käyttäjän näkyville.
+     * @author ruusukivi
+     * @param s Saa parametrina tekstimuotoisen syötteen.
      */
     void tulosta(String s);
 
     /**
-     * Lukee käyttäjän syötteen
+     * Lukee käyttäjän syötteen.
      *
-     * @return käyttäjän antama syöte
+     * @return Palauttaa tekstimuotoisen syötteen.
      */
 
     public String lue(); 

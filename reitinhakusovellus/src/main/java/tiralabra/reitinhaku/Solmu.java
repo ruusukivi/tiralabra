@@ -1,7 +1,7 @@
 package tiralabra.reitinhaku;
 
 /**
- * Solmun luova luokka
+ * Solmun luova luokka.
  * 
  * Kartan pisteistä solmuja muodostava luokka.
  */
@@ -19,11 +19,11 @@ public class Solmu {
     private boolean jps;
 
     /**
-     * @param x          solmun x-koordinaatin arvo
-     * @param y          solmun y-koordinaatin arvo
-     * @param seina      kartan kohta jota ei voi käyttää osana reittiä
-     * @param kuljettava kartan kohta joka sopii osaksi reittiä
-     *                   etaisyys alustetaan mahdollisimman isoksi
+     * @param x          Solmun x-koordinaatin arvo.
+     * @param y          Solmun y-koordinaatin arvo.
+     * @param seina      Kartan kohta jota ei voi käyttää osana reittiä.
+     * @param kuljettava Kartan kohta joka sopii osaksi reittiä.
+     * @throws IllegalArgumentException Antaa poikkeuksen, jos yritetään lisätä solmu, joka on sekä seinä että kuljettava tai ei kumpikaan.
      */
 
     public Solmu(int x, int y, boolean seina, boolean kuljettava) throws IllegalArgumentException {
@@ -40,77 +40,77 @@ public class Solmu {
     }
 
     /**
-     * @return int
+     * @return int Palauttaa solmun y-koordinaatin.
      */
     public int getY() {
         return y;
     }
 
     /**
-     * @return int
+     * @return int Palauttaa solmun x-koordinaatin.
      */
     public int getX() {
         return x;
     }
 
     /**
-     * @return boolean
+     * @return boolean Palauttaa tiedon, onko solmu reitiin sopiva.
      */
     public boolean getKuljettava() {
         return this.kuljettava;
     }
 
     /**
-     * @param edeltaja
+     * @param edeltaja Kertoo mikä solmu edeltää reitillä tätä solmua.
      */
     public void setEdeltaja(Solmu edeltaja) {
         this.edeltaja = edeltaja;
     }
 
     /**
-     * @return Solmu
+     * @return Solmu Palauttaa solmun joko edeltää reitillä tätä solmua.
      */
     public Solmu getEdeltaja() {
         return edeltaja;
     }
 
     /**
-     * @param reitilla
+     * @param reitilla Määrittelee onko solmu Dijkstran löytämällä reitillä.
      */
     public void setDijkstra(boolean reitilla) {
         this.dijkstra = true;
     }
 
     /**
-     * @return boolean
+     * @return boolean Kertoo onko solmu Dijkstran löytämällä reitillä.
      */
     public boolean getDijkstra() {
         return this.dijkstra;
     }
 
     /**
-     * @param kasitelty
+     * @param kasitelty Määrittelee onko algoritmi käsitellyt tämän solmun. 
      */
-    public void paivitaKasitelty(boolean kasitelty) {
+    public void setKasitelty(boolean kasitelty) {
         this.kasitelty = true;
     }
 
     /**
-     * @return boolean
+     * @return boolean Kertoo onko algoritmi jo käsitellyt tämän solmun.
      */
     public boolean getKasitelty() {
         return this.kasitelty;
     }
 
     /**
-     * @param double
+     * @param etaisyys Määrittelee solmun etäisyys reitin alkusolmuun (x= 0, y=0).
      */
     public void paivitaEtaisyys(double etaisyys) {
         this.etaisyys = etaisyys;
     }
 
     /**
-     * @return double
+     * @return double Kertoo solmun etäisyyden reitin alkusolmuun (x= 0, y=0).
      */
     public double getEtaisyys() {
         return etaisyys;

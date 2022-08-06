@@ -13,9 +13,9 @@ public class RandomWalkTest {
         RandomWalk tunneliton = new RandomWalk(10, 0, 0, "tunneliton");
         Verkko verkko = tunneliton.luoUusi();
         boolean seinallinen = true;
-        for (int i = 0; i < verkko.koko; i++) {
-            for (int j = 0; j < verkko.koko; j++) {
-                if (verkko.solmut[i][j].getKuljettava()) {
+        for (int i = 0; i < verkko.getKoko(); i++) {
+            for (int j = 0; j < verkko.getKoko(); j++) {
+                if (verkko.getSolmut()[i][j].getKuljettava()) {
                     seinallinen = false;
                 }
             }
@@ -29,9 +29,9 @@ public class RandomWalkTest {
         RandomWalk seinaton = new RandomWalk(5, 1000, 5, "seinaton");
         Verkko verkko = seinaton.luoUusi();
         boolean kuljettava = true;
-        for (int i = 0; i < verkko.koko; i++) {
-            for (int j = 0; j < verkko.koko; j++) {
-                if (!verkko.solmut[i][j].getKuljettava()) {
+        for (int i = 0; i < verkko.getKoko(); i++) {
+            for (int j = 0; j < verkko.getKoko(); j++) {
+                if (!verkko.getSolmut()[i][j].getKuljettava()) {
                     kuljettava = false;
                 }
             }

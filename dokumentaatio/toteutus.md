@@ -26,7 +26,13 @@ Harabor, D. & Grastien, A.
 Improving Jump Point Search. NICTA and The Australian National University. 
 https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf 
 
+Heuristics. From Amit’s Thoughts on Pathfinding. 
+http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html
+
 Laaksonen, A. 2021. Tietorakenteet ja algoritmit. https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/ 
+
+Podhraski, T. 2013. How to Speed Up A* Pathfinding With the Jump Point Search Algorithm. Envato Tuts+. 
+https://gamedevelopment.tutsplus.com/tutorials/how-to-speed-up-a-pathfinding-with-the-jump-point-search-algorithm--gamedev-5818 
 
 Sumit, J. 2018. Dijkstra’s – Shortest Path Algorithm (SPT) https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt/
 

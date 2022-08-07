@@ -16,7 +16,7 @@ Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijk
 - [x] [Viikko 1](dokumentaatio/viikko1.md)
 - [x] [Viikko 2](dokumentaatio/viikko2.md)       
 - [x] [Viikko 3](dokumentaatio/viikko3.md)   
-- [ ] Viikko 4 
+- [ ] [Viikko 4](dokumentaatio/viikko4.md)   
 - [ ] Viikko 5
 - [ ] Viikko 6
 - [ ] Viikko 7  

@@ -116,4 +116,7 @@ public class Solmu {
         return etaisyys;
     }
 
+    public void setJPS(boolean b) {
+    }
+
 }

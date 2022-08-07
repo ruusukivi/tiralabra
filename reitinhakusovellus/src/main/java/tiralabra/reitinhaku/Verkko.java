@@ -85,4 +85,7 @@ public class Verkko {
         this.dijkstra.add(reitilla);
     }
 
+    public void lisaaReittiJPS(String string) {
+    }
+
 }

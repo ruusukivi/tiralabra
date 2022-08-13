@@ -41,3 +41,7 @@
 Sovelluksessa tällä hetkellä kaksi toimintoa:
 1) Uuden kartan luonti ja tulostus
 2) Session aikana luotujen karttojen uudelleen tulostus
+
+Uuden kartan luonti luo karttapohjan RandomWalk-algoritmia hyödyntäen ja etsii kartalta lyhyimmän reitin vasemmasta yläkulmasta oikeaan alakulmaan Dijkstra- ja Jump Point Search -algoritmeilla.
+
+Uuden kartan luonti generoi omat Verkko-olio Dijkstralle ja Jump Point Searchille. Tulostettaessa aiemmin luotua karttaa pitää valita kumman version haluaa nähdä.

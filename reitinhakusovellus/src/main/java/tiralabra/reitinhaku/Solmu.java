@@ -15,8 +15,7 @@ public class Solmu {
     private Solmu edeltaja;
     private boolean kasitelty;
     private double etaisyys;
-    private boolean dijkstra;
-    private boolean jps;
+    private boolean reitilla;
 
     /**
      * @param x          Solmun x-koordinaatin arvo.
@@ -35,7 +34,7 @@ public class Solmu {
         this.seina = seina;
         this.kuljettava = kuljettava;
         this.etaisyys = Integer.MAX_VALUE;
-        this.dijkstra = false;
+        this.reitilla = false;
         this.kasitelty = false;
     }
 
@@ -60,6 +59,7 @@ public class Solmu {
         return this.kuljettava;
     }
 
+
     /**
      * @param edeltaja Kertoo mikä solmu edeltää reitillä tätä solmua.
      */
@@ -77,15 +77,15 @@ public class Solmu {
     /**
      * @param reitilla Määrittelee onko solmu Dijkstran löytämällä reitillä.
      */
-    public void setDijkstra(boolean reitilla) {
-        this.dijkstra = true;
+    public void setReitilla(boolean reitilla) {
+        this.reitilla = true;
     }
 
     /**
      * @return boolean Kertoo onko solmu Dijkstran löytämällä reitillä.
      */
-    public boolean getDijkstra() {
-        return this.dijkstra;
+    public boolean getReitilla() {
+        return this.reitilla;
     }
 
     /**
@@ -114,9 +114,6 @@ public class Solmu {
      */
     public double getEtaisyys() {
         return etaisyys;
-    }
-
-    public void setJPS(boolean b) {
     }
 
 }

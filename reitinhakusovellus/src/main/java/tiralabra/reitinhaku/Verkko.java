@@ -12,7 +12,7 @@ public class Verkko {
     private String nimi;
     private int koko;
     private Solmu[][] solmut;
-    private ArrayList<String> dijkstra;
+    private ArrayList<String> reitti;
 
     /**
      * Metodi luo tyhjän matriisitaulukon verkolle.
@@ -25,7 +25,7 @@ public class Verkko {
         this.koko = koko;
         this.nimi = nimi;
         this.solmut = new Solmu[koko][koko];
-        this.dijkstra = new ArrayList<String>();
+        this.reitti = new ArrayList<String>();
     }
 
     /**
@@ -74,18 +74,15 @@ public class Verkko {
     /**
      * @return ArrayList Palauttaa tekstimuotoisen kuvauksen reitistä tulostusta varten.
      */
-    public ArrayList<String> getDijkstra() {
-        return dijkstra;
+    public ArrayList<String> getReitilla() {
+        return reitti;
     }
 
     /**
      * @param reitilla Lisää reittikuvaukseen tiedon solmusta ja sen etäisyydestä reitin alkuun.
      */
-    public void lisaaReittiDijkstra(String reitilla) {
-        this.dijkstra.add(reitilla);
-    }
-
-    public void lisaaReittiJPS(String string) {
+    public void lisaaReitti(String reitilla) {
+        this.reitti.add(reitilla);
     }
 
 }

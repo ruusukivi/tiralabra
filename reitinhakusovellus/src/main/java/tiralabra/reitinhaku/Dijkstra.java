@@ -113,18 +113,18 @@ public class Dijkstra {
      */
 
     public void tallennaReitti() {
-        aloitus.setDijkstra(true);
+        aloitus.setReitilla(true);
         Solmu solmu = kartta[lopetus.getX()][lopetus.getY()];
-        verkko.lisaaReittiDijkstra("\nReitti päättyy pisteeseen " + solmu.getX() + "," + solmu.getY()
+        verkko.lisaaReitti("\nReitti päättyy pisteeseen " + solmu.getX() + "," + solmu.getY()
                 + " ja etäisyys alusta on: " + solmu.getEtaisyys());
-        solmu.setDijkstra(true);
+        solmu.setReitilla(true);
         while (solmu.getEdeltaja() != null) {
             solmu = solmu.getEdeltaja();
-            solmu.setDijkstra(true);
-            verkko.lisaaReittiDijkstra("\nSeuraava piste reitillä " + solmu.getX() + "," + solmu.getY()
+            solmu.setReitilla(true);
+            verkko.lisaaReitti("\nSeuraava piste reitillä " + solmu.getX() + "," + solmu.getY()
                     + " ja etäisyys alusta on: " + solmu.getEtaisyys());
         }
-        verkko.lisaaReittiDijkstra("\nReitti alkaa pisteestä 0.0 ");
+        verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
     }
 
 }

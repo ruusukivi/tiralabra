@@ -11,7 +11,7 @@ public class RandomWalkTest {
     @Test
     public void TunnelitonKartta() {
         RandomWalk tunneliton = new RandomWalk(10, 0, 0, "tunneliton");
-        Verkko verkko = tunneliton.luoUusi();
+        Verkko verkko = tunneliton.muodostaKartastaVerkko("dijkstra");
         boolean seinallinen = true;
         for (int i = 0; i < verkko.getKoko(); i++) {
             for (int j = 0; j < verkko.getKoko(); j++) {
@@ -27,7 +27,7 @@ public class RandomWalkTest {
     @Test
     public void SeinatonKartta() {
         RandomWalk seinaton = new RandomWalk(5, 1000, 5, "seinaton");
-        Verkko verkko = seinaton.luoUusi();
+        Verkko verkko = seinaton.muodostaKartastaVerkko("dijkstra");
         boolean kuljettava = true;
         for (int i = 0; i < verkko.getKoko(); i++) {
             for (int j = 0; j < verkko.getKoko(); j++) {

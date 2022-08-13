@@ -13,7 +13,7 @@ public class DijkstraTest {
     @Test
     public void ReititonKartta() {
         RandomWalk tunneliton = new RandomWalk(100, 0, 0, "tunneliton");
-        Verkko verkko = tunneliton.luoUusi();
+        Verkko verkko = tunneliton.muodostaKartastaVerkko("dijkstra");
         Dijkstra kartta = new Dijkstra(verkko);
         boolean onkoReittia = kartta.etsiLyhyinReitti();
         assertEquals(false, onkoReittia);

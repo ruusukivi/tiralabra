@@ -13,7 +13,7 @@ public class JumpPointSearchTest {
     @Test
     public void ReititonKartta() {
         RandomWalk tunneliton = new RandomWalk(100, 0, 0, "tunneliton");
-        Verkko verkko = tunneliton.luoUusi();
+        Verkko verkko = tunneliton.muodostaKartastaVerkko("jps");
         JumpPointSearch kartta = new JumpPointSearch(verkko);
         boolean onkoReittia = kartta.etsiLyhyinReitti();
         assertEquals(false, onkoReittia);

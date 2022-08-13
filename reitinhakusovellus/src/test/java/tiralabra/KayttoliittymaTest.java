@@ -32,7 +32,7 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: Nelio, koko 2*2\n", io.tulosteet.get(10));
+        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(10));
         assertEquals("x ", io.tulosteet.get(11));
         assertEquals("x ", io.tulosteet.get(12));
         assertEquals("\n", io.tulosteet.get(13));
@@ -49,13 +49,13 @@ public class KayttoliittymaTest {
             "0", // Ei tunneleita
             "0", // Tunnelin pituus
             "2", //Luo kartta
-            "Nelio", // Kartan nimi
+            "Nelio-dijkstra", // Kartan nimi
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: Nelio, koko 2*2\n", io.tulosteet.get(26));
+        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(35));
     }
 
     @Test
@@ -85,18 +85,18 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: 3, koko 3*3\n", io.tulosteet.get(10));
-        assertEquals("D ", io.tulosteet.get(11));
+        assertEquals("\nKartan nimi: 3-dijkstra, koko 3*3\n", io.tulosteet.get(10));
+        assertEquals("R ", io.tulosteet.get(11));
         assertEquals(". ", io.tulosteet.get(12));
         assertEquals(". ", io.tulosteet.get(13));
         assertEquals("\n", io.tulosteet.get(14));
-        assertEquals("D ", io.tulosteet.get(15));
+        assertEquals("R ", io.tulosteet.get(15));
         assertEquals("x ", io.tulosteet.get(16));
         assertEquals(". ", io.tulosteet.get(17));
         assertEquals("\n", io.tulosteet.get(18));
         assertEquals(". ", io.tulosteet.get(19));
-        assertEquals("D ", io.tulosteet.get(20));
-        assertEquals("D ", io.tulosteet.get(21));
+        assertEquals("R ", io.tulosteet.get(20));
+        assertEquals("R ", io.tulosteet.get(21));
     }
     
 }

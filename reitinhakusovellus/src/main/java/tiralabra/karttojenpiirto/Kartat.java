@@ -50,6 +50,14 @@ public class Kartat {
     }
 
     /**
+     * @return Verkko Palauttaa session aikana luodun kartan.
+     */
+    public Verkko karttaNimella(String nimi) {
+        Verkko kartta = kartat.get(nimi);
+        return kartta;
+    }
+    
+    /**
      * Session aikana luodun kartan tulostus verkon nimen perusteella.
      * 
      * @param nimi Tulostettavan kartan nimi.
@@ -61,7 +69,7 @@ public class Kartat {
             throw new Error("Ups! Kartan tulostus ei onnistunut. Tarkista nimi.");
         }
         Verkko verkko = kartat.get(nimi);
-        if (!verkko.getSolmut()[0][0].getKasitelty()) {
+        if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("dijkstra")) {
             Dijkstra reitti = new Dijkstra(verkko);
             reitti.etsiLyhyinReitti();
         }
@@ -71,8 +79,8 @@ public class Kartat {
                 if (!verkko.getSolmut()[i][j].getKuljettava()) {
                     io.tulosta("x ");
                 } else {
-                    if (verkko.getSolmut()[i][j].getDijkstra()) {
-                        io.tulosta("D ");
+                    if (verkko.getSolmut()[i][j].getReitilla()) {
+                        io.tulosta("R ");
                     } else {
                         io.tulosta(". ");
                     }
@@ -80,14 +88,14 @@ public class Kartat {
             }
             io.tulosta("\n");
         }
-        if (verkko.getDijkstra().size() > 0) {
-            for (int d = verkko.getDijkstra().size() - 2; d >= 0; d--) {
-                io.tulosta(verkko.getDijkstra().get(d));
+        if (verkko.getReitilla().size() > 0) {
+            for (int d = verkko.getReitilla().size() - 2; d >= 0; d--) {
+                io.tulosta(verkko.getReitilla().get(d));
             }
             io.tulosta("\n");
         } else {
             String lopetus = String.valueOf(verkko.getKoko() - 1) + "." + String.valueOf(verkko.getKoko() - 1);
-            io.tulosta("\nDijkstra-algoritmi ei löytänyt reittiä pisteestä 0.0 pisteeseen " + lopetus + ".\n");
+            io.tulosta("\nAlgoritmi ei löytänyt reittiä pisteestä 0.0 pisteeseen " + lopetus + ".\n");
         }
     }
 }

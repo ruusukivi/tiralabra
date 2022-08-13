@@ -13,7 +13,11 @@ Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen pii
 
 ## Puutteet ja parannusehdotukset
 
+Jump Point Search -algoritmi ei toimi vielä ja sen vuoksi myös vertailutestit algoritmeista puuttuvat.
+
 Käyttöliittymän virheensieto ei vielä ole kovin hyvä, koska syötteitä ei validoida.
+
+Koodi kaipaa paikoi tiivistämistä.
 
 ## Lähteet
 

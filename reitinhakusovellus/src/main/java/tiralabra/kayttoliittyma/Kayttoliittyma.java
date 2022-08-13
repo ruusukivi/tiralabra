@@ -2,6 +2,7 @@ package tiralabra.kayttoliittyma;
 
 import tiralabra.karttojenpiirto.Kartat;
 import tiralabra.karttojenpiirto.RandomWalk;
+
 import java.util.ArrayList;
 
 /**
@@ -65,7 +66,7 @@ public class Kayttoliittyma {
 
     /* Uuden kartan luonti ja tulostus */
     public void luoKartta() {
-        io.tulosta("Anna kartan nimi: \n");
+        io.tulosta("Anna kartan tunniste: \n");
         String nimi = io.lue();
         io.tulosta("Anna kartan sivun leveys (ruutujen lkm), esim. 100: \n");
         int leveys = Integer.valueOf(io.lue());
@@ -73,10 +74,11 @@ public class Kayttoliittyma {
         int tunnelit = Integer.valueOf(io.lue());
         io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim. 100: \n");
         int pituus = Integer.valueOf(io.lue());
-
         RandomWalk kartta = new RandomWalk(leveys, tunnelit, pituus, nimi);
-        kartat.lisaaKartta(kartta.luoUusi());
-        kartat.tulostaKartta(nimi);
+        kartat.lisaaKartta(kartta.muodostaKartastaVerkko("dijkstra"));;
+        kartat.lisaaKartta(kartta.muodostaKartastaVerkko("jps"));
+        kartat.tulostaKartta(nimi.concat("-dijkstra"));
+        kartat.tulostaKartta(nimi.concat("-jps"));
     }
 
     /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
@@ -92,6 +94,7 @@ public class Kayttoliittyma {
             io.tulosta("Anna tulostettavan kartan nimi: ");
             String syote = io.lue();
             kartat.tulostaKartta(syote);
+            //kartat.tulostaKartta(syote, "jps");
         }
 
     }

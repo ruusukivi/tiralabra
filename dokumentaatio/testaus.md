@@ -22,9 +22,12 @@ Tämä mahdollistaa silmämääräisen tarkistamisen reitille.
 
 Algoritmia koodatessa tulostin konsoliin jokaisen vaiheen (esim. mitä solmuja on keossa). Lisäksi varmistin muutaman pienen kartan osalta käsin laskemalla, että reitti ja sen pituus ovat oikein.
 
-##  Reittienhaku algoritmien vertailu
 
-Mitä on testattu, miten tämä tehtiin?
-Minkälaisilla syötteillä testaus tehtiin (vertailupainotteisissa töissä tärkeää)?
-Miten testit voidaan toistaa?
-Ohjelman toiminnan empiirisen testauksen tulosten esittäminen graafisessa muodossa.
+## Jump Point Searchin toimivuuden testaus
+
+
+##  Algoritmien vertailu
+- Tulossa: vertailutestit siitä tuottavatko Dijkstra ja JPS:ssä yhtä lyhyen reitin
+- Tulossa: vertailutestit siitä kuinka nopeasti Dijkstra ja JPS löytävät lyhyimmän reitin
+- Tulossa: reitin aloitus- ja lopetuspisteiden valinta satunnaisesti
+- Tulossa: käyttöliittymään toiminto, joka generoi kymmeniä erikokoisia karttoja, ajaa niille vertailutestit ja tulostaa lopuksi tilaston vertailusta

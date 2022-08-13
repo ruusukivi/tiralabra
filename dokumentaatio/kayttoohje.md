@@ -4,15 +4,15 @@
 
 ### Sovellusprojektin käynnistys jar-tiedostosta
 
-- Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla: 
+Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla: 
 
-        java -jar reitinhakusovellus.jar
+    java -jar reitinhakusovellus.jar
 
 ### Sovellusprojektin käynnistys komentoriviltä
 
-- Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
+Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
 
-        ./gradlew run
+    ./gradlew run
 
 ### Sovelluksen yksikkötestien ajo
 

@@ -19,6 +19,6 @@ Jump Point Search -algoritmi on tällä hetkellä vielä keskeneräinen. Lisäks
 - [x] [Viikko 2](dokumentaatio/viikko2.md)       
 - [x] [Viikko 3](dokumentaatio/viikko3.md)   
 - [x] [Viikko 4](dokumentaatio/viikko4.md)   
-- [ ] Viikko 5
+- [ ] [Viikko 5](dokumentaatio/viikko5.md) 
 - [ ] Viikko 6
 - [ ] Viikko 7  

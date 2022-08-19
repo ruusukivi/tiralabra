@@ -16,6 +16,7 @@ public class Solmu {
     private boolean kasitelty;
     private double etaisyys;
     private boolean reitilla;
+    private double prioriteetti;
 
     /**
      * @param x          Solmun x-koordinaatin arvo.
@@ -114,6 +115,20 @@ public class Solmu {
      */
     public double getEtaisyys() {
         return etaisyys;
+    }
+
+    /**
+     * @param prioriteetti Määrittelee solmun diagonaalisen etäisyyden maaliin JPS-algoritmia varten.
+     */
+    public void setPrioriteetti(double prioriteetti) {
+        this.prioriteetti = prioriteetti;
+    }
+
+    /**
+     * @return double Kertoo solmun diagonaalisen etäisyyden maaliin JPS-algoritmia varten.
+     */
+    public double getPrioriteetti() {
+        return prioriteetti;
     }
 
 }

@@ -36,12 +36,16 @@ public class JumpPointSearch {
         aloitus.paivitaEtaisyys(0);
         aloitus.setEdeltaja(aloitus);
         keko.lisaaKekoon(aloitus);
+        reitilla.add(aloitus);
         while (!keko.onTyhja()) {
             if (loytyi) {
                 break;
             }
             Solmu kasiteltava = keko.poistaPienin();
-            reitilla.add(kasiteltava);
+            System.out.print("\nKeosta otettiin käsittelyyn: " + kasiteltava.getX() + ", " +
+            kasiteltava.getY() + ", etäisyys: " + kasiteltava.getEtaisyys());
+            System.out.print("\nEdeltaja: " + kasiteltava.getEdeltaja().getX() + ", " +
+            kasiteltava.getEdeltaja().getY() + ", etäisyys: " + kasiteltava.getEdeltaja().getEtaisyys());
             etsiHyppyPisteet(kasiteltava, 0, 0);
         }
         if (loytyi) {
@@ -55,13 +59,9 @@ public class JumpPointSearch {
      * @param kasiteltava Metodi tarkistaa kaikki solmut, joita ole vielä käsitelty.
      */
     private void etsiHyppyPisteet(Solmu kasiteltava, int x, int y) {
-        System.out.print("\nKäsittelyssä nyt " + kasiteltava.getX() + ", " +
-                kasiteltava.getY());
-
         if (onkoMaalissa(kasiteltava)) {
             return;
         }
-
         if (!kasiteltava.getKasitelty()) {
             keko.lisaaKekoon(etsiVertikaalisesti(kasiteltava, -1)); // ylös
             keko.lisaaKekoon(etsiVertikaalisesti(kasiteltava, 1)); // alas
@@ -81,32 +81,31 @@ public class JumpPointSearch {
     }
 
     private Solmu etsiVertikaalisesti(Solmu kasiteltava, int y) {
-        System.out.print(
-                "\nEtsitään vertikaalisesti " + kasiteltava.getX() + ", " +
-                        kasiteltava.getY() + ", y:n muutos: " + y + ", etaisyys: " + kasiteltava.getEtaisyys());
+        kasiteltava.setKasitelty(true);
+        if (onkoMaalissa(kasiteltava)) {
+            kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
+            return null;
+        }
         int seuraavaX = kasiteltava.getX();
         int seuraavaY = kasiteltava.getY() + y;
-
-        kasiteltava.setKasitelty(true);
-
-        if (kasiteltava != aloitus) {
-            if (kasiteltava.getEtaisyys() < kasiteltava.getEdeltaja().getEtaisyys() + 1 && kasiteltava != aloitus) {
-                System.out.print("Pidempi etäisyys, ei päivitetä!");
+        if (!onkoKuljettava(seuraavaX, seuraavaY)) {
+            return null;
+        }
+        Solmu seuraava = kartta[seuraavaX][seuraavaY];
+        if(seuraava.getKasitelty() || kasiteltava.getEdeltaja() == seuraava){
+            return null;
+        }
+        seuraava.setEdeltaja(kasiteltava);
+        if (!reitilla.contains(kasiteltava)) {
+            if (kasiteltava.getEtaisyys() < kasiteltava.getEdeltaja().getEtaisyys() + 1) {
+                System.out.print(" Pidempi etäisyys, ei päivitetä!");
                 return null; // Tarkistetaan ettei lyhyempää etäisyyttä korvata pidemmällä.
             }
             kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
         }
-
-        if (onkoMaalissa(kasiteltava)) {
-            return null;
-        }
-
-        if (!onkoKuljettava(seuraavaX, seuraavaY)) {
-            return null; // Tarkistetaan ettei seuraava piste ole seinä tai kartan ulkopuolella.
-        }
-
-        Solmu seuraava = kartta[seuraavaX][seuraavaY];
-        seuraava.setEdeltaja(kasiteltava);
+        System.out.print(
+            "\nEtsitään vertikaalisesti " + kasiteltava.getX() + ", " +
+                    kasiteltava.getY() + ", etaisyys: " + kasiteltava.getEtaisyys() + ", y:n muutos: " + y );
 
         boolean kuljettavaOikealle = false;
         boolean seinaOikeallaTakana = false;
@@ -115,69 +114,58 @@ public class JumpPointSearch {
 
         if (kasiteltava.getX() + 1 <= sivu - 1 && kasiteltava.getY() + y <= sivu - 1) {
             // Etsitään pakotettuja naapureita oikealta
-            System.out.print(" - Tarkastetaan naapureita oikealta");
             kuljettavaOikealle = kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1].getKuljettava();
             seinaOikeallaTakana = !(kartta[kasiteltava.getX() + 1][kasiteltava.getY()].getKuljettava());
             if (kuljettavaOikealle && seinaOikeallaTakana) {
-                System.out.print("- Löydettiin naapuri oikealta");
-                lisaaTutkittava(kasiteltava, kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1]); // Pakotettu
-                                                                                                      // naapuri
-                                                                                                      // löydetty
-                // return kartta[kasiteltava.getX() + 1][kasiteltava.getY()];
+                System.out.print(" Löydettiin naapuri oikealta");
+                Solmu naapuri = kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1];
+                lisaaTutkittava(kasiteltava, naapuri);
+                //return naapuri;
             }
         }
         if (kasiteltava.getX() - 1 >= 0 && kasiteltava.getY() + y <= sivu - 1) {
             // Etsitään pakotettuja naapureita vasemmalta
-            System.out.print("Tarkastetaan naapureita vasemmalta");
             kuljettavaVasemmalle = kartta[kasiteltava.getX() - 1][kasiteltava.getY() + 1].getKuljettava();
             seinaVasemmallaTakana = !(kartta[kasiteltava.getX() - 1][kasiteltava.getY()].getKuljettava());
             if (kuljettavaVasemmalle && seinaVasemmallaTakana) {
-                System.out.print(" - Löydettiin naapuri vasemmalta");
-                lisaaTutkittava(kasiteltava, kartta[kasiteltava.getX() - 1][kasiteltava.getY() + 1]); // Pakotettu
-                                                                                                      // naapuri
-                                                                                                      // löydetty
-                // return kartta[kasiteltava.getX() - 1][kasiteltava.getY()];
+                System.out.print(" Löydettiin naapuri vasemmalta");
+                Solmu naapuri = kartta[kasiteltava.getX() - 1][kasiteltava.getY() + 1]; 
+                lisaaTutkittava(kasiteltava, naapuri);
+                //return naapuri;
             }
         }
-
-        if (kasiteltava.getY() - y < 0 || kasiteltava.getY() + y > sivu - 1) {
-            System.out.print("\nNaapuritarkistus ei onnistu Y:n arvolla: " + kasiteltava.getY());
-            return etsiVertikaalisesti(seuraava, y);
-        }
-
-        if (onkoMaalissa(kasiteltava)) {
-            return null; // tarvitaanko oikeasti??
-        }
-
-        return etsiVertikaalisesti(seuraava, y); // Ei löytynyt hyppypisteitä eikä tutkittavaa, jatketaan
+        return etsiVertikaalisesti(seuraava, y); // Ei löytynyt tutkittavaa, jatketaan
     }
 
     private Solmu etsiHorisontaalisesti(Solmu kasiteltava, int x) {
-        System.out.print(
-                "\nEtsitään horisontaalisesti " + kasiteltava.getX() + ", " +
-                        kasiteltava.getY() + ", uusi x: " + x + ", etaisyys: " + kasiteltava.getEtaisyys());
-        int seuraavaX = kasiteltava.getX() + x;
-        int seuraavaY = kasiteltava.getY();
-
         kasiteltava.setKasitelty(true);
-
-        if (kasiteltava != aloitus) {
-            if (kasiteltava.getEtaisyys() < kasiteltava.getEdeltaja().getEtaisyys() + 1) {
-                System.out.print("Pidempi etäisyys, ei päivitetä!");
-                return null; // Tarkistetaan ettei lyhyempää etäisyyttä korvata pidemmällä.
-            }
-            kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
-        }
-
         if (onkoMaalissa(kasiteltava)) {
+            kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
             return null;
         }
-
+        int seuraavaX = kasiteltava.getX() + x;
+        int seuraavaY = kasiteltava.getY();
         if (!onkoKuljettava(seuraavaX, seuraavaY)) {
             return null; // Tarkistetaan ettei seuraava piste ole seinä tai kartan ulkopuolella.
         }
         Solmu seuraava = kartta[seuraavaX][seuraavaY];
         seuraava.setEdeltaja(kasiteltava);
+
+        if(seuraava.getKasitelty() || kasiteltava.getEdeltaja() == seuraava){
+            System.out.print("Osuu");
+            return null;
+        }
+
+        if (!reitilla.contains(kasiteltava)) {
+            if (kasiteltava.getEtaisyys() < kasiteltava.getEdeltaja().getEtaisyys() + 1) {
+                System.out.print(" Pidempi etäisyys, ei päivitetä!");
+                return null; // Tarkistetaan ettei lyhyempää etäisyyttä korvata pidemmällä.
+            }
+            kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
+        }
+        System.out.print(
+            "\nEtsitään horisontaalisesti " + kasiteltava.getX() + ", " +
+                    kasiteltava.getY() + ", etaisyys: " + kasiteltava.getEtaisyys() + ", uusi x: " + x);
 
         boolean kuljettavaYlos = false;
         boolean seinaAlhaallaTakana = false;
@@ -186,52 +174,51 @@ public class JumpPointSearch {
 
         if (kasiteltava.getX() + 1 <= sivu - 1 && kasiteltava.getY() + 1 <= sivu - 1) {
             // Etsitään pakotettuja naapureita ylhäältä
-            System.out.print("Tarkastetaan naapureita ylhäältä");
             kuljettavaYlos = kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1].getKuljettava();
             seinaAlhaallaTakana = !(kartta[kasiteltava.getX()][kasiteltava.getY() + 1].getKuljettava());
             if (kuljettavaYlos && seinaAlhaallaTakana) {
-                lisaaTutkittava(kasiteltava, kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1]);
-                // Pakotettu naapuri löydetty
+                Solmu naapuri = kartta[kasiteltava.getX() + 1][kasiteltava.getY() + 1];
+                lisaaTutkittava(kasiteltava, naapuri);
+                //return naapuri;
             }
         }
-
-        if (kasiteltava.getX() - 1 >= 0 && kasiteltava.getY() - 1 >= 0) { // Etsitään pakotettuja naapureita alhaalta
-            System.out.print("Tarkastetaan naapureita alhaalta");
+        if (kasiteltava.getX() - 1 >= 0 && kasiteltava.getY() - 1 >= 0) { 
+            // Etsitään pakotettuja naapureita alhaalta
             kuljettavaAlas = kartta[kasiteltava.getX() - 1][kasiteltava.getY() - 1].getKuljettava();
             seinaYlhaallaTakana = !(kartta[kasiteltava.getX()][kasiteltava.getY() - 1].getKuljettava());
             if (kuljettavaAlas && seinaYlhaallaTakana) {
-                lisaaTutkittava(kasiteltava, kartta[kasiteltava.getX() - 1][kasiteltava.getY() - 1]);
-                // Pakotettu naapuri löydetty
+                Solmu naapuri = kartta[kasiteltava.getX() - 1][kasiteltava.getY() - 1];
+                lisaaTutkittava(kasiteltava, naapuri);
+                //return naapuri;
             }
         }
-
-        if (kasiteltava.getX() - x < 0 || kasiteltava.getX() + x > sivu - 1) {
-            System.out.print("\nNaapuritarkistus ei onnistu Y:n arvolla: " + kasiteltava.getY());
-            return etsiHorisontaalisesti(seuraava, x);
-        }
-
-        return etsiHorisontaalisesti(seuraava, x); // Ei löytynyt hyppypisteitä eikä tutkittavaa, jatketaan
+        return etsiHorisontaalisesti(seuraava, x); // Ei löytynyt tutkittavaa, jatketaan
     }
 
     private void etsiDiagonaalisesti(Solmu kasiteltava, int x, int y) {
-        System.out.print("\nEtsitään diagonaalisesti " + kasiteltava.getX() + ", " +
-                kasiteltava.getY() + ", liikutaan " + x + "," + y + ", etaisyys: " + kasiteltava.getEtaisyys());
         kasiteltava.setKasitelty(true);
-        if (kasiteltava.getX() + x > sivu - x || kasiteltava.getX() + x < 0 || kasiteltava.getY() + y > sivu - y
-                || kasiteltava.getY() + y < 0) {
+
+        if(kasiteltava != aloitus && kasiteltava.getEtaisyys()+1 > kasiteltava.getEdeltaja().getEtaisyys() + Math.sqrt(2)){
+            kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + Math.sqrt(2));
+        }
+
+        System.out.print("\nEtsitään diagonaalisesti " + kasiteltava.getX() + ", " +
+        kasiteltava.getY() + ", etaisyys: " + kasiteltava.getEtaisyys() + ", liikutaan " + x + "," + y);
+        int seuraavaX = kasiteltava.getX() + x;
+        int seuraavaY = kasiteltava.getY() + y;
+        if (!onkoKuljettava(seuraavaX, seuraavaY)) {
             System.out.print(" Ei kartalla!");
-            return;
+            return; // Tarkistetaan ettei seuraava piste ole seinä tai kartan ulkopuolella.
         }
         Solmu seuraava = kartta[kasiteltava.getX() + x][kasiteltava.getY() + y];
         seuraava.setEdeltaja(kasiteltava);
-        if (seuraava.getKuljettava() && seuraava.getEtaisyys() > kasiteltava.getEtaisyys() + Math.sqrt(2)) {
+
+        if (onkoMaalissa(seuraava)) {
             seuraava.paivitaEtaisyys(kasiteltava.getEtaisyys() + Math.sqrt(2));
-            System.out.print("\nPäivitettiin etäisyys: " + seuraava.getX() + "," +
-                    seuraava.getY() + ", etaisyys: " + seuraava.getEtaisyys());
-            etsiHyppyPisteet(seuraava, x, y);
-        } else {
-            System.out.print(" Seinä!");
+            return;
         }
+
+        etsiHyppyPisteet(seuraava, x, y);
     }
 
     /**
@@ -255,17 +242,18 @@ public class JumpPointSearch {
     }
 
     private void lisaaTutkittava(Solmu edeltaja, Solmu tutkittava) {
-        keko.lisaaKekoon(tutkittava);
-        tutkittava.setEdeltaja(edeltaja);
-        tutkittava.paivitaEtaisyys(edeltaja.getEtaisyys() + Math.sqrt(2));
-        reitilla.add(tutkittava);
-        System.out.print("\nTutkittava löytyi. ");
+        if(!tutkittava.getKasitelty()){
+            tutkittava.setEdeltaja(edeltaja);
+            tutkittava.paivitaEtaisyys(edeltaja.getEtaisyys() + Math.sqrt(2));
+            reitilla.add(tutkittava);
+            keko.lisaaKekoon(tutkittava);
+        }
     }
 
     private boolean onkoMaalissa(Solmu tutkittava) {
         if (tutkittava.getX() == lopetus.getX() && tutkittava.getY() == lopetus.getY()) {
             loytyi = true;
-            System.out.print("Maali löytyi!");
+            System.out.print(" Maali löytyi!");
             return true;
         }
         return false;
@@ -294,11 +282,6 @@ public class JumpPointSearch {
      */
 
     public void tallennaReitti() {
-        System.out.print("\nReitillä koko: " + reitilla.size());
-        for (Solmu piste : reitilla) {
-            System.out.print(
-                    "\nReitillä solmu: " + piste.getX() + "," + piste.getY() + ", etäisyys " + piste.getEtaisyys());
-        }
         aloitus.setReitilla(true);
         verkko.lisaaReitti("\nReitti päättyy pisteeseen " + lopetus.getX() + "," + lopetus.getY()
                 + " ja etäisyys alusta on: " + lopetus.getEtaisyys());

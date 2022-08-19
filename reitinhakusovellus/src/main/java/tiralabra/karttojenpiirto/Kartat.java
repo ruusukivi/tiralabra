@@ -2,6 +2,7 @@ package tiralabra.karttojenpiirto;
 
 import tiralabra.kayttoliittyma.RajapintaIO;
 import tiralabra.reitinhaku.Dijkstra;
+import tiralabra.reitinhaku.JumpPointSearch;
 import tiralabra.reitinhaku.Verkko;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class Kartat {
         Verkko kartta = kartat.get(nimi);
         return kartta;
     }
-    
+
     /**
      * Session aikana luodun kartan tulostus verkon nimen perusteella.
      * 
@@ -71,6 +72,10 @@ public class Kartat {
         Verkko verkko = kartat.get(nimi);
         if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("dijkstra")) {
             Dijkstra reitti = new Dijkstra(verkko);
+            reitti.etsiLyhyinReitti();
+        }
+        if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("jps")) {
+            JumpPointSearch reitti = new JumpPointSearch(verkko);
             reitti.etsiLyhyinReitti();
         }
         io.tulosta("\nKartan nimi: " + verkko.getNimi() + ", koko " + verkko.getKoko() + "*" + verkko.getKoko() + "\n");
@@ -89,7 +94,7 @@ public class Kartat {
             io.tulosta("\n");
         }
         if (verkko.getReitilla().size() > 0) {
-            for (int d = verkko.getReitilla().size() - 2; d >= 0; d--) {
+            for (int d = verkko.getReitilla().size() - 3; d >= 0; d--) {
                 io.tulosta(verkko.getReitilla().get(d));
             }
             io.tulosta("\n");

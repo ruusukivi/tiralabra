@@ -37,12 +37,14 @@ public class Keko {
             throw new Error("Ups! Keko täynnä.");
         }
         nykyinenKoko++;
-        //System.out.print("\nKekoon lisättiin jotain!" + solmu.getX() + "," + solmu.getY());
+        System.out.print("\nKekoon lisättiin jotain!" + solmu.getX() + "," + solmu.getY());
         int indeksi = nykyinenKoko;
         keko[indeksi] = solmu;
         if (nykyinenKoko > 0) {
             nostaKeossa(indeksi);
         }
+        System.out.print("\nKeon koko: " + nykyinenKoko);
+        
     }
 
     /**

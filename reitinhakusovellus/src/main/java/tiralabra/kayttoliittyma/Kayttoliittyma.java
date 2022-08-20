@@ -2,6 +2,7 @@ package tiralabra.kayttoliittyma;
 
 import tiralabra.karttojenpiirto.Kartat;
 import tiralabra.karttojenpiirto.RandomWalk;
+import tiralabra.vertailu.Vertailu;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,8 @@ public class Kayttoliittyma {
     /**
      * Käyttöliittymän konstruktori.
      *
-     * @param io     Luokka joka hoitaa tulostuksen ja käyttäjän syötteiden lukemisen.
+     * @param io     Luokka joka hoitaa tulostuksen ja käyttäjän syötteiden
+     *               lukemisen.
      * @param kartat Luokka karttojen säilöntään ja käsittelyyn session aikana.
      */
     public Kayttoliittyma(RajapintaIO io, Kartat kartat) {
@@ -37,7 +39,7 @@ public class Kayttoliittyma {
             String syote = io.lue();
             if (syote.equalsIgnoreCase("0")) {
                 break;
-            } 
+            }
             valitseToiminto(syote);
         }
     }
@@ -45,8 +47,9 @@ public class Kayttoliittyma {
     /** Valikon tulostus */
     public void naytaValikko() {
         io.tulosta("\nTOIMINNOT: \n");
-        io.tulosta("1 -- Luo uusi kartta \n"); 
+        io.tulosta("1 -- Luo uusi kartta \n");
         io.tulosta("2 -- Näytä aiemmin luotu kartta \n");
+        io.tulosta("3 -- Vertaile reitinhakualgoritmeja \n");
         io.tulosta("0 -- Sulje sovellus\n");
     }
 
@@ -62,6 +65,10 @@ public class Kayttoliittyma {
         if (toiminto.equalsIgnoreCase("2")) {
             listaaKartat();
         }
+
+        if (toiminto.equalsIgnoreCase("3")) {
+            vertaileAlgoritmeja();
+        }
     }
 
     /* Uuden kartan luonti ja tulostus */
@@ -75,7 +82,8 @@ public class Kayttoliittyma {
         io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim. 100: \n");
         int pituus = Integer.valueOf(io.lue());
         RandomWalk kartta = new RandomWalk(leveys, tunnelit, pituus, nimi);
-        kartat.lisaaKartta(kartta.muodostaKartastaVerkko("dijkstra"));;
+        kartat.lisaaKartta(kartta.muodostaKartastaVerkko("dijkstra"));
+        ;
         kartat.lisaaKartta(kartta.muodostaKartastaVerkko("jps"));
         kartat.tulostaKartta(nimi.concat("-dijkstra"));
         kartat.tulostaKartta(nimi.concat("-jps"));
@@ -94,9 +102,16 @@ public class Kayttoliittyma {
             io.tulosta("Anna tulostettavan kartan nimi: ");
             String syote = io.lue();
             kartat.tulostaKartta(syote);
-            //kartat.tulostaKartta(syote, "jps");
         }
+    }
 
+    /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
+    public void vertaileAlgoritmeja() {
+        Vertailu vertailu = new Vertailu();
+
+        for (String tulos : vertailu.annaTulokset()) {
+            io.tulosta("\n" + tulos);
+        }
     }
 
 }

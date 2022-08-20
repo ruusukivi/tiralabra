@@ -1,5 +1,6 @@
 package tiralabra.karttojenpiirto;
 
+import tiralabra.reitinhaku.Solmu;
 import tiralabra.reitinhaku.Verkko;
 
 /**
@@ -79,7 +80,7 @@ public class RandomWalk {
                     nykyinenRivi += satunnainenSuunta[0]; // päivitetään rivitieto ajantasalle nykyisen sijainnin kanssa
                     nykyinenSarake += satunnainenSuunta[1]; // päivitetään saraketieto ajantasalle nykyisen sijainnin
                                                             // kanssa
-                    tunnelinPituus++; // kasvatettan tunnelin pituutta yhdellä
+                    tunnelinPituus++; // kasvatettaan tunnelin pituutta yhdellä
                 }
             }
 
@@ -88,6 +89,8 @@ public class RandomWalk {
                 viimeisinSuunta = satunnainenSuunta; // tallennettaan viimeisin suunta
                 tunnelit--; // kun tunneli on valmis vähennetään piirrettävien tunneleisen määrää yhdellä
             }
+            kartta[0][0] = 1; // varmistetaan ettei aloituspiste ole seinä
+            kartta[sivu-1][sivu-1] = 1; // varmistetaan ettei lopetuspiste ole seinä
         }
     }
 

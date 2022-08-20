@@ -1,5 +1,8 @@
 package tiralabra.reitinhaku;
 
+import java.time.Duration;
+import java.time.Instant;
+
 /**
  * Luokka Dijkstran reitinhaku-algoritmille.
  * 
@@ -11,6 +14,11 @@ public class Dijkstra {
     private Keko keko;
     private Solmu aloitus;
     private Solmu lopetus;
+    private double kesto;
+    private int kasitellyt;
+    private double reitinpituus;
+    private boolean loytyi;
+
 
     /**
      * Konstruktori Dijkstran reitinhaku-algoritmille.
@@ -24,6 +32,9 @@ public class Dijkstra {
         this.keko = new Keko(sivu * sivu);
         this.aloitus = kartta[0][0];
         this.lopetus = kartta[sivu - 1][sivu - 1];
+        this.kesto = 0;
+        this.kasitellyt = 0;
+        this.reitinpituus = lopetus.getEtaisyys();
     }
 
     /**
@@ -31,18 +42,25 @@ public class Dijkstra {
      * algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
      */
     public boolean etsiLyhyinReitti() {
+        Instant alku = Instant.now();
         aloitus.paivitaEtaisyys(0);
         keko.lisaaKekoon(aloitus);
-
         while (!keko.onTyhja()) {
             Solmu kasiteltava = keko.poistaPienin();
+            kasitellyt++;
             if (!kasiteltava.getKasitelty()) {
-                if (kasiteltava.getX() == lopetus.getX() && kasiteltava.getY() == lopetus.getY()) {
-                    tallennaReitti();
-                    return true;
+                if (loytyi) {
+                    break;
                 }
                 tutkiNaapurit(kasiteltava);
             }
+        }
+        Instant loppu = Instant.now();
+        this.kesto = Duration.between(alku, loppu).getNano() / 1000000;
+        if(loytyi){
+
+            tallennaReitti();
+            return true;
         }
         return false;
     }
@@ -70,6 +88,12 @@ public class Dijkstra {
      */
     private Solmu laskeEtaisyysNaapuriin(Solmu kasiteltava, int x, int y) {
         kasiteltava.setKasitelty(true);
+
+        if (kasiteltava.getX() == lopetus.getX() && kasiteltava.getY() == lopetus.getY()) {
+            reitinpituus = kasiteltava.getEtaisyys();
+            loytyi = true;
+        }
+        
         int naapurinX = kasiteltava.getX() + x;
         int naapurinY = kasiteltava.getY() + y;
         if (!onkoKuljettava(naapurinX, naapurinY)) {
@@ -125,6 +149,18 @@ public class Dijkstra {
                     + " ja etäisyys alusta on: " + solmu.getEtaisyys());
         }
         verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
+    }
+
+    public double getKesto(){
+        return this.kesto;
+    }
+
+    public double getKasitellyt(){
+        return this.kasitellyt;
+    }
+
+    public double getReitinPituus(){
+        return this.reitinpituus;
     }
 
 }

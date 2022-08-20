@@ -73,10 +73,12 @@ public class Kartat {
         if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("dijkstra")) {
             Dijkstra reitti = new Dijkstra(verkko);
             reitti.etsiLyhyinReitti();
+            io.tulosta("\nTilastot Dijkstra: "  + reitti.getKesto() + ", " + reitti.getKasitellyt());
         }
         if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("jps")) {
             JumpPointSearch reitti = new JumpPointSearch(verkko);
             reitti.etsiLyhyinReitti();
+            io.tulosta("\nTilastot JPS: "  + reitti.getKesto() + ", " + reitti.getKasitellyt());
         }
         io.tulosta("\nKartan nimi: " + verkko.getNimi() + ", koko " + verkko.getKoko() + "*" + verkko.getKoko() + "\n");
         for (int i = 0; i < verkko.getKoko(); i++) {

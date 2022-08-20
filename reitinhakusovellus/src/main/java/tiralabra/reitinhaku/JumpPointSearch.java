@@ -1,5 +1,7 @@
 package tiralabra.reitinhaku;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class JumpPointSearch {
@@ -11,6 +13,9 @@ public class JumpPointSearch {
     private Solmu lopetus;
     private boolean loytyi;
     private ArrayList<Solmu> reitilla;
+    private double kesto;
+    private int kasitellyt;
+    private double reitinpituus;
 
     /**
      * Konstruktori JumpPointSearch-algoritmille.
@@ -26,6 +31,9 @@ public class JumpPointSearch {
         this.lopetus = kartta[sivu - 1][sivu - 1];
         this.loytyi = false;
         this.reitilla = new ArrayList<>();
+        this.kesto = 0;
+        this.kasitellyt = 0;
+        this.reitinpituus = lopetus.getEtaisyys();
     }
 
     /**
@@ -33,6 +41,7 @@ public class JumpPointSearch {
      *         algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
      */
     public boolean etsiLyhyinReitti() {
+        Instant alku = Instant.now();
         aloitus.paivitaEtaisyys(0);
         aloitus.setEdeltaja(aloitus);
         keko.lisaaKekoon(aloitus);
@@ -42,12 +51,16 @@ public class JumpPointSearch {
                 break;
             }
             Solmu kasiteltava = keko.poistaPienin();
+            kasitellyt++;
             System.out.print("\nKeosta otettiin käsittelyyn: " + kasiteltava.getX() + ", " +
             kasiteltava.getY() + ", etäisyys: " + kasiteltava.getEtaisyys());
             System.out.print("\nEdeltaja: " + kasiteltava.getEdeltaja().getX() + ", " +
             kasiteltava.getEdeltaja().getY() + ", etäisyys: " + kasiteltava.getEdeltaja().getEtaisyys());
             etsiHyppyPisteet(kasiteltava, 0, 0);
         }
+        reitinpituus = lopetus.getEtaisyys();
+        Instant loppu = Instant.now();
+        kesto = Duration.between(alku, loppu).getNano() / 1000000;
         if (loytyi) {
             tallennaReitti();
             return true;
@@ -197,7 +210,6 @@ public class JumpPointSearch {
 
     private void etsiDiagonaalisesti(Solmu kasiteltava, int x, int y) {
         kasiteltava.setKasitelty(true);
-
         if(kasiteltava != aloitus && kasiteltava.getEtaisyys()+1 > kasiteltava.getEdeltaja().getEtaisyys() + Math.sqrt(2)){
             kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + Math.sqrt(2));
         }
@@ -217,7 +229,6 @@ public class JumpPointSearch {
             seuraava.paivitaEtaisyys(kasiteltava.getEtaisyys() + Math.sqrt(2));
             return;
         }
-
         etsiHyppyPisteet(seuraava, x, y);
     }
 
@@ -267,7 +278,7 @@ public class JumpPointSearch {
      * johtaa reitin lopetussolmuun.
      * 
      * @param solmu Tutkittava solmu
-     * @return double Palauttaa Manhattan-etäisyyden
+     * @return double Palauttaa Diagonaalisen etäisyyden
      */
     private double laskeDiagonaalinenEtaisyys(Solmu solmu) {
         double dx = Math.abs(solmu.getX() - lopetus.getX());
@@ -294,5 +305,17 @@ public class JumpPointSearch {
             edeltaja.setReitilla(true);
         }
         verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
+    }
+    
+    public double getKesto(){
+        return this.kesto;
+    }
+
+    public double getKasitellyt(){
+        return this.kasitellyt;
+    }
+
+    public double getReitinPituus(){
+        return this.reitinpituus;
     }
 }

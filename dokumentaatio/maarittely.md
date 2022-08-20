@@ -39,30 +39,3 @@ JPS-algoritmin aikavaativuustavoite on pahimmillaan sama kuin Dijkstrassa, mutta
 
 Tilavaativuus molemmissa on arviolta O(n) verkon solmujen mukaan.
 
-## Lähteet
-
-Abdolsaheb, A. How to code your own procedural dungeon map generator using the Random Walk Algorithm
-https://www.freecodecamp.org/news/how-to-make-your-own-procedural-dungeon-map-generator-using-the-random-walk-algorithm-e0085c8aa9a/
-
-Dijkstran algoritmi. Wikipedia. https://fi.wikipedia.org/wiki/Dijkstran_algoritmi
-
-Harabor, D. & Grastien, A.
-Improving Jump Point Search. NICTA and The Australian National University. 
-https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf 
-
-Laaksonen, A. 2021. Tietorakenteet ja algoritmit. https://www.cs.helsinki.fi/u/ahslaaks/tirakirja/ 
-
-Sedgewick, R & Wayne, K https://introcs.cs.princeton.edu/java/15inout/RandomWalk.java.html
-
-Sumit, J. 2018. Dijkstra’s – Shortest Path Algorithm (SPT) – Adjacency List and Min Heap – Java Implementation. https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt-adjacency-list-and-min-heap-java-implementation/ 
-
-Sumit, J. 2015. Binary Min-Max Heap Implementation
- https://algorithms.tutorialhorizon.com/binary-min-max-heap/
-
-Witmer, N. 2014. A Visual Explanation of Jump Point Search. Zerowidth positive lookahead.
-https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
-
-Muita Tira-kurssin harjoitustöitä:
-https://github.com/sinisaarinen/tira-labra
-https://github.com/NooraVino/GetMeOut-tiralabra
-https://github.com/ALindroos/Polunhakija 

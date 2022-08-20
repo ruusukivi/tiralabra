@@ -1,4 +1,5 @@
 package tiralabra.karttojenpiirto;
+
 import tiralabra.reitinhaku.Verkko;
 
 /**
@@ -40,7 +41,6 @@ public class RandomWalk {
         piirraKartta();
     }
 
-
     public void piirraKartta() {
         int nykyinenRivi = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitusrivi
         int nykyinenSarake = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitussarake
@@ -52,11 +52,8 @@ public class RandomWalk {
         while (tunnelit > 0 & pituus > 0) {
             satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
             do {
-                satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)]; // valitaan seuraava
-                                                                                               // suunta ja
-                                                                                               // varmistetaan, että
-                                                                                               // uusi suunta on eri
-                                                                                               // josta tultiin
+                satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
+                // valitaan seuraava suunta ja varmistetaan, että uusi suunta on eri josta tultiin
             } while ((satunnainenSuunta[0] == -viimeisinSuunta[0] &&
                     satunnainenSuunta[1] == -viimeisinSuunta[1]) ||
                     (satunnainenSuunta[0] == viimeisinSuunta[0] &&
@@ -88,13 +85,15 @@ public class RandomWalk {
                 tunnelit--; // kun tunneli on valmis vähennetään piirrettävien tunneleisen määrää yhdellä
             }
             kartta[0][0] = 1; // varmistetaan ettei aloituspiste ole seinä
-            kartta[sivu-1][sivu-1] = 1; // varmistetaan ettei lopetuspiste ole seinä
+            kartta[sivu - 1][sivu - 1] = 1; // varmistetaan ettei lopetuspiste ole seinä
         }
     }
 
-        /**
+    /**
      * Uuden kartan luonti ja muunto verkoiksi.
-     * @param algoritmi Samasta kartasta muodotetaan omat Verkko-oliot dijkstra- ja jps-algoritmeja varten.
+     * 
+     * @param algoritmi Samasta kartasta muodotetaan omat Verkko-oliot dijkstra- ja
+     *                  jps-algoritmeja varten.
      */
     public Verkko muodostaKartastaVerkko(String algoritmi) {
         if (algoritmi.contains("dijkstra")) {

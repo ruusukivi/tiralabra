@@ -19,11 +19,10 @@ public class Dijkstra {
     private double reitinpituus;
     private boolean loytyi;
 
-
     /**
      * Konstruktori Dijkstran reitinhaku-algoritmille.
      * 
-     * @param verkko Neliönmuotoinen kartta annetaan luokalle Verkko-oliona. 
+     * @param verkko Neliönmuotoinen kartta annetaan luokalle Verkko-oliona.
      */
     public Dijkstra(Verkko verkko) {
         this.verkko = verkko;
@@ -38,8 +37,8 @@ public class Dijkstra {
     }
 
     /**
-     * @return boolean Metodi palauttaa totuusarvona tiedon siitä löytyykö 
-     * algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
+     * @return boolean Metodi palauttaa totuusarvona tiedon siitä löytyykö
+     *         algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
      */
     public boolean etsiLyhyinReitti() {
         Instant alku = Instant.now();
@@ -57,7 +56,7 @@ public class Dijkstra {
         }
         Instant loppu = Instant.now();
         this.kesto = Duration.between(alku, loppu).getNano() / 100000;
-        if(loytyi){
+        if (loytyi) {
 
             tallennaReitti();
             return true;
@@ -82,9 +81,10 @@ public class Dijkstra {
     /**
      * 
      * @param kasiteltava Solmu jonka naapurisolmuja tutkitaan seuraavaksi.
-     * @param x  Siirtyminen x-koordinaatistossa.
-     * @param y Siirtyminen y-koordinaatistossa.
-     * @return Solmu Palautetaan naapurisolmu, johon löytynyt tiedettyä lyhyempi etäisyys.
+     * @param x           Siirtyminen x-koordinaatistossa.
+     * @param y           Siirtyminen y-koordinaatistossa.
+     * @return Solmu Palautetaan naapurisolmu, johon löytynyt tiedettyä lyhyempi
+     *         etäisyys.
      */
     private Solmu laskeEtaisyysNaapuriin(Solmu kasiteltava, int x, int y) {
         kasiteltava.setKasitelty(true);
@@ -93,7 +93,7 @@ public class Dijkstra {
             reitinpituus = kasiteltava.getEtaisyys();
             loytyi = true;
         }
-        
+
         int naapurinX = kasiteltava.getX() + x;
         int naapurinY = kasiteltava.getY() + y;
         if (!onkoKuljettava(naapurinX, naapurinY)) {
@@ -131,8 +131,8 @@ public class Dijkstra {
     }
 
     /**
-     * Metodi päivittää solmuihin tiedon reitillä olosta 
-     * sekä tallentaa yksityiskohtaiset tiedot reitin pisteistä ja 
+     * Metodi päivittää solmuihin tiedon reitillä olosta
+     * sekä tallentaa yksityiskohtaiset tiedot reitin pisteistä ja
      * etäisyyksistä tulostusta varten.
      */
 
@@ -145,21 +145,23 @@ public class Dijkstra {
         while (solmu.getEdeltaja() != null) {
             solmu = solmu.getEdeltaja();
             solmu.setReitilla(true);
-            verkko.lisaaReitti("\nSeuraava piste reitillä " + solmu.getX() + "," + solmu.getY()
-                    + " ja etäisyys alusta on: " + solmu.getEtaisyys());
+            if (solmu != aloitus || solmu != lopetus) {
+                verkko.lisaaReitti("\nEdellinen piste reitillä " + solmu.getX() + "," + solmu.getY()
+                        + " ja etäisyys alusta on: " + solmu.getEtaisyys());
+            }
         }
         verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
     }
 
-    public double getKesto(){
+    public double getKesto() {
         return this.kesto;
     }
 
-    public double getKasitellyt(){
+    public double getKasitellyt() {
         return this.kasitellyt;
     }
 
-    public double getReitinPituus(){
+    public double getReitinPituus() {
         return this.reitinpituus;
     }
 

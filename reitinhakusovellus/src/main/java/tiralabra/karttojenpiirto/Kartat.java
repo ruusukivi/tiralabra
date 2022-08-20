@@ -73,12 +73,12 @@ public class Kartat {
         if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("dijkstra")) {
             Dijkstra reitti = new Dijkstra(verkko);
             reitti.etsiLyhyinReitti();
-            io.tulosta("\nTilastot Dijkstra: "  + reitti.getKesto() + ", " + reitti.getKasitellyt());
+            io.tulosta("\nTilastot Dijkstra: " + reitti.getKesto() + ", " + reitti.getKasitellyt());
         }
         if (!verkko.getSolmut()[0][0].getKasitelty() && verkko.getNimi().contains("jps")) {
             JumpPointSearch reitti = new JumpPointSearch(verkko);
             reitti.etsiLyhyinReitti();
-            io.tulosta("\nTilastot JPS: "  + reitti.getKesto() + ", " + reitti.getKasitellyt());
+            io.tulosta("\nTilastot JPS: " + reitti.getKesto() + ", " + reitti.getKasitellyt());
         }
         io.tulosta("\nKartan nimi: " + verkko.getNimi() + ", koko " + verkko.getKoko() + "*" + verkko.getKoko() + "\n");
         for (int i = 0; i < verkko.getKoko(); i++) {
@@ -96,8 +96,8 @@ public class Kartat {
             io.tulosta("\n");
         }
         if (verkko.getReitilla().size() > 0) {
-            for (int d = verkko.getReitilla().size() - 3; d >= 0; d--) {
-                io.tulosta(verkko.getReitilla().get(d));
+            for (String rivi : verkko.getReitilla()) {
+                io.tulosta(rivi);
             }
             io.tulosta("\n");
         } else {

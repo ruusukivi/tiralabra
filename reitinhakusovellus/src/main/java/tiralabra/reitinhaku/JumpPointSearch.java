@@ -60,7 +60,7 @@ public class JumpPointSearch {
         }
         reitinpituus = lopetus.getEtaisyys();
         Instant loppu = Instant.now();
-        kesto = Duration.between(alku, loppu).getNano() / 1000000;
+        kesto = Duration.between(alku, loppu).getNano() / 100000;
         if (loytyi) {
             tallennaReitti();
             return true;

@@ -1,6 +1,4 @@
 package tiralabra.karttojenpiirto;
-
-import tiralabra.reitinhaku.Solmu;
 import tiralabra.reitinhaku.Verkko;
 
 /**

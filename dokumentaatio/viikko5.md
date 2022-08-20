@@ -6,7 +6,7 @@
 - 14.8. JumpPointSearchiin debuggausta ja refaktorointia - 6 h
 - 18.8. JumpPointSearchiin debuggausta ja refaktorointia - 3 h
 - 19.8. JumpPointSearchin  debuggausta ja refaktorointia - 6 h
-- 20.8. Eri versioita JumpPointSearchistä
+- 20.8. Eri versioita JumpPointSearchistä - 10 h
 
 ## Mitä olen tehnyt tällä viikolla? / Miten ohjelma on edistynyt?
 

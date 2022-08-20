@@ -38,6 +38,8 @@ Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin
 
 ## Sovelluksen käyttö
 
+![Ohjelman toiminnot](kuvat/toiminnot.png)
+
 Sovelluksessa tällä hetkellä kaksi toimintoa:
 1) Uuden kartan luonti ja tulostus
 2) Session aikana luotujen karttojen uudelleen tulostus

@@ -17,7 +17,7 @@ public class Vertailu {
     public ArrayList<String> annaTulokset() {
         // teeVertailu(1000, 100, 800, "1000-100-800");
         // teeVertailu(500, 500, 800, "1000-500-800");
-        teeVertailu(1000, 10000, 500, "1000-1000-500");
+        teeVertailu(1000, 10000, 500, "1000-10000-500");
         teeVertailu(1000, 1000, 500, "1000-1000-500");
         teeVertailu(1000, 100, 500, "1000-100-500");
         teeVertailu(1000, 10, 500, "1000-10-500");
@@ -31,11 +31,11 @@ public class Vertailu {
         boolean loytyi = dijkstra.etsiLyhyinReitti();
         if (loytyi) {
             tulokset.add("\nKartan nimi: " + d.getNimi() + ", koko " + d.getKoko() + "*" + d.getKoko() + "\n"
-                    + "Reitin pituus: " + dijkstra.getReitinPituus() + ", Haun kesto: " + dijkstra.getKesto()
+                    + "Reitin pituus: " + dijkstra.getReitinPituus() + ", Haun kesto (ms): " + dijkstra.getKesto()
                     + ", Keossa käsiteltyjen solmujen määrä: " + dijkstra.getKasitellyt() + "\n");
         } else {
             tulokset.add("\nKartan nimi: " + d.getNimi() + ", koko " + d.getKoko() + "*" + d.getKoko() + "\n"
-                    + "Reittiä ei löytynyt. " + "Haun kesto: " + dijkstra.getKesto()
+                    + "Reittiä ei löytynyt. " + "Haun kesto (ms): " + dijkstra.getKesto()
                     + ",Keossa käsiteltyjen solmujen määrä: " + dijkstra.getKasitellyt() + "\n");
         }
 
@@ -45,11 +45,11 @@ public class Vertailu {
 
         if (loytyiJPS) {
             tulokset.add("\nKartan nimi: " + j.getNimi() + ", koko " + j.getKoko() + "*" + j.getKoko() + "\n"
-                    + "Reitin pituus: " + jps.getReitinPituus() + ", Haun kesto: " + jps.getKesto()
+                    + "Reitin pituus: " + jps.getReitinPituus() + ", Haun kesto (ms): " + jps.getKesto()
                     + ", Keossa käsiteltyjen solmujen määrä: " + jps.getKasitellyt() + "\n");
         } else {
             tulokset.add("\nKartan nimi: " + j.getNimi() + ", koko " + j.getKoko() + "*" + j.getKoko() + "\n"
-                    + "Reittiä ei löytynyt. " + "Haun kesto: " + jps.getKesto()
+                    + "Reittiä ei löytynyt. " + "Haun kesto (ms): " + jps.getKesto()
                     + ", Keossa käsiteltyjen solmujen määrä: " + jps.getKasitellyt() + "\n");
         }
     }

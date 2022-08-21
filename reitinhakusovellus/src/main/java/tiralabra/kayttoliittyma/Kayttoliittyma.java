@@ -75,11 +75,11 @@ public class Kayttoliittyma {
     public void luoKartta() {
         io.tulosta("Anna kartan tunniste: \n");
         String nimi = io.lue();
-        io.tulosta("Anna kartan sivun leveys (ruutujen lkm), esim. 100: \n");
+        io.tulosta("Anna kartan sivun leveys (ruutujen lkm), esim. 10: \n");
         int leveys = Integer.valueOf(io.lue());
-        io.tulosta("Anna tunneleiden määrä, esim. 500: \n");
+        io.tulosta("Anna tunneleiden määrä, esim. 10: \n");
         int tunnelit = Integer.valueOf(io.lue());
-        io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim. 100: \n");
+        io.tulosta("Anna yksittäisen tunnelin maksimipituus, esim. 10: \n");
         int pituus = Integer.valueOf(io.lue());
         RandomWalk kartta = new RandomWalk(leveys, tunnelit, pituus, nimi);
         kartat.lisaaKartta(kartta.muodostaKartastaVerkko("dijkstra"));

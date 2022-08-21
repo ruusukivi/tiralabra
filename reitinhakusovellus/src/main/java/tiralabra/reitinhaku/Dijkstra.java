@@ -55,7 +55,7 @@ public class Dijkstra {
             }
         }
         Instant loppu = Instant.now();
-        this.kesto = Duration.between(alku, loppu).getNano() / 100000;
+        this.kesto = Duration.between(alku, loppu).getNano()/1000000;
         if (loytyi) {
 
             tallennaReitti();

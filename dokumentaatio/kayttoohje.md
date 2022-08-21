@@ -12,7 +12,7 @@ Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentor
 
 Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin voi käynnistää seuraavalla komennolla:
 
-    ./gradlew run
+    ./gradlew -q --console plain run
 
 ### Sovelluksen yksikkötestien ajo
 

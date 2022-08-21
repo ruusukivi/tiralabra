@@ -4,7 +4,11 @@
 
 Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijkstra- ja Jump Point Search -algoritmien tehokkuutta lyhyimmän reitin haussa. 
 
-Jump Point Search -algoritmi on tällä hetkellä vielä keskeneräinen. Lisäksi ohjelma tukee tällä hetkellä vain reitin etsintää vasemmasta ylälaidasta oikeaan alalaitaan. 
+Jump Point Search -algoritmi on tällä hetkellä vielä keskeneräinen, esim. löydetty etäisyys ei aina oikein. Kartalle JPS:stä merkitään tässä versiossa vain alku, loppu ja löydetyt hyppypisteet, ei siis vielä lopullista reittiä.
+
+Lisäksi ohjelma tukee tällä hetkellä vain reitin etsintää vasemmasta ylälaidasta oikeaan alalaitaan. 
+
+Ohjelmassa tällä hetkellä mukana paljon debuggaus-tulosteita, jotka jäävät pois lopullisesta versiosta.
 
 ## Dokumentaatio
 

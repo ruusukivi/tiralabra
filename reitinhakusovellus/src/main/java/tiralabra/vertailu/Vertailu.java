@@ -18,7 +18,7 @@ public class Vertailu {
         // 2000 levyiset kartat päätyvät Stack OverFlow-virheeseen, pitää testata auttaako tulostusten poistaminen
         //teeVertailu(2000, 10000, 1500, "2000-10000-1500");
         //teeVertailu(2000, 10000, 1500, "2000-10000-1500");
-        teeVertailu(1000, 100000, 500, "1000-100000-500");
+        //teeVertailu(1000, 100000, 500, "1000-100000-500");
         teeVertailu(1000, 10000, 500, "1000-10000-500");
         teeVertailu(1000, 1000, 500, "1000-1000-500");
         teeVertailu(1000, 100, 500, "1000-100-500");

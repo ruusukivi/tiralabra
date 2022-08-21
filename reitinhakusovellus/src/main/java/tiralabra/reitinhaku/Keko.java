@@ -46,7 +46,8 @@ public class Keko {
 
     /**
      * Keon järjestäminen solmun lisäyksen jälkee.
-     * 
+     * Järjestäminen huomioi todellisen etäisyyden lisäksi mahdollisen prioriteetin.
+     * JPS-algoritmi hyödyntää prioriteettiä.
      * @param indeksi Keon kohta, johon uusi solmu on lisätty.
      */
     public void nostaKeossa(int indeksi) {
@@ -67,7 +68,8 @@ public class Keko {
 
     /**
      * Keon järjestäminen solmun poistamisen jälkeen.
-     * 
+     * Järjestäminen huomioi todellisen etäisyyden lisäksi mahdollisen prioriteetin.
+     * JPS-algoritmi hyödyntää prioriteettiä.
      * @param indeksi Keon kohta johon uusi solmu on lisätty.
      */
     public void laskeKeossa(int indeksi) {

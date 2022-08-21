@@ -56,7 +56,7 @@ public class Keko {
         }
         int vanhemmanIndeksi = indeksi / 2;
         int nykyinenIndeksi = indeksi;
-        while (nykyinenIndeksi > 0 && keko[vanhemmanIndeksi].getEtaisyys() > keko[nykyinenIndeksi].getEtaisyys()) {
+        while (nykyinenIndeksi > 0 && keko[vanhemmanIndeksi].getEtaisyys()*keko[vanhemmanIndeksi].getPrioriteetti() > keko[nykyinenIndeksi].getEtaisyys()*keko[nykyinenIndeksi].getPrioriteetti()) {
             swap(nykyinenIndeksi, vanhemmanIndeksi);
             if (vanhemmanIndeksi > 1) {
                 nykyinenIndeksi = vanhemmanIndeksi;
@@ -75,11 +75,11 @@ public class Keko {
         int vasenLapsiIndeksi = 2 * indeksi;
         int oikeaLapsiIndeksi = 2 * indeksi + 1;
         if (vasenLapsiIndeksi < nykyinenKoko
-                && keko[pienimmanIndeksi].getEtaisyys() > keko[vasenLapsiIndeksi].getEtaisyys()) {
+                && keko[pienimmanIndeksi].getEtaisyys()*keko[pienimmanIndeksi].getPrioriteetti()  > keko[vasenLapsiIndeksi].getEtaisyys()*keko[vasenLapsiIndeksi].getPrioriteetti()) {
             pienimmanIndeksi = vasenLapsiIndeksi;
         }
         if (oikeaLapsiIndeksi < nykyinenKoko
-                && keko[pienimmanIndeksi].getEtaisyys() > keko[oikeaLapsiIndeksi].getEtaisyys()) {
+                && keko[pienimmanIndeksi].getEtaisyys()*keko[pienimmanIndeksi].getPrioriteetti() > keko[oikeaLapsiIndeksi].getEtaisyys()*keko[oikeaLapsiIndeksi].getPrioriteetti()) {
             pienimmanIndeksi = oikeaLapsiIndeksi;
         }
         if (pienimmanIndeksi != indeksi) {

@@ -37,6 +37,7 @@ public class Solmu {
         this.etaisyys = Integer.MAX_VALUE;
         this.reitilla = false;
         this.kasitelty = false;
+        this.prioriteetti = 1;
     }
 
     /**
@@ -120,7 +121,7 @@ public class Solmu {
     /**
      * @param prioriteetti Määrittelee solmun diagonaalisen etäisyyden maaliin JPS-algoritmia varten.
      */
-    public void setPrioriteetti(double prioriteetti) {
+    public void paivitaPrioriteetti(double prioriteetti) {
         this.prioriteetti = prioriteetti;
     }
 

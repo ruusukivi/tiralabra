@@ -105,9 +105,9 @@ public class JumpPointSearch {
             return null;
         }
         kasiteltava.setKasitelty(true);
-        kasiteltava.setEdeltaja(edeltaja);
         // Päivitetään etäisyys jos löytyy lyhyempi
-        if (kasiteltava != aloitus && kasiteltava.getEtaisyys() > edeltaja.getEtaisyys() + 1) {
+        if (kasiteltava != aloitus && kasiteltava != edeltaja.getEdeltaja() && kasiteltava.getEtaisyys() > edeltaja.getEtaisyys() + 1) {
+            kasiteltava.setEdeltaja(edeltaja);
             kasiteltava.paivitaEtaisyys(edeltaja.getEtaisyys() + 1);
         }
 
@@ -177,8 +177,8 @@ public class JumpPointSearch {
             return null;
         }
         kasiteltava.setKasitelty(true);
-        kasiteltava.setEdeltaja(edeltaja);
-        if (kasiteltava != aloitus && kasiteltava.getEtaisyys() > kasiteltava.getEdeltaja().getEtaisyys() + 1) {
+        if (kasiteltava != aloitus && kasiteltava != edeltaja.getEdeltaja() && kasiteltava.getEtaisyys() > kasiteltava.getEdeltaja().getEtaisyys() + 1) {
+            kasiteltava.setEdeltaja(edeltaja);
             kasiteltava.paivitaEtaisyys(kasiteltava.getEdeltaja().getEtaisyys() + 1);
         }
 
@@ -299,8 +299,6 @@ public class JumpPointSearch {
     private boolean onkoMaalissa(Solmu tutkittava) {
         if (tutkittava.getX() == lopetus.getX() && tutkittava.getY() == lopetus.getY()) {
             loytyi = true;
-            // päivitetään lopetussolmun etäisyys sen mukaan kuinka pitkä siirtymä on
-            // KORJATTAVAA? Löytyykö lyhyin reitti maalisolmuun aina ensimmäisenä?
             System.out.print("\nKäsittelyyn: " + tutkittava.getX() + ", " +
                     tutkittava.getY() + ", etäisyys: " + tutkittava.getY() + ", etäisyys: " + tutkittava.getEtaisyys());
             System.out.print("\nEdeltäjä: " + tutkittava.getEdeltaja().getX() + ", " +
@@ -309,14 +307,20 @@ public class JumpPointSearch {
             if (tutkittava.getX() == tutkittava.getEdeltaja().getX()) {
                 double siirtyma = Math.abs(tutkittava.getEdeltaja().getY() - tutkittava.getY());
                 System.out.print("\nMaali - sama x - lisätään: " + siirtyma);
-                tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + siirtyma);
+                if (tutkittava.getEtaisyys() > tutkittava.getEdeltaja().getEtaisyys() + siirtyma) {
+                    tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + siirtyma);
+                }
             } else if (tutkittava.getY() == tutkittava.getEdeltaja().getY()) {
                 double siirtyma = Math.abs(tutkittava.getEdeltaja().getX() - tutkittava.getX());
                 System.out.print("\nMaali - sama Y - lisätään: " + siirtyma);
-                tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + siirtyma);
+                if (tutkittava.getEtaisyys() > tutkittava.getEdeltaja().getEtaisyys() + siirtyma) {
+                    tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + siirtyma);
+                }
             } else {
-                tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + Math.sqrt(2));
-                System.out.print("\nMaali - diagonaalinen siirto - lisätään: " + Math.sqrt(2));
+                if (tutkittava.getEtaisyys() > tutkittava.getEdeltaja().getEtaisyys() + Math.sqrt(2)) {
+                    tutkittava.paivitaEtaisyys(tutkittava.getEdeltaja().getEtaisyys() + Math.sqrt(2));
+                    System.out.print("\nMaali - diagonaalinen siirto - lisätään: " + Math.sqrt(2));
+                }
             }
             reitinpituus = tutkittava.getEtaisyys();
             System.out.print("\nMaali löytyi!" + tutkittava.getEtaisyys());
@@ -350,17 +354,34 @@ public class JumpPointSearch {
      */
 
     public void tallennaReitti() {
-        aloitus.setReitilla(true);
+
+        lopetus.setReitilla(true);
         verkko.lisaaReitti("\nReitti päättyy pisteeseen " + lopetus.getX() + "," + lopetus.getY()
                 + " ja etäisyys alusta on: " + lopetus.getEtaisyys());
-        for (Solmu solmu : hyppypisteet) {
-            solmu.setReitilla(true);
-            verkko.lisaaReitti("\nTunnistettu hyppypiste reitillä " + solmu.getX() + "," + solmu.getY()
-                    + " ja etäisyys alusta on: " + solmu.getEtaisyys()
-                    + "\nHyppypisteen diagonaalinen etäisyys loppuun on:  "
-                    + solmu.getPrioriteetti());
+        Solmu edeltaja = lopetus.getEdeltaja();
+        int i = 0;
+        while(i <= 10){
+            if(edeltaja == aloitus || edeltaja == null){
+                break;
+            }
+            try {
+                edeltaja.setReitilla(true);
+                verkko.lisaaReitti("\nEdellinen piste reitillä " + edeltaja.getX() + "," + edeltaja.getY()
+                + " ja etäisyys alusta on: " + edeltaja.getEtaisyys());
+                edeltaja = edeltaja.getEdeltaja();
+                i++;
+            } catch (Exception e) {
+                System.out.print(e);
+            }
         }
-        lopetus.setReitilla(true);
+        //for (Solmu solmu : hyppypisteet) {
+        //    solmu.setReitilla(true);
+        //    verkko.lisaaReitti("\nTunnistettu hyppypiste reitillä " + solmu.getX() + "," + solmu.getY()
+        //            + " ja etäisyys alusta on: " + solmu.getEtaisyys()
+        //            + "\nHyppypisteen diagonaalinen etäisyys loppuun on:  "
+        //            + solmu.getPrioriteetti());
+        //}
+        aloitus.setReitilla(true);
         verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
     }
 

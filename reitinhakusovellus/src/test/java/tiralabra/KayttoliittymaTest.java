@@ -25,19 +25,19 @@ public class KayttoliittymaTest {
             "1", //Luo kartta
             "Nelio", // Kartan nimi
             "2", // Kartan sivun pituus
-            "0", // Ei tunneleita
-            "0", // Tunnelin pituus
+            "0", // Ei polkuja
+            "0", // Polun pituus
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(10));
-        assertEquals("x ", io.tulosteet.get(11));
-        assertEquals("x ", io.tulosteet.get(12));
-        assertEquals("\n", io.tulosteet.get(13));
+        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(12));
+        assertEquals("x ", io.tulosteet.get(13));
         assertEquals("x ", io.tulosteet.get(14));
-        assertEquals("x ", io.tulosteet.get(15));
+        assertEquals("\n", io.tulosteet.get(15));
+        assertEquals("x ", io.tulosteet.get(16));
+        assertEquals("x ", io.tulosteet.get(17));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(35));
+        assertEquals("\nKartan nimi: Nelio-dijkstra, koko 2*2\n", io.tulosteet.get(39));
     }
 
     @Test
@@ -67,7 +67,7 @@ public class KayttoliittymaTest {
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("Yhtään karttaa ei ole vielä luotu. \n", io.tulosteet.get(6));
+        assertEquals("Yhtään karttaa ei ole vielä luotu. \n", io.tulosteet.get(7));
     }
 
 
@@ -77,26 +77,26 @@ public class KayttoliittymaTest {
             "1", //Luo kartta
             "3", // Kartan nimi
             "3", // Kartan sivun pituus
-            "10", // Paljon tunneleita
-            "3", // Tunnelin pituus
+            "10", // Paljonko polkuja
+            "3", // Polun pituus
             // Näillä arvoilla syntyy 3x3 kartta, jossa keskellä yksi seinä.
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: 3-dijkstra, koko 3*3\n", io.tulosteet.get(10));
-        assertEquals("R ", io.tulosteet.get(11));
-        assertEquals(". ", io.tulosteet.get(12));
-        assertEquals(". ", io.tulosteet.get(13));
-        assertEquals("\n", io.tulosteet.get(14));
-        assertEquals("R ", io.tulosteet.get(15));
-        assertEquals("x ", io.tulosteet.get(16));
-        assertEquals(". ", io.tulosteet.get(17));
-        assertEquals("\n", io.tulosteet.get(18));
+        assertEquals("\nKartan nimi: 3-dijkstra, koko 3*3\n", io.tulosteet.get(12));
+        assertEquals("R ", io.tulosteet.get(13));
+        assertEquals(". ", io.tulosteet.get(14));
+        assertEquals(". ", io.tulosteet.get(15));
+        assertEquals("\n", io.tulosteet.get(16));
+        assertEquals("R ", io.tulosteet.get(17));
+        assertEquals("x ", io.tulosteet.get(18));
         assertEquals(". ", io.tulosteet.get(19));
-        assertEquals("R ", io.tulosteet.get(20));
-        assertEquals("R ", io.tulosteet.get(21));
+        assertEquals("\n", io.tulosteet.get(20));
+        assertEquals(". ", io.tulosteet.get(21));
+        assertEquals("R ", io.tulosteet.get(22));
+        assertEquals("R ", io.tulosteet.get(23));
     }
     
 }

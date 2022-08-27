@@ -2,20 +2,26 @@
 
 ## Ohjelman yleisrakenne
 
-Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen piirrolle, käyttöliittymälle ja reitinhaulle.
+Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen piirrolle, käyttöliittymälle, reitinhaulle ja algoritmien vertailuille.
 
 ![Ohjelman rakenne](kuvat/rakenne.png)
 
 
 ## Saavutetut aika- ja tilavaativuudet (m.m. O-analyysit pseudokoodista)
 
+Täydentyy
+
 ## Suorituskyky- ja O-analyysivertailu (mikäli työ vertailupainotteinen)
+
+Täydentyy
 
 ## Puutteet ja parannusehdotukset
 
-Jump Point Search -algoritmi ei toimi vielä ja sen vuoksi myös vertailutestit algoritmeista puuttuvat.
+Jump Point Search -algoritmi ei toimi vielä oikein.
 
 Käyttöliittymän virheensieto ei vielä ole kovin hyvä, koska syötteitä ei validoida.
+
+Kartta tulostetaan ruudulle siten, että origo on vasemmassa yläkulmassa, mikä on hieman hämäävää.
 
 Koodi kaipaa paikoi tiivistämistä.
 
@@ -51,3 +57,4 @@ Muita Tira-kurssin harjoitustöitä:
 - https://github.com/sinisaarinen/tira-labra
 - https://github.com/NooraVino/GetMeOut-tiralabra
 - https://github.com/ALindroos/Polunhakija 
+- https://github.com/k0psutin/TiraLabra

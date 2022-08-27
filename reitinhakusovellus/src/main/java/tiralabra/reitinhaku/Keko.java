@@ -15,7 +15,8 @@ public class Keko {
     /**
      * Keon konstruktori.
      * 
-     * @param maxKoko Keon maksimikoko, joka määritelty verkon solmujen määrän mukaan.
+     * @param maxKoko Keon maksimikoko, joka määritelty verkon solmujen määrän
+     *                mukaan.
      */
 
     public Keko(int maxKoko) {
@@ -29,7 +30,8 @@ public class Keko {
      * Solmun lisääminen kekoon.
      * 
      * @param solmu Kekoon lisättävä solmu.
-     * @throws Error Antaa virheen, jos koitetaan lisätä solmua, jota ei ole tai jos keko on täynnä.
+     * @throws Error Antaa virheen, jos koitetaan lisätä solmua, jota ei ole tai jos
+     *               keko on täynnä.
      */
     public void lisaaKekoon(Solmu solmu) throws Error {
         if (solmu == null) {
@@ -44,23 +46,25 @@ public class Keko {
         keko[indeksi] = solmu;
         if (nykyinenKoko > 0) {
             nostaKeossa(indeksi);
-        }      
+        }
     }
 
     /**
      * Keon järjestäminen solmun lisäyksen jälkee.
      * Järjestäminen huomioi todellisen etäisyyden lisäksi mahdollisen prioriteetin.
      * JPS-algoritmi hyödyntää prioriteettiä.
+     * 
      * @param indeksi Keon kohta, johon uusi solmu on lisätty.
      */
     public void nostaKeossa(int indeksi) {
-        if (nykyinenKoko == 1) {   
+        if (nykyinenKoko == 1) {
             swap(indeksi, 1);
-            return; 
+            return;
         }
         int vanhemmanIndeksi = indeksi / 2;
         int nykyinenIndeksi = indeksi;
-        while (nykyinenIndeksi > 0 && keko[vanhemmanIndeksi].getEtaisyys()*keko[vanhemmanIndeksi].getPrioriteetti() > keko[nykyinenIndeksi].getEtaisyys()*keko[nykyinenIndeksi].getPrioriteetti()) {
+        while (nykyinenIndeksi > 0 && keko[vanhemmanIndeksi].getEtaisyys() * keko[vanhemmanIndeksi]
+                .getPrioriteetti() > keko[nykyinenIndeksi].getEtaisyys() * keko[nykyinenIndeksi].getPrioriteetti()) {
             swap(nykyinenIndeksi, vanhemmanIndeksi);
             if (vanhemmanIndeksi > 1) {
                 nykyinenIndeksi = vanhemmanIndeksi;
@@ -73,6 +77,7 @@ public class Keko {
      * Keon järjestäminen solmun poistamisen jälkeen.
      * Järjestäminen huomioi todellisen etäisyyden lisäksi mahdollisen prioriteetin.
      * JPS-algoritmi hyödyntää prioriteettiä.
+     * 
      * @param indeksi Keon kohta johon uusi solmu on lisätty.
      */
     public void laskeKeossa(int indeksi) {
@@ -80,11 +85,15 @@ public class Keko {
         int vasenLapsiIndeksi = 2 * indeksi;
         int oikeaLapsiIndeksi = 2 * indeksi + 1;
         if (vasenLapsiIndeksi < nykyinenKoko
-                && keko[pienimmanIndeksi].getEtaisyys()*keko[pienimmanIndeksi].getPrioriteetti()  > keko[vasenLapsiIndeksi].getEtaisyys()*keko[vasenLapsiIndeksi].getPrioriteetti()) {
+                && keko[pienimmanIndeksi].getEtaisyys()
+                        * keko[pienimmanIndeksi].getPrioriteetti() > keko[vasenLapsiIndeksi].getEtaisyys()
+                                * keko[vasenLapsiIndeksi].getPrioriteetti()) {
             pienimmanIndeksi = vasenLapsiIndeksi;
         }
         if (oikeaLapsiIndeksi < nykyinenKoko
-                && keko[pienimmanIndeksi].getEtaisyys()*keko[pienimmanIndeksi].getPrioriteetti() > keko[oikeaLapsiIndeksi].getEtaisyys()*keko[oikeaLapsiIndeksi].getPrioriteetti()) {
+                && keko[pienimmanIndeksi].getEtaisyys()
+                        * keko[pienimmanIndeksi].getPrioriteetti() > keko[oikeaLapsiIndeksi].getEtaisyys()
+                                * keko[oikeaLapsiIndeksi].getPrioriteetti()) {
             pienimmanIndeksi = oikeaLapsiIndeksi;
         }
         if (pienimmanIndeksi != indeksi) {
@@ -108,7 +117,8 @@ public class Keko {
     /**
      * 
      * @return Solmu Palauttaa keosta solmun, jonka etäisyys alkuun pienin.
-     * @throws Error Antaa virheen, jossa pientä arvoa ei ole eli indeksi 1 on tyhjä..
+     * @throws Error Antaa virheen, jossa pientä arvoa ei ole eli indeksi 1 on
+     *               tyhjä..
      */
     public Solmu pienin() throws Error {
         if (this.keko[1] == null) {
@@ -127,7 +137,7 @@ public class Keko {
         return false;
     }
 
-    /** 
+    /**
      * @return Solmu Palauttaa keon solmun, jonka etäisyys alkuun on pienin.
      */
     public Solmu poistaPienin() {
@@ -141,8 +151,8 @@ public class Keko {
         return poistettava;
     }
 
-    /** 
-     * @return int Kekoon käytön aikana lisättyjen solmujen määrä. 
+    /**
+     * @return int Kekoon käytön aikana lisättyjen solmujen määrä.
      */
     public int getLisattyja() {
         return lisattyja;

@@ -51,6 +51,7 @@ public class Kartat {
     }
 
     /**
+     * @param nimi Kartan nimi.
      * @return Verkko Palauttaa session aikana luodun kartan.
      */
     public Verkko karttaNimella(String nimi) {

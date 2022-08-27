@@ -94,6 +94,7 @@ public class RandomWalk {
      * 
      * @param algoritmi Samasta kartasta muodotetaan omat Verkko-oliot dijkstra- ja
      *                  jps-algoritmeja varten.
+     * @return Verkko Palauttaa kartasta muodostetun Verkko-olion.
      */
     public Verkko muodostaKartastaVerkko(String algoritmi) {
         if (algoritmi.contains("dijkstra")) {

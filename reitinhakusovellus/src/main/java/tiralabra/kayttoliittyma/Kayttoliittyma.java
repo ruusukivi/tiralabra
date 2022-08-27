@@ -107,6 +107,7 @@ public class Kayttoliittyma {
 
     /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
     public void vertaileAlgoritmeja() {
+        io.tulosta("Odota hetki - vertailuajo vie hieman aikaa.... ");
         Vertailu vertailu = new Vertailu();
 
         for (String tulos : vertailu.annaTulokset()) {

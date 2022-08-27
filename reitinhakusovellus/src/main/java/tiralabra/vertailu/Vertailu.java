@@ -25,8 +25,8 @@ public class Vertailu {
         return tulokset;
     }
 
-    public void teeVertailu(int leveys, int tunnelit, int pituus, String nimi) {
-        RandomWalk kartta = new RandomWalk(leveys, tunnelit, pituus, nimi);
+    public void teeVertailu(int leveys, int polut, int pituus, String nimi) {
+        RandomWalk kartta = new RandomWalk(leveys, polut, pituus, nimi);
         Verkko d = kartta.muodostaKartastaVerkko("dijkstra");
         Dijkstra dijkstra = new Dijkstra(d);
         boolean loytyi = dijkstra.etsiLyhyinReitti();

@@ -48,14 +48,11 @@ Sovelluksessa tällä hetkellä kaksi toimintoa:
 2) Session aikana luotujen karttojen uudelleen tulostus
 3) Algoritmien vertailu
 
-Uuden kartan luonti luo karttapohjan RandomWalk-algoritmia hyödyntäen ja etsii kartalta lyhyimmän reitin vasemmasta yläkulmasta oikeaan alakulmaan Dijkstra- ja Jump Point Search -algoritmeilla.
-
-Uuden kartan luonti generoi omat Verkko-olio Dijkstralle ja Jump Point Searchille. Tulostettaessa aiemmin luotua karttaa pitää valita kumman version haluaa nähdä.
+Uuden kartan luonti luo karttapohjan RandomWalk-algoritmia hyödyntäen ja etsii kartalta lyhyimmän reitin vasemmasta yläkulmasta oikeaan alakulmaan Dijkstra- ja Jump Point Search -algoritmeilla. Uuden kartan luonti generoi omat Verkko-oliot Dijkstralle ja Jump Point Searchille. Tulostettaessa aiemmin luotua karttaa pitää valita kumman version haluaa nähdä.
 
 Algoritmien vertailu luo taustalla muutamia karttoja, tekee niistä verkot ja etsiin lyhyimmät reitit Dijkstralla ja JumpPointSearchilla. Tämän jälkeen käyttöliittymään tulostetaan vertailutietoja: reitin pituus, haun kesto, kekoon viedyt solmut.
 
-Tällä hetkellö vertailuja tehdään seuraavilla parametreilla luoduilla kartoilla:
-- sivu: 1000, tunneleita: 10000, tunnelin maksimi pituus: 500, nimi: "1000-1000-500");
-- sivu: 1000, tunneleita: 10000, tunnelin maksimi pituus: 500, nimi: "1000-1000-500");
-- sivu: 1000, tunneleita: 1000, tunnelin maksimi pituus: 500, nimi: "1000-1000-500");
-- sivu: 1000, tunneleita: 100, tunnelin maksimi pituus: 500, nimi: "1000-10-500");
+Tällä hetkellä vertailuja tehdään seuraavilla parametreilla luoduilla kartoilla:
+- sivu: 1000, polkuja: 10000, polun maksimipituus: 500, nimi: "1000-10000-500");
+- sivu: 1000, polkuja: 1000, polun maksimipituus: 500, nimi: "1000-1000-500");
+- sivu: 1000, polkuja: 100, polun maksimipituus: 500, nimi: "1000-100-500");

@@ -37,5 +37,5 @@ Dijkstran algoritmin aikavaativuustavoite on O(n + m log n), joissa n on solmuje
 
 JPS-algoritmin aikavaativuustavoite on pahimmillaan sama kuin Dijkstrassa, mutta käytännössä sen pitäisi olla nopeampi, koska algoritmi "hyppää" osan solmujen yli.
 
-Tilavaativuus molemmissa on arviolta O(n) verkon solmujen mukaan.
+Tilavaativuus molemmissa on arviolta O(n) verkon solmujen mukaan. // TARKISTA TÄMÄ VIELÄ
 

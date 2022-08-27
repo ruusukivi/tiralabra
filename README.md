@@ -24,5 +24,5 @@ Ohjelmassa tällä hetkellä mukana paljon debuggaus-tulosteita, jotka jäävät
 - [x] [Viikko 3](dokumentaatio/viikko3.md)   
 - [x] [Viikko 4](dokumentaatio/viikko4.md)   
 - [x] [Viikko 5](dokumentaatio/viikko5.md) 
-- [ ] Viikko 6
-- [ ] Viikko 7  
+- [ ] [Viikko 6](dokumentaatio/viikko6.md) 
+- [ ] Loppupalautus  

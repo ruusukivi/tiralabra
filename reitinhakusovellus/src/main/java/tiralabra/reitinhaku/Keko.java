@@ -10,6 +10,7 @@ public class Keko {
     private Solmu[] keko;
     private int nykyinenKoko;
     private int maxKoko;
+    private int lisattyja;
 
     /**
      * Keon konstruktori.
@@ -21,6 +22,7 @@ public class Keko {
         this.maxKoko = maxKoko;
         this.keko = new Solmu[maxKoko + 1];
         this.nykyinenKoko = 0;
+        this.lisattyja = 0;
     }
 
     /**
@@ -37,6 +39,7 @@ public class Keko {
             throw new Error("Ups! Keko täynnä.");
         }
         nykyinenKoko++;
+        lisattyja++;
         int indeksi = nykyinenKoko;
         keko[indeksi] = solmu;
         if (nykyinenKoko > 0) {
@@ -136,6 +139,13 @@ public class Keko {
         laskeKeossa(1);
         nykyinenKoko--;
         return poistettava;
+    }
+
+    /** 
+     * @return int Kekoon käytön aikana lisättyjen solmujen määrä. 
+     */
+    public int getLisattyja() {
+        return lisattyja;
     }
 
 }

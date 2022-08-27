@@ -13,7 +13,7 @@ import tiralabra.reitinhaku.Verkko;
 
 public class RandomWalk {
     private int sivu;
-    private int tunnelit;
+    private int polut;
     private int pituus;
     private int[][] kartta;
     private String nimi;
@@ -25,14 +25,14 @@ public class RandomWalk {
      * Luo neliön muotoisia karttoja.
      * 
      * @param sivu     Neliönmuotoisen kartan sivun pituus.
-     * @param tunnelit Karttaan piirrettävien tunnelien määrä.
-     * @param pituus   Yksittäisen tunnelin maksimipituus.
+     * @param polut Karttaan piirrettävien polkujen määrä.
+     * @param pituus   Yksittäisen polun maksimipituus.
      * @param nimi     Kartan nimi, jolla karttaa voi hakea session aikana.
      */
 
-    public RandomWalk(int sivu, int tunnelit, int pituus, String nimi) {
+    public RandomWalk(int sivu, int polut, int pituus, String nimi) {
         this.sivu = sivu;
-        this.tunnelit = tunnelit;
+        this.polut = polut;
         this.pituus = pituus;
         this.kartta = new int[sivu][sivu];
         this.nimi = nimi;
@@ -49,7 +49,7 @@ public class RandomWalk {
         int[] viimeisinSuunta = { 0, 0 }; // viimeisin suunta johon liikuttu
         int[] satunnainenSuunta = { 0, 0 }; // seuraava suunta johon liikutaan
 
-        while (tunnelit > 0 & pituus > 0) {
+        while (polut > 0 & pituus > 0) {
             satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
             do {
                 satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
@@ -59,12 +59,12 @@ public class RandomWalk {
                     (satunnainenSuunta[0] == viimeisinSuunta[0] &&
                             satunnainenSuunta[1] == viimeisinSuunta[1]));
 
-            int randomPituus = (int) Math.ceil(Math.random() * pituus), // seuraavaksi piirrettävän tunnelin pituus
-                    tunnelinPituus = 0; // tunnelin tämän hetkinen pituus
+            int randomPituus = (int) Math.ceil(Math.random() * pituus), // seuraavaksi piirrettävän polun pituus
+                    polunPituus = 0; // polun tämän hetkinen pituus
 
-            // piirretään tunnelia kunnes maksimipituus tai kartan reuna saavutettu
-            while (tunnelinPituus < randomPituus) {
-                // varmistetaan ettei tunnelia piirretä kartan ulkopuolelle
+            // piirretään polkua kunnes maksimipituus tai kartan reuna saavutettu
+            while (polunPituus < randomPituus) {
+                // varmistetaan ettei polkua piirretä kartan ulkopuolelle
                 if (((nykyinenRivi == 0) && (satunnainenSuunta[0] == -1)) ||
                         ((nykyinenSarake == 0) && (satunnainenSuunta[1] == -1)) ||
                         ((nykyinenRivi == sivu - 1) && (satunnainenSuunta[0] == 1)) ||
@@ -75,14 +75,14 @@ public class RandomWalk {
                     nykyinenRivi += satunnainenSuunta[0]; // päivitetään rivitieto ajantasalle nykyisen sijainnin kanssa
                     nykyinenSarake += satunnainenSuunta[1]; // päivitetään saraketieto ajantasalle nykyisen sijainnin
                                                             // kanssa
-                    tunnelinPituus++; // kasvatettaan tunnelin pituutta yhdellä
+                    polunPituus++; // kasvatettaan polun pituutta yhdellä
                 }
             }
 
-            if (tunnelinPituus > 1) { // edetään seuraavan tunnelin piirtämiseen, kunhan edellinen tunneli on
+            if (polunPituus > 1) { // edetään seuraavan polun piirtämiseen, kunhan edellinen polku on
                                       // vähintään kahden merkin mittainen
                 viimeisinSuunta = satunnainenSuunta; // tallennettaan viimeisin suunta
-                tunnelit--; // kun tunneli on valmis vähennetään piirrettävien tunneleisen määrää yhdellä
+                polut--; // kun polku on valmis vähennetään piirrettävien polkujen määrää yhdellä
             }
             kartta[0][0] = 1; // varmistetaan ettei aloituspiste ole seinä
             kartta[sivu - 1][sivu - 1] = 1; // varmistetaan ettei lopetuspiste ole seinä

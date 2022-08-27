@@ -46,7 +46,6 @@ public class Dijkstra {
         keko.lisaaKekoon(aloitus);
         while (!keko.onTyhja()) {
             Solmu kasiteltava = keko.poistaPienin();
-            kasitellyt++;
             if (!kasiteltava.getKasitelty()) {
                 if (loytyi) {
                     break;
@@ -56,8 +55,8 @@ public class Dijkstra {
         }
         Instant loppu = Instant.now();
         this.kesto = Duration.between(alku, loppu).getNano()/1000000;
+        kasitellyt = keko.getLisattyja();
         if (loytyi) {
-
             tallennaReitti();
             return true;
         }

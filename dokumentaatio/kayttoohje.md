@@ -4,7 +4,10 @@
 
 ### Sovellusprojektin käynnistys jar-tiedostosta
 
-Lataa jar-tiedosto omalle koneellesi. Käynnistä sovellus sen jälkeen komentoriviltä komennolla: 
+Lataa jar-tiedosto omalle koneellesi Releases-osiosta:
+https://github.com/ruusukivi/tiralabra/releases/
+
+Käynnistä sovellus sen jälkeen komentoriviltä komennolla: 
 
     java -jar reitinhakusovellus.jar
 

@@ -8,7 +8,7 @@ Sain sunnuntai-iltana toistaiseksi parhaiten toimivan version Jump Point Search 
 
 Viikkoraportissa kuvattu lauantai-illan tilanne. 
 
-![JPS-tilanne](kuvat/jps-tilanne.png)
+![JPS-tilanne](dokumentaatio/kuvat/jps-tilanne.png)
 
 Ohjelma tukee tällä hetkellä vain reitin etsintää vasemmasta ylälaidasta oikeaan alalaitaan. 
 

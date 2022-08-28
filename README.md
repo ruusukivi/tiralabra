@@ -4,9 +4,13 @@
 
 Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijkstra- ja Jump Point Search -algoritmien tehokkuutta lyhyimmän reitin haussa. 
 
-Jump Point Search -algoritmi on tällä hetkellä vielä keskeneräinen, esim. löydetty etäisyys ei aina oikein. Kartalle JPS:stä merkitään tässä versiossa vain alku, loppu ja löydetyt hyppypisteet, ei siis vielä lopullista reittiä.
+Sain sunnuntai-iltana toistaiseksi parhaiten toimivan version Jump Point Search -algoritmista päivitettyä versionhallintaan. Bugiton se ei vielä ole, mutta reitinpiirto toimii nyt ja JPS ja Dijkstra tuottavat myös isommilla kartoilla lähes samanmittaisen reitin. Nopeus on välillä ok, mutta joillakin kartoilla JPS bugittaa - haku kestää ja kekoon tulee liikaa solmuja. Jatkan korjauksia maanantaina. Minulla ollut muutama ajatusvirhe JPS:ssä, jotka olen saanut taklattua (vein kekoon pakotetun naapurin enkä hyppysolmua & käsittelin tiettyjä solmuja liian monta kertaa).
 
-Lisäksi ohjelma tukee tällä hetkellä vain reitin etsintää vasemmasta ylälaidasta oikeaan alalaitaan. 
+Viikkoraportissa kuvattu lauantai-illan tilanne. 
+
+![JPS-tilanne](kuvat/jps-tilanne.png)
+
+Ohjelma tukee tällä hetkellä vain reitin etsintää vasemmasta ylälaidasta oikeaan alalaitaan. 
 
 Ohjelmassa tällä hetkellä mukana paljon debuggaus-tulosteita, jotka jäävät pois lopullisesta versiosta.
 
@@ -24,5 +28,5 @@ Ohjelmassa tällä hetkellä mukana paljon debuggaus-tulosteita, jotka jäävät
 - [x] [Viikko 3](dokumentaatio/viikko3.md)   
 - [x] [Viikko 4](dokumentaatio/viikko4.md)   
 - [x] [Viikko 5](dokumentaatio/viikko5.md) 
-- [ ] [Viikko 6](dokumentaatio/viikko6.md) 
-- [ ] Loppupalautus  
+- [x] [Viikko 6](dokumentaatio/viikko6.md) 
+- [ ] [Loppupalautus](dokumentaatio/viikko7.md)   

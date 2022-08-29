@@ -47,9 +47,9 @@ public class JumpPointSearch {
         aloitus.setEdeltaja(aloitus);
         keko.lisaaKekoon(aloitus);
         while (!keko.onTyhja()) {
-            if (loytyi) {
-                break;
-            }
+            //if (loytyi) {
+            //    break;
+            //}
             Solmu kasiteltava = keko.poistaPienin();
             etsiHyppyPisteet(kasiteltava, 0, 0);
         }
@@ -69,7 +69,7 @@ public class JumpPointSearch {
      *                    käsitelty.
      */
     private void etsiHyppyPisteet(Solmu kasiteltava, int x, int y) {
-        if (onkoMaalissa(kasiteltava) || kasiteltava.getKasitelty()) {
+        if (kasiteltava.getKasitelty()) {
             return;
         }
         kasiteltava.setKasitelty(true);
@@ -113,6 +113,8 @@ public class JumpPointSearch {
         if (seuraava.getEtaisyys() > kasiteltava.getEtaisyys() + 1) {
             seuraava.setEdeltaja(kasiteltava);
             seuraava.paivitaEtaisyys(kasiteltava.getEtaisyys() + 1);
+        } else {
+            return null; // Palataan koska tästä suunnasta ei löydy lyhyempää reittiä.
         }
         if (onkoMaalissa(seuraava)) {
             return seuraava;
@@ -173,6 +175,8 @@ public class JumpPointSearch {
         if (seuraava.getEtaisyys() > kasiteltava.getEtaisyys() + 1) {
             seuraava.setEdeltaja(kasiteltava);
             seuraava.paivitaEtaisyys(kasiteltava.getEtaisyys() + 1);
+        } else {
+            return null; // Palataan koska tästä suunnasta ei löydy lyhyempää reittiä.
         }
 
         if (onkoMaalissa(seuraava)) {
@@ -229,6 +233,8 @@ public class JumpPointSearch {
         if (seuraava.getEtaisyys() > kasiteltava.getEtaisyys() + Math.sqrt(2)) {
             seuraava.setEdeltaja(kasiteltava);
             seuraava.paivitaEtaisyys(kasiteltava.getEtaisyys() + Math.sqrt(2));
+        } else {
+            return;
         }
         if (onkoMaalissa(seuraava)) {
             return;
@@ -274,7 +280,7 @@ public class JumpPointSearch {
             // tutkittava.getEdeltaja().getY() + ", etäisyys: " +
             // tutkittava.getEdeltaja().getEtaisyys());
 
-            if (tutkittava.getX() == tutkittava.getEdeltaja().getX()) {
+            /*if (tutkittava.getX() == tutkittava.getEdeltaja().getX()) {
                 double siirtyma = Math.abs(tutkittava.getEdeltaja().getY() - tutkittava.getY());
                 //System.out.print("\nMaali - sama x - lisätään: " + siirtyma);
                 if (tutkittava.getEtaisyys() > tutkittava.getEdeltaja().getEtaisyys() + siirtyma) {
@@ -292,7 +298,7 @@ public class JumpPointSearch {
                     //System.out.print("\nMaali - diagonaalinen siirto - lisätään: " +
                     //Math.sqrt(2));
                 }
-            }
+            }*/
             reitinpituus = tutkittava.getEtaisyys();
             //System.out.print("\nMaali löytyi!" + tutkittava.getEtaisyys());
             return true;

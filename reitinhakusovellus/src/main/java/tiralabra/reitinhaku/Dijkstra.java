@@ -141,7 +141,7 @@ public class Dijkstra {
         verkko.lisaaReitti("\nReitti päättyy pisteeseen " + solmu.getX() + "," + solmu.getY()
                 + " ja etäisyys alusta on: " + solmu.getEtaisyys());
         solmu.setReitilla(true);
-        while (solmu.getEdeltaja() != null) {
+        while (solmu.getEdeltaja() != null && solmu != aloitus) {
             solmu = solmu.getEdeltaja();
             solmu.setReitilla(true);
             if (solmu != aloitus || solmu != lopetus) {

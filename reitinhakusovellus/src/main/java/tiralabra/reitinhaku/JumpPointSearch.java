@@ -281,7 +281,7 @@ public class JumpPointSearch {
                 + " ja etäisyys alusta on: " + lopetus.getEtaisyys());
         Solmu edeltaja = lopetus.getEdeltaja();
         int i = 0;
-        while (i < sivu * sivu) { // väliaikainen ratkaisu, koska bugin vuoksi syntyy välillä luuppeja
+        while (i < sivu * sivu) { 
             if (edeltaja == aloitus || edeltaja == null) {
                 break;
             }
@@ -292,7 +292,7 @@ public class JumpPointSearch {
             i++;
         }
         aloitus.setReitilla(true);
-        verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
+        verkko.lisaaReitti("\nEdellinen piste reitillä 0,0 ja etäisyys alusta on: 0.0");
     }
 
     /**

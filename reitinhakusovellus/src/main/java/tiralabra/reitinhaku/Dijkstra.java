@@ -144,12 +144,11 @@ public class Dijkstra {
         while (solmu.getEdeltaja() != null && solmu != aloitus) {
             solmu = solmu.getEdeltaja();
             solmu.setReitilla(true);
-            if (solmu != aloitus || solmu != lopetus) {
+            if (solmu != lopetus) {
                 verkko.lisaaReitti("\nEdellinen piste reitillä " + solmu.getX() + "," + solmu.getY()
                         + " ja etäisyys alusta on: " + solmu.getEtaisyys());
             }
         }
-        verkko.lisaaReitti("\nReitti alkaa pisteestä 0.0 ");
     }
 
     public double getKesto() {

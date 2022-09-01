@@ -8,44 +8,55 @@ Testauksen ulkopuolelle jätetty IO-luokan tulosta- ja lue-metodit sekä sovellu
 
 ## Dijkstran toimivuuden testaus
 
-Dijkstra-algoritmi testataan yksikkötesteissä tällä hetkellä:
+Sain jo alkuvaiheessa tulostettua reitin kartalle käyttöliittymässä, jolloin oli helppo arvioida sen oikeellisuutta. Varmistin lisäksi muutaman pienen kartan osalta käsin laskemalla, että reitti ja sen pituus ovat oikein.
+
+Algoritmia koodatessa tulostin konsoliin jokaisen vaiheen (esim. keossa käsittelyn aikana olevat solmut). 
+
+Algoritmi testataan yksikkötesteissä seuraavilla aineistoilla:
 1) kartalla, jossa ei ole reittiä lainkaan 
 2) 3x3 kartalla, jossa keskellä seinä
 3) 100x100 kartalla, jossa ei ole esteitä lainkaan
-
-Jokainen reitti alkaa neliömuotoisen kartan vasemmasta ylälaidasta ja päättyy oikeaan alakulmaan. Jokaisella kartalla ei välttämättä ole reittiä. Reitillisiä karttoja saa luotua todennäköisimmin luotua siten, että valitsee tunnelin maksimipituudeksi kartan sivun pituuden ja tunnelin määrän vähintään kaksinkertaiseksi sivun pituuteen verrattuna (Esim. sivu 100, tunneleita 500  ja tunnelin pituus 100).
-
-Jos reitti löytyy, se tulostetaan käyttöliittymään sekä karttakuvaan että etappi kerrallaan siten, että näkyvillä ovat:
-- etapin x- ja y-koordinaatit 
-- etäisyys etapin ja aloituspisteen välillä. 
-Tämä mahdollistaa silmämääräisen tarkistamisen reitille.
-
-Algoritmia koodatessa tulostin konsoliin jokaisen vaiheen (esim. mitä solmuja on keossa). Lisäksi varmistin muutaman pienen kartan osalta käsin laskemalla, että reitti ja sen pituus ovat oikein.
 
 ## Jump Point Searchin toimivuuden testaus
 
-Jump Point Searchin toimivuutta olen testannut yksikkötesteillä ja käyttöliittymässä pienillä kartoilla.
+Minulla kesti pitkään saada JPS toimimaan oikein. Jäljitin virheitä lisäämällä koodiin valtavan määrän tarkistustulosteita. 
 
-JPS-algoritmi testataan yksikkötesteissä tällä hetkellä:
+Kartanpiirron sain toimimaan vasta loppuvaiheessa. Kun piirto toimi, vertailin JPS:n löytämää reittiä ja sen pituutta Dijkstraan.
+
+Algoritmi testataan yksikkötesteissä seuraavilla aineistoilla:
 1) kartalla, jossa ei ole reittiä lainkaan 
 2) 3x3 kartalla, jossa keskellä seinä
 3) 100x100 kartalla, jossa ei ole esteitä lainkaan
 
-Virheitä olen jäljittänyt debuggaustulosteilla.
-
-Algoritmi ei toimi vielä oikein. 
-
 ##  Algoritmien vertailu
 
-Algoritmien vertailua varten on luotu Vertailu-luokka, joka tällä hetkellä luo neljä erilaista karttaa, joita vasten sitten algoritmien toimintaa verrataan. 
+Algoritmien vertailua varten on luotu Vertailu-luokka, jolla voi tulostaa joko laajemman csv-muotoillun aineiston tai luettavammaksi muotoillun suppeamman aineiston.
 
-Tällä hetkellä vertailuja tehdään seuraavilla parametreilla luoduilla kartoilla:
+Päädyin testaamaan karttoja kolmenlaisilla asetuksilla. 
 
-Tällä hetkellä vertailuja tehdään seuraavilla parametreilla luoduilla kartoilla:
-- sivu: 1000, polkuja: 10000, polun maksimipituus: 500, nimi: "1000-10000-500");
-- sivu: 1000, polkuja: 1000, polun maksimipituus: 500, nimi: "1000-1000-500");
-- sivu: 1000, polkuja: 100, polun maksimipituus: 500, nimi: "1000-100-500");
+- 1000-100-1000 - kartan sivun pituus 1000, polkujen määrä 100 ja polun maksimipituus 1000
+- 1000-150-1000 - kartan sivun pituus 1000, polkujen määrä 150 ja polun maksimipituus 1000
+- 1000-200-1000 - kartan sivun pituus 1000, polkujen määrä 200 ja polun maksimipituus 1000
 
-Parametrit valittu niin, että mukana on todennäköisesti myös kartta, joissa reittiä ei ole.
+Loin jokaisilla asetuksilla noin 1100 karttaa ja vertailin sen jälkeen Dijkstran ja Jump Pointin keskiarvoja nopeuden ja kekoon vietyjen solmujen määrän osalta. Varmistin myös, että reittien pituudet olivat samat ja ettei reitittömillä kartoilla kumpikaan algoritmi löytänyt reittiä.
 
-![Vertailutuloksia](kuvat/vertailu-vko6.png)
+Kartoilla, joilla polkujen määrä oli vertailuaineiston suurin, JPS oli keskimäärin 3,44 kertaa nopeampi kuin Dijkstra. 
+
+![Vertailutuloksia](kuvat/vertailu-1000-200-1000)
+
+Kartoilla, jolla polkujen määrä oli 150, JPS oli keskimäärin 3,38 kertaa nopeampi kuin Dijkstra. 
+
+![Vertailutuloksia](kuvat/vertailu-1000-150-1000)
+
+Kartoilla, joilla polkujen määrä oli vertailuaineiston pienin, JPS oli keskimäärin 3,23 kertaa nopeampi. 
+
+![Vertailutuloksia](kuvat/vertailu-1000-100-1000)
+
+Näyttäisi aineiston perusteella, että mitä enemmän polkuja on, sitä paremmin JPS toimii suhteessa Dijkstraan. JPS vie kaikissa tapauksissa selvästi vähemmän solmuja kekoon kuin Dijkstra, mutta Dijkstra nopeutuu enemmän mitä vähemmän polkuja eli tutkittavaa kartalla on.
+
+Kokeilin ajaa karttaa asetuksilla myös 1000-100000-1000. Tällaisella kartalla ei käytännössä ole lainkaan esteitä. JPS oli 8,86 kertaa nopeampi kuin Dijkstra.
+
+Tein myös testejä kartoilla, jos polkuja oli huomattavasti enemmän kuin vertailuaineistoissa, mutta kuitenkin niin vähän, ettei kartta ole esteetön vaan täynnä pieniä irtonaisia esteitä. Tällaisella kartalla testattaessa JPS on välillä jopa Dijkstraa hitaampi.
+
+
+

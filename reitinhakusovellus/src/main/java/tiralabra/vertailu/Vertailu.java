@@ -1,5 +1,4 @@
 package tiralabra.vertailu;
-
 import java.util.ArrayList;
 
 import tiralabra.karttojenpiirto.RandomWalk;
@@ -8,23 +7,21 @@ import tiralabra.reitinhaku.JumpPointSearch;
 import tiralabra.reitinhaku.Verkko;
 
 public class Vertailu {
-    private ArrayList<String> tulokset;
+    private boolean teksteilla;
+    public ArrayList<String> tulokset;
 
-    public Vertailu() {
+    public Vertailu(boolean teksteilla) {
+        this.teksteilla = teksteilla;
         this.tulokset = new ArrayList<>();
     }
 
-    public ArrayList<String> annaTulokset() {
-        // 2000 levyiset kartat päätyvät Stack OverFlow-virheeseen, pitää testata auttaako tulostusten poistaminen
-        //teeVertailu(2000, 10000, 1500, "2000-10000-1500");
-        //teeVertailu(2000, 10000, 1500, "2000-10000-1500");
-        //teeVertailu(1000, 100000, 500, "1000-100000-500");
-        teeVertailu(1000, 250, 1000, "1000-250-1000");
-        teeVertailu(1000, 200, 1000, "1000-200-1000");
-        teeVertailu(1000, 150, 1000, "1000-150-1000");
-        teeVertailu(1000, 100, 1000, "1000-100-1000");
-        teeVertailu(1000, 50, 1000, "1000-50-1000");
-        return tulokset;
+    public ArrayList<String> annaTulokset(int leveys, int polut, int pituus, String nimi) {
+        if(!this.teksteilla){
+            teeVertailuIlmanTeksteja(leveys, polut, pituus, nimi);
+        } else {
+            teeVertailu(leveys, polut, pituus, nimi);
+        }
+        return this.tulokset;
     }
 
     public void teeVertailu(int leveys, int polut, int pituus, String nimi) {
@@ -57,4 +54,18 @@ public class Vertailu {
         }
     }
 
+    public void teeVertailuIlmanTeksteja(int leveys, int polut, int pituus, String nimi) {
+        RandomWalk kartta = new RandomWalk(leveys, polut, pituus, nimi);
+        Verkko d = kartta.muodostaKartastaVerkko("dijkstra");
+        Dijkstra dijkstra = new Dijkstra(d);
+        boolean loytyi = dijkstra.etsiLyhyinReitti();
+        tulokset.add("\n" + d.getNimi() + "," + loytyi + "," + dijkstra.getReitinPituus() + "," + dijkstra.getKesto() + ", "
+                + dijkstra.getKasitellyt());
+        Verkko j = kartta.muodostaKartastaVerkko("jps");
+        JumpPointSearch jps = new JumpPointSearch(j);
+        boolean loytyiJPS = jps.etsiLyhyinReitti();
+        tulokset.add("\n" + j.getNimi() + "," + loytyiJPS + "," + jps.getReitinPituus() + "," + jps.getKesto() + ", "
+                + jps.getKasitellyt());
+
+    }
 }

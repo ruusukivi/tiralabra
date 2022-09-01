@@ -83,7 +83,6 @@ public class Kayttoliittyma {
         int pituus = Integer.valueOf(io.lue());
         RandomWalk kartta = new RandomWalk(leveys, polut, pituus, nimi);
         kartat.lisaaKartta(kartta.muodostaKartastaVerkko("dijkstra"));
-        ;
         kartat.lisaaKartta(kartta.muodostaKartastaVerkko("jps"));
         kartat.tulostaKartta(nimi.concat("-dijkstra"));
         kartat.tulostaKartta(nimi.concat("-jps"));
@@ -107,12 +106,38 @@ public class Kayttoliittyma {
 
     /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
     public void vertaileAlgoritmeja() {
-        io.tulosta("Odota hetki - vertailuajo vie hieman aikaa.... ");
-        Vertailu vertailu = new Vertailu();
+        io.tulosta("a -- Haluan katsella tuloksia ruudulla (pieni aineisto) \n");
+        io.tulosta("b -- Haluan käsitellä dataa muualla (iso aineisto) \n");
+        io.tulosta(">> Valitse missä muodossa haluat tulokset: \n");
+        String tulostus = io.lue();
 
-        for (String tulos : vertailu.annaTulokset()) {
-            io.tulosta("\n" + tulos);
+        boolean teksteilla = false;
+        int i = 1000;
+        if (tulostus.equals("a")) {
+            teksteilla = true;
+            i = 1;
         }
-    }
+        io.tulosta("Odota hetki - vertailuajo vie hieman aikaa.... ");
+        io.tulosta("\n");
+        while (i > 0) {
+            Vertailu vertailu100 = new Vertailu(teksteilla);
+            ArrayList<String> tulokset100 = vertailu100.annaTulokset(1000, 100, 1000, "1000-100-1000");
+            for (String tulos : tulokset100) {
+                io.tulosta(tulos);
+            }
+            Vertailu vertailu150 = new Vertailu(teksteilla);
+            ArrayList<String> tulokset150 = vertailu150.annaTulokset(1000, 150, 1000, "1000-150-1000");
+            for (String tulos : tulokset150) {
+                io.tulosta(tulos);
+            }
 
+            Vertailu vertailu1000 = new Vertailu(teksteilla);
+            ArrayList<String> tulokset200 = vertailu1000.annaTulokset(1000, 200, 1000, "1000-200-1000");
+            for (String tulos : tulokset200) {
+                io.tulosta(tulos);
+            }
+            i--;
+        }
+
+    }
 }

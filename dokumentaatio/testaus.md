@@ -42,15 +42,15 @@ Loin jokaisilla asetuksilla noin 1100 karttaa ja vertailin sen jälkeen Dijkstra
 
 Kartoilla, joilla polkujen määrä oli vertailuaineiston suurin, JPS oli keskimäärin 3,44 kertaa nopeampi kuin Dijkstra. 
 
-![Vertailutuloksia](kuvat/vertailu-1000-200-1000)
+![Vertailutuloksia](kuvat/vertailu-1000-200-1000.png)
 
 Kartoilla, jolla polkujen määrä oli 150, JPS oli keskimäärin 3,38 kertaa nopeampi kuin Dijkstra. 
 
-![Vertailutuloksia](kuvat/vertailu-1000-150-1000)
+![Vertailutuloksia](kuvat/vertailu-1000-150-1000.png)
 
 Kartoilla, joilla polkujen määrä oli vertailuaineiston pienin, JPS oli keskimäärin 3,23 kertaa nopeampi. 
 
-![Vertailutuloksia](kuvat/vertailu-1000-100-1000)
+![Vertailutuloksia](kuvat/vertailu-1000-100-1000.png)
 
 Näyttäisi aineiston perusteella, että mitä enemmän polkuja on, sitä paremmin JPS toimii suhteessa Dijkstraan. JPS vie kaikissa tapauksissa selvästi vähemmän solmuja kekoon kuin Dijkstra, mutta Dijkstra nopeutuu enemmän mitä vähemmän polkuja eli tutkittavaa kartalla on.
 

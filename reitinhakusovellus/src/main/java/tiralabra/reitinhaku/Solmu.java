@@ -1,8 +1,6 @@
 package tiralabra.reitinhaku;
 
 /**
- * Solmun luova luokka.
- * 
  * Kartan pisteistä solmuja muodostava luokka.
  */
 
@@ -23,7 +21,9 @@ public class Solmu {
      * @param y          Solmun y-koordinaatin arvo.
      * @param seina      Kartan kohta jota ei voi käyttää osana reittiä.
      * @param kuljettava Kartan kohta joka sopii osaksi reittiä.
-     * @throws IllegalArgumentException Antaa poikkeuksen, jos yritetään lisätä solmu, joka on sekä seinä että kuljettava tai ei kumpikaan.
+     * @throws IllegalArgumentException Antaa poikkeuksen, jos yritetään lisätä
+     *                                  solmu, joka on sekä seinä että kuljettava
+     *                                  tai ei kumpikaan.
      */
 
     public Solmu(int x, int y, boolean seina, boolean kuljettava) throws IllegalArgumentException {
@@ -61,7 +61,6 @@ public class Solmu {
         return this.kuljettava;
     }
 
-
     /**
      * @param edeltaja Kertoo mikä solmu edeltää reitillä tätä solmua.
      */
@@ -70,28 +69,28 @@ public class Solmu {
     }
 
     /**
-     * @return Solmu Palauttaa solmun joko edeltää reitillä tätä solmua.
+     * @return Solmu Palauttaa solmun joka edeltää reitillä tätä solmua.
      */
     public Solmu getEdeltaja() {
         return edeltaja;
     }
 
     /**
-     * @param reitilla Määrittelee onko solmu Dijkstran löytämällä reitillä.
+     * @param reitilla Määrittelee onko solmu algoritmin löytämällä reitillä.
      */
     public void setReitilla(boolean reitilla) {
         this.reitilla = true;
     }
 
     /**
-     * @return boolean Kertoo onko solmu Dijkstran löytämällä reitillä.
+     * @return boolean Kertoo onko solmu algoritmin löytämällä reitillä.
      */
     public boolean getReitilla() {
         return this.reitilla;
     }
 
     /**
-     * @param kasitelty Määrittelee onko algoritmi käsitellyt tämän solmun. 
+     * @param kasitelty Metodi jolla algoritmi asettaa solmun käsitellyksi.
      */
     public void setKasitelty(boolean kasitelty) {
         this.kasitelty = true;
@@ -105,7 +104,8 @@ public class Solmu {
     }
 
     /**
-     * @param etaisyys Määrittelee solmun etäisyys reitin alkusolmuun (x= 0, y=0).
+     * @param etaisyys Metodi jolla algoritmi päivittää solmulle etäisyyden reitin
+     *                 alkusolmuun (x= 0, y=0).
      */
     public void paivitaEtaisyys(double etaisyys) {
         this.etaisyys = etaisyys;
@@ -119,14 +119,19 @@ public class Solmu {
     }
 
     /**
-     * @param prioriteetti Määrittelee solmun diagonaalisen etäisyyden maaliin JPS-algoritmia varten.
+     * @param prioriteetti Metodi jolla JumpPointSearch päivittää solmun
+     *                     prioriteetin sen perusteella mikä on arvioitu etäisyys
+     *                     loppusolmuun.
+     * @see JumpPointSearch
      */
     public void paivitaPrioriteetti(double prioriteetti) {
         this.prioriteetti = prioriteetti;
     }
 
     /**
-     * @return double Kertoo solmun diagonaalisen etäisyyden maaliin JPS-algoritmia varten.
+     * @return double Kertoo solmun arvioidun etäisyyden JPS-algoritmia
+     *         varten.
+     * @see JumpPointSearch
      */
     public double getPrioriteetti() {
         return prioriteetti;

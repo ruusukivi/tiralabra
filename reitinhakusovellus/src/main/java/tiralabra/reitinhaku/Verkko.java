@@ -3,8 +3,6 @@ package tiralabra.reitinhaku;
 import java.util.ArrayList;
 
 /**
- * Verkon luova luokka.
- * 
  * Kartasta verkon muodostava luokka.
  */
 
@@ -15,10 +13,13 @@ public class Verkko {
     private ArrayList<String> reitti;
 
     /**
-     * Metodi luo tyhjän matriisitaulukon verkolle.
+     * Verkko-olion konstruktori.
+     * 
+     * Luo tyhjän matriisitaulukon kartan tietoja varten sekä 
+     * listan reitin tietojen tallennukseen tulostusta varten.
      * 
      * @param koko Kartan sivun pituus, joka tarvitaan matriisitaulukon luontiin.
-     * @param nimi Verkon nimi helpottamaan hakua session aikana. Tällä hetkellä ei vielä uniikki.
+     * @param nimi Verkon nimi helpottamaan kartan hakua session aikana. Huom! Ei ole tällä hetkellä uniikki.
      */
 
     public Verkko(int koko, String nimi) {
@@ -42,7 +43,7 @@ public class Verkko {
     }
 
     /**
-     * Solmujen määrä.
+     * Metodi kertoo verkon solmujen määrä.
      * 
      * @return int Palauttaa verkossa olevien solmujen määrän.
      */
@@ -51,6 +52,7 @@ public class Verkko {
     }
 
     /**
+     * Metodi kertoo verkon nimen, joka muodostettu kartan ja algoritmin nimestä.
      * @return String Palauttaa verkon nimen.
      */
     public String getNimi() {
@@ -58,27 +60,28 @@ public class Verkko {
     }
 
     /**
+     * Metodi kertoo verkon pohjana olevan neliömuotoisen kartan sivun leveyden.
      * @return int Palauttaa verkon koon.
      */
     public int getKoko() {
         return this.koko;
     }
 
-    /**
+    /** Metodi palauttaa matriisimuotoisen kartan, joka säilötty Verkko-olioon.
      * @return Solmu[][] Palauttaa verkon solmut matriisitaulukkona.
      */
     public Solmu[][] getSolmut() {
         return this.solmut;
     }
 
-    /**
-     * @return ArrayList Palauttaa tekstimuotoisen kuvauksen reitistä tulostusta varten.
+    /** Metodi palauttaa tulostukseen sopivan kuvauksen reitillä olevista solmuista.
+     * @return ArrayList Palauttaa tekstimuotoisen kuvauksen reitistä.
      */
     public ArrayList<String> getReitilla() {
         return reitti;
     }
 
-    /**
+    /** Metodi tallentaa reitillä olevasta solmusta kuvauksen tulostusta varten.
      * @param reitilla Lisää reittikuvaukseen tiedon solmusta ja sen etäisyydestä reitin alkuun.
      */
     public void lisaaReitti(String reitilla) {

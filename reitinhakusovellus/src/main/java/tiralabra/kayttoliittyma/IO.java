@@ -11,6 +11,9 @@ import java.util.*;
 public class IO implements RajapintaIO {
     private Scanner lukija;
 
+    /**
+     * IO-luokan konstruktori
+     */
     public IO() {
         lukija = new Scanner(System.in);
     }

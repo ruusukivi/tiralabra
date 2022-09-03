@@ -37,8 +37,13 @@ public class Dijkstra {
     }
 
     /**
-     * @return boolean Metodi palauttaa totuusarvona tiedon siitä löytyykö
-     *         algoritmi reittiä kartan vasemmasta yläkulmasta oikeaan alakulmaan.
+     * Metodi käsittelee kartan solmut kekoa hyödyntäen, huolehtii reitinhaun keston
+     * mittaamisesta ja reitin tallennuksesta, jos reitti löytyy.
+     * 
+     * @return boolean Metodi palauttaa totuusarvona tiedon siitä löytääkö
+     *         algoritmi reittiä origosta neliönmuotoisen kartan vastakkaiseen
+     *         kulmaan.
+     * @see Keko
      */
     public boolean etsiLyhyinReitti() {
         Instant alku = Instant.now();
@@ -151,16 +156,59 @@ public class Dijkstra {
         }
     }
 
+    /**
+     * Metodi palauttaa ajon keston
+     * 
+     * @return double
+     */
     public double getKesto() {
         return this.kesto;
     }
 
+    /**
+     * Metodi palauttaa keossa käsiteltyjen solmujen määrän
+     * 
+     * @return double
+     */
     public double getKasitellyt() {
         return this.kasitellyt;
     }
 
+    /**
+     * Metodi palauttaa joko löydetyn reitin pituuden tai Integer.MAX_VALUE:n
+     * 
+     * @return double
+     */
     public double getReitinPituus() {
         return this.reitinpituus;
+    }
+
+    /**
+     * Metodi vaihtaa aloitussolmun paikkaa edellyttäen, että uusi aloitus solmu on
+     * kuljettava.
+     * 
+     * @param x Aloitussolmun x-koordinaatti
+     * @param y Aloitussolmun y-koordinaatti
+     */
+    public void setAloitus(int x, int y) {
+        if (onkoKuljettava(x, y)) {
+            this.aloitus = kartta[x][y];
+        }
+
+    }
+
+    /**
+     * Metodi vaihtaa lopetussolmun paikkaa edellyttäen, että uusi aloitus solmu on
+     * kuljettava.
+     * 
+     * @param x Lopetussolmun x-koordinaatti
+     * @param y Lopetussolmun y-koordinaatti
+     */
+    public void setLopetus(int x, int y) {
+        if (onkoKuljettava(x, y)) {
+            this.lopetus = kartta[x][y];
+        }
+
     }
 
 }

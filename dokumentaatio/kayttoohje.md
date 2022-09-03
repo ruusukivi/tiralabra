@@ -21,6 +21,9 @@ Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin
 
     ./gradlew clean test
 
+
+- Jos haluat ajaa myös Algoritmit-testin, poista siitä ensin Ignore-annotaatio. Kyseisen testin ajo voi kestää jopa 10 minuuttia.
+
 ### Sovelluksen koodin tarkistus
 
     ./gradlew checkstyleMain
@@ -43,16 +46,11 @@ Kloonaa tai forkkaa projekti ensin omalle koneellesi. Tämän jälkeen projektin
 
 ![Ohjelman toiminnot](kuvat/toiminnot.png)
 
-Sovelluksessa tällä hetkellä kaksi toimintoa:
+Sovelluksessa tällä hetkellä kolme toimintoa:
 1) Uuden kartan luonti ja tulostus
 2) Session aikana luotujen karttojen uudelleen tulostus
 3) Algoritmien vertailu
 
 Uuden kartan luonti luo karttapohjan RandomWalk-algoritmia hyödyntäen ja etsii kartalta lyhyimmän reitin vasemmasta yläkulmasta oikeaan alakulmaan Dijkstra- ja Jump Point Search -algoritmeilla. Uuden kartan luonti generoi omat Verkko-oliot Dijkstralle ja Jump Point Searchille. Tulostettaessa aiemmin luotua karttaa pitää valita kumman version haluaa nähdä.
 
-Algoritmien vertailu luo taustalla muutamia karttoja, tekee niistä verkot ja etsiin lyhyimmät reitit Dijkstralla ja JumpPointSearchilla. Tämän jälkeen käyttöliittymään tulostetaan vertailutietoja: reitin pituus, haun kesto, kekoon viedyt solmut.
-
-Tällä hetkellä vertailuja tehdään seuraavilla parametreilla luoduilla kartoilla:
-- sivu: 1000, polkuja: 10000, polun maksimipituus: 500, nimi: "1000-10000-500");
-- sivu: 1000, polkuja: 1000, polun maksimipituus: 500, nimi: "1000-1000-500");
-- sivu: 1000, polkuja: 100, polun maksimipituus: 500, nimi: "1000-100-500");
+Algoritmien vertailussa voi valita haluaako, tulostaa ruudulta helposti luettavan suppean aineiston vai laajemman csv-muotoisen aineiston. Suppea aineisto koostuu kolmen eri kartan vertailusta. Kartat eroavat toisistaan polkujen määrässä. Laaja aineisto luo 1000 kartaa jokaisesta vertailtavasta karttatyypistä. Laaja aineisto on tarkoitettu analysoitavaksi esim. excelissä. Sen tulostus on tarkoitus myöhemmin siirtää tiedostoon, jotta siirto on helpompaa.

@@ -22,12 +22,12 @@ public class RandomWalk {
 
     /**
      * Random Walk -kartan konstruktori.
-     * Luo neliön muotoisia karttoja.
+     * Luo neliönmuotoisia karttoja.
      * 
-     * @param sivu     Neliönmuotoisen kartan sivun pituus.
-     * @param polut Karttaan piirrettävien polkujen määrä.
-     * @param pituus   Yksittäisen polun maksimipituus.
-     * @param nimi     Kartan nimi, jolla karttaa voi hakea session aikana.
+     * @param sivu   Neliönmuotoisen kartan sivun pituus.
+     * @param polut  Karttaan piirrettävien polkujen määrä.
+     * @param pituus Yksittäisen polun maksimipituus.
+     * @param nimi   Kartan nimi, jolla karttaa voi hakea session aikana.
      */
 
     public RandomWalk(int sivu, int polut, int pituus, String nimi) {
@@ -41,6 +41,9 @@ public class RandomWalk {
         piirraKartta();
     }
 
+    /**
+     * Kartan piirtävä metodi, joka luo kartan matriisitaulukkona.
+     */
     public void piirraKartta() {
         int nykyinenRivi = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitusrivi
         int nykyinenSarake = (int) Math.floor(Math.random() * sivu); // satunnaisesti valittu aloitussarake
@@ -53,7 +56,8 @@ public class RandomWalk {
             satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
             do {
                 satunnainenSuunta = suunnat[(int) Math.floor(Math.random() * suunnat.length)];
-                // valitaan seuraava suunta ja varmistetaan, että uusi suunta on eri josta tultiin
+                // valitaan seuraava suunta ja varmistetaan, että uusi suunta on eri josta
+                // tultiin
             } while ((satunnainenSuunta[0] == -viimeisinSuunta[0] &&
                     satunnainenSuunta[1] == -viimeisinSuunta[1]) ||
                     (satunnainenSuunta[0] == viimeisinSuunta[0] &&
@@ -80,7 +84,7 @@ public class RandomWalk {
             }
 
             if (polunPituus > 1) { // edetään seuraavan polun piirtämiseen, kunhan edellinen polku on
-                                      // vähintään kahden merkin mittainen
+                                   // vähintään kahden merkin mittainen
                 viimeisinSuunta = satunnainenSuunta; // tallennettaan viimeisin suunta
                 polut--; // kun polku on valmis vähennetään piirrettävien polkujen määrää yhdellä
             }
@@ -92,9 +96,9 @@ public class RandomWalk {
     /**
      * Uuden kartan luonti ja muunto verkoiksi.
      * 
-     * @param algoritmi Samasta kartasta muodotetaan omat Verkko-oliot dijkstra- ja
+     * @param algoritmi Samasta kartasta muodostetaan omat Verkko-oliot dijkstra- ja
      *                  jps-algoritmeja varten.
-     * @return Verkko Palauttaa kartasta muodostetun Verkko-olion.
+     * @return Verkko Palauttaa kartasta muodostetun Verkko-olion, joka nimeen liitetty algoritmin lyhenne.
      */
     public Verkko muodostaKartastaVerkko(String algoritmi) {
         if (algoritmi.contains("dijkstra")) {

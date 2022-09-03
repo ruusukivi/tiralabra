@@ -6,25 +6,23 @@
 - 28.8. JumpPointSearchiin debuggausta ja refaktorointia - 8 h
 - 29.8. JumpPointSearchin korjauksia - 3 h
 - 30.8. JumpPointSearchin nopeutusta ja vertailun hienosäätöä - 1 h
-- 1.9  Tilastojen tekoa, demon suunnittelu - 6 h
+- 1.9  Tilastojen tekoa, demon suunnittelu, demo työpaikalla - 6 h
+- 3.9  Viimeistely, loppupalautuksen valmistelu - 6 h
 
 ## Mitä olen tehnyt tällä viikolla? / Miten ohjelma on edistynyt?
 
-
+JumpPoinSearchin korjauksia, vertailuajojen toteutusta ja analyysia, demon ja loppupalauksen valmistelua.
 
 ## Mitä opin tällä viikolla / tänään?
 
+Algoritmien vertailuajo oli havainnollinen. Ymmärsin vielä aiempaa paremmin miten JPS käyttäytyy erilaislla kartoilla suhteessa Dijkstraan. Eli käytännössä miten kekoon vietävien solmujen määrä vaikuttaa kummankin performointiin.
 
 ## Mikä jäi epäselväksi tai tuottanut vaikeuksia? 
 
+JPS oli haastava toteuttaa. Olen kuitenkin todella tyytyväinen, että sain sen lopulta toimimaan valituilla asetuksilla.
+
+Ohjeiden lukeminen ja ymmärtäminen on välillä yllättävän haastavaa :sweat_smile: 
+
+Kiitos mielenkiintoisesta kurssista!
 
 
-## Mitä teen seuraavaksi?
-
-- Laitan JPS:n toimimaan ja siistin koodin + lisään JPS:lle muutamia yksikkötestejä (työn alla)
-- Teen vertailutestit siitä tuottavatko Dijkstra ja JPS:ssä yhtä lyhyen reitin  - valmis
-- Teen vertailutestit siitä kuinka nopeasti Dijkstra ja JPS löytävät lyhyimmän reitin (työn alla)
-- Toteutan käyttöliittymään toiminnon, joka ajaa isomman kasan algoritmien vertailutestejä ja tulostaa lopuksi tilaston vertailusta. (työn alla)
-- Muutan ohjelmaa niin että se arpoo reitin aloitus- ja lopetuspisteet (en ehkä ehdi tätä muutosta tehdä)
-- Viimeistelen ohjelman, mm. refaktoroin koodia suoraviivaisemmaksi.
-- Jos jää aikaa lisään kartat tietokantaan. Vähintäänkin kartoilla pitäisi olla yksilöllinen tunniste.

@@ -30,6 +30,9 @@ public class Kayttoliittyma {
         this.kartat = kartat;
     }
 
+    /**
+     * Konsolipohjaisen käyttöliittymän käynnistävä metodi.
+     */
     public void kaynnista() {
         io.tulosta("\na->>-b->>-a->>-b->>-a->>-b->> REITINHAKU <<-a-<<-b-<<-a-<<-b-<<-a-<<-b\n");
 
@@ -44,7 +47,7 @@ public class Kayttoliittyma {
         }
     }
 
-    /** Valikon tulostus */
+    /** Valikon tulostus. */
     public void naytaValikko() {
         io.tulosta("\nTOIMINNOT: \n");
         io.tulosta("1 -- Luo uusi kartta \n");
@@ -54,9 +57,9 @@ public class Kayttoliittyma {
     }
 
     /**
-     * Toimintojen käsittely
-     * 
-     * @param toiminto toiminnon numero, käsitellään stringinä
+     * Toimintojen käsittely.
+     * Sovellus ei vielä tue virheellisten syöttteiden käsittelyä kovin hyvin.
+     * @param toiminto Toiminnon numero, käsitellään stringinä
      */
     public void valitseToiminto(String toiminto) {
         if (toiminto.equalsIgnoreCase("1")) {
@@ -71,7 +74,7 @@ public class Kayttoliittyma {
         }
     }
 
-    /* Uuden kartan luonti ja tulostus */
+    /** Uuden kartan luonti ja tulostus. */
     public void luoKartta() {
         io.tulosta("Anna kartan tunniste: \n");
         String nimi = io.lue();
@@ -88,7 +91,7 @@ public class Kayttoliittyma {
         kartat.tulostaKartta(nimi.concat("-jps"));
     }
 
-    /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
+    /** Session aikana luotujen karttojen listaus ja valitun kartan tulostus. */
     public void listaaKartat() {
         if (kartat.karttojenMaara() < 1) {
             io.tulosta("Yhtään karttaa ei ole vielä luotu. \n");
@@ -104,18 +107,24 @@ public class Kayttoliittyma {
         }
     }
 
-    /* Session aikana luotujen karttojen listaus ja valitun kartan tulostus */
+    /** Vertailuajon käynnistys, valittavana suppea ja laaja vertailu. 
+     * Suppea aineisto tarkoitettu ruudulta katseltavaksi.
+     * Suppea aineisto muodostetaan vertailemalla algoritmeja kolmella eri Random Walk-kartalla. 
+     * Laaja aineisto tarkoitettu ruudulta kopioitavaksi esim. exceliin jatkokäsittelyä varten.
+     * Laaja aineisto muodostetaan ajamalla luomalla kolmella eri asetuksella 1000 Random Walk -karttaa kullakin.
+     * Myöhemmin tarkoitus vaihtaa laajan aineiston tulostus tiedostoon ruudun sijasta.
+    */
     public void vertaileAlgoritmeja() {
         io.tulosta("a -- Haluan katsella tuloksia ruudulla (pieni aineisto) \n");
         io.tulosta("b -- Haluan käsitellä dataa muualla (iso aineisto) \n");
         io.tulosta(">> Valitse missä muodossa haluat tulokset: \n");
         String tulostus = io.lue();
 
-        boolean teksteilla = false;
-        int i = 1000;
-        if (tulostus.equals("a")) {
-            teksteilla = true;
-            i = 1;
+        boolean teksteilla = true;
+        int i = 1;
+        if (tulostus.equals("b")) {
+            teksteilla = false;
+            i = 1000;
         }
         io.tulosta("Odota hetki - vertailuajo vie hieman aikaa.... ");
         io.tulosta("\n");

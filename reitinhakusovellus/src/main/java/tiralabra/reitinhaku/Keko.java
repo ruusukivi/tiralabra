@@ -1,9 +1,10 @@
 package tiralabra.reitinhaku;
 
 /**
- * Keon luova luokka.
+ * Algoritmien hyödyntämästä minimikeosta vastaava luokka.
  * 
- * Algoritmien tarvitseman minimikeon luova luokka.
+ * @see Dijkstra
+ * @see JumpPointSearch
  */
 public class Keko {
 
@@ -32,6 +33,7 @@ public class Keko {
      * @param solmu Kekoon lisättävä solmu.
      * @throws Error Antaa virheen, jos koitetaan lisätä solmua, jota ei ole tai jos
      *               keko on täynnä.
+     * @see Solmu
      */
     public void lisaaKekoon(Solmu solmu) throws Error {
         if (solmu == null) {
@@ -50,11 +52,14 @@ public class Keko {
     }
 
     /**
-     * Keon järjestäminen solmun lisäyksen jälkee.
+     * Keon järjestäminen solmun lisäyksen jälkeen.
      * Järjestäminen huomioi todellisen etäisyyden lisäksi mahdollisen prioriteetin.
      * JPS-algoritmi hyödyntää prioriteettiä.
      * 
      * @param indeksi Keon kohta, johon uusi solmu on lisätty.
+     * 
+     * @see JumpPointSearch Metodia "laskeDiagonaalinenEtaisyys" hyödynnetään
+     *      prioriteetin määrittelyssä.
      */
     public void nostaKeossa(int indeksi) {
         if (nykyinenKoko == 1) {
@@ -79,6 +84,9 @@ public class Keko {
      * JPS-algoritmi hyödyntää prioriteettiä.
      * 
      * @param indeksi Keon kohta johon uusi solmu on lisätty.
+     * 
+     * @see JumpPointSearch Metodia "laskeDiagonaalinenEtaisyys" hyödynnetään
+     *      prioriteetin määrittelyssä.
      */
     public void laskeKeossa(int indeksi) {
         int pienimmanIndeksi = indeksi;
@@ -115,10 +123,11 @@ public class Keko {
     }
 
     /**
+     * Metodi palauttaa keossa päällimmäisenä olevan solmun.
      * 
      * @return Solmu Palauttaa keosta solmun, jonka etäisyys alkuun pienin.
-     * @throws Error Antaa virheen, jossa pientä arvoa ei ole eli indeksi 1 on
-     *               tyhjä..
+     * @throws Error Antaa virheen, jossa pienintä arvoa ei ole eli indeksi 1 on
+     *               tyhjä.
      */
     public Solmu pienin() throws Error {
         if (this.keko[1] == null) {
@@ -128,6 +137,9 @@ public class Keko {
     }
 
     /**
+     * Metodi palauttaa algoritmeille tiedon siitä, onko keossa käsiteltäviä
+     * solmuja.
+     * 
      * @return boolean Palauttaa tiedon siitä, onko kekossa solmuja.
      */
     public boolean onTyhja() {
@@ -138,6 +150,8 @@ public class Keko {
     }
 
     /**
+     * Metodi palauttaa ja sitten poistaa keossa päällimmäisenä olevan solmun.
+     * 
      * @return Solmu Palauttaa keon solmun, jonka etäisyys alkuun on pienin.
      */
     public Solmu poistaPienin() {
@@ -152,6 +166,9 @@ public class Keko {
     }
 
     /**
+     * Mittaa kekoon reitinhaun aikana lisättyjen solmujen määrää, jotta voidaan
+     * verrata algoritmien eroja keon hyödyntämisessä.
+     * 
      * @return int Kekoon käytön aikana lisättyjen solmujen määrä.
      */
     public int getLisattyja() {

@@ -6,24 +6,15 @@ Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen pii
 
 ![Ohjelman rakenne](kuvat/rakenne.png)
 
-
-## Saavutetut aika- ja tilavaativuudet (m.m. O-analyysit pseudokoodista)
-
-Täydentyy
-
-## Suorituskyky- ja O-analyysivertailu (mikäli työ vertailupainotteinen)
-
-Täydentyy
-
 ## Puutteet ja parannusehdotukset
 
-Jump Point Search -algoritmi ei toimi vielä oikein.
+Ohjelma etsii tällä hetkellä reittejä origosta kartan vastakkaiseen kulmaan. Testeissä reittejä etsitään myös toiseen suuntaan. JPS:ssä lienee vielä jokin puute, joka ilmenee tällä hetkellä vain etsittäessä käänteistä reittiä isolla kartalla. Jos jatkaisin ohjelman kehitystä, rakentaisin seuraavaksi tuen aloitus- ja lopetuspisteen valintaan, jotta algoritmien toimintaa voisi testata vielä monipuolisemmin.
+
+Laajempi vertailuaineisto kannattaisi tulostaa tiedostoon.
+
+Kartat olisi fiksua tallentaa tietokantaan, jotta niihin voisi palata myös session päätyttyä. Kartoilla ei ole tällä hetkellä yksilöllistä tunnistetta.
 
 Käyttöliittymän virheensieto ei vielä ole kovin hyvä, koska syötteitä ei validoida.
-
-Kartta tulostetaan ruudulle siten, että origo on vasemmassa yläkulmassa, mikä on hieman hämäävää.
-
-Koodi kaipaa paikoi tiivistämistä.
 
 ## Lähteet
 

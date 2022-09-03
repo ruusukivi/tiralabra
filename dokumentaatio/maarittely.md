@@ -19,7 +19,7 @@ Dijkstra etsii lyhyimmän reitin alkupisteestä kaikkiin muihin pisteisiin. Se o
 
 Jump Point Search - algoritmi hyödyntää karsintasääntöjä (pruning rules), joiden avulla se voi jättää käsittelemättä tarkasteltavan solmun naapurit, joihin on jo olemassa lyhyempi tai yhtä lyhyt polku. Algoritmi keskittyy solmuihin, jotka ovat hyppypisteitä (jump point) eli välttämättömiä osia lyhyimmissä reiteissä yhteen tai useampaan naapuriin.
 
-Kartat kuvaan solmuista ja kaarista koostuvana verkkona. Molempien algoritmien toteutuksessa hyödynnän minimikekoa.
+Kartat kuvaan solmuista koostuvana verkkona. Molempien algoritmien toteutuksessa hyödynnän minimikekoa.
 
 ## Mitä ongelmaa ratkaiset ja miksi valitsit kyseiset algoritmit/tietorakenteet?
 
@@ -29,7 +29,7 @@ Sovelluksen valitut algoritmit ovat yleisesti käytössä olevia ja siksi kiinno
 
 ## Mitä syötteitä ohjelma saa ja miten näitä käytetään?
 
-Ohjelma tuottaa ensin kaksiuloitteisen  taulukkomuotoisen kartan sekä alku- ja päätepisteet ja etsii sitten lyhyimmän reitin kahden eri algoritmin avulla. Kartta tulkitaan verkkona, jossa ruudut ovat solmuja. Ruudun arvo 1 tarkoittaa reitiksi kelpaavaa ruutua ja arvo 0 estettä.
+Ohjelma tuottaa ensin kaksiuloitteisen  matriisitaulukkomuotoisen kartan ja etsii sitten lyhyimmän reitin kahden eri algoritmin avulla. Aloituspisteenä käytetään origoa ja lopetuspisteenä kartan vastakkaista nurkkaa. Kartta tulkitaan verkkona, jossa ruudut ovat solmuja. Ruudun arvo 1 tarkoittaa reitiksi kelpaavaa ruutua ja arvo 0 estettä.
 
 ## Tavoitteena olevat aika- ja tilavaativuudet 
 
@@ -37,5 +37,4 @@ Dijkstran algoritmin aikavaativuustavoite on O(n + m log n), joissa n on solmuje
 
 JPS-algoritmin aikavaativuustavoite on pahimmillaan sama kuin Dijkstrassa, mutta käytännössä sen pitäisi olla nopeampi, koska algoritmi "hyppää" osan solmujen yli.
 
-Tilavaativuus molemmissa on arviolta O(n) verkon solmujen mukaan. // TARKISTA TÄMÄ VIELÄ
-
+Tilavaativuus molemmissa on arviolta O(n) verkon solmujen mukaan. 

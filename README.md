@@ -2,14 +2,14 @@
 
 ## Aihe: Reitinhakualgoritmien vertailu
 
-Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijkstra- ja Jump Point Search -algoritmien tehokkuutta lyhyimmän reitin haussa. 
+Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijkstra- ja Jump Point Search -algoritmien tehokkuutta lyhyimmän reitin haussa origosta kartan vastakkaiseen kulmaan.
 
 ## Dokumentaatio
 
-- [ ] [Määrittelydokumentti](dokumentaatio/maarittely.md)
-- [ ] [Toteutusdokumentti](dokumentaatio/toteutus.md)
-- [ ] [Testausdokumentti](dokumentaatio/testaus.md)
-- [ ] [Käyttöohje](dokumentaatio/kayttoohje.md)
+- [x] [Määrittelydokumentti](dokumentaatio/maarittely.md)
+- [x] [Toteutusdokumentti](dokumentaatio/toteutus.md)
+- [x] [Testausdokumentti](dokumentaatio/testaus.md)
+- [x] [Käyttöohje](dokumentaatio/kayttoohje.md)
 
 ## Viikkoraportit
 
@@ -19,4 +19,4 @@ Sovelluksessa luodaan kartta Random Walk-algoritmilla ja vertaillaan sitten Dijk
 - [x] [Viikko 4](dokumentaatio/viikko4.md)   
 - [x] [Viikko 5](dokumentaatio/viikko5.md) 
 - [x] [Viikko 6](dokumentaatio/viikko6.md) 
-- [ ] [Loppupalautus](dokumentaatio/viikko7.md)   
+- [x] [Loppupalautus](dokumentaatio/viikko7.md)   

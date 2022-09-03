@@ -2,6 +2,7 @@ package tiralabra;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import tiralabra.karttojenpiirto.Kartat;
@@ -9,9 +10,8 @@ import tiralabra.kayttoliittyma.Kayttoliittyma;
 
 public class KayttoliittymaTest {
 
-
     @Test
-    public void KayttoliittymaKaynnistyy(){
+    public void KayttoliittymaKaynnistyy() {
         IOStub io = new IOStub("");
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
@@ -20,13 +20,13 @@ public class KayttoliittymaTest {
     }
 
     @Test
-    public void KartanLuontiOnnistuu(){
+    public void KartanLuontiOnnistuu() {
         String[] syotteet = {
-            "1", //Luo kartta
-            "Nelio", // Kartan nimi
-            "2", // Kartan sivun pituus
-            "0", // Ei polkuja
-            "0", // Polun pituus
+                "1", // Luo kartta
+                "Nelio", // Kartan nimi
+                "2", // Kartan sivun pituus
+                "0", // Ei polkuja
+                "0", // Polun pituus
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
@@ -41,15 +41,15 @@ public class KayttoliittymaTest {
     }
 
     @Test
-    public void OlemassaOlevanKartanHakuOnnistuu(){
+    public void OlemassaOlevanKartanHakuOnnistuu() {
         String[] syotteet = {
-            "1", //Luo kartta
-            "Nelio", // Kartan nimi
-            "2", // Kartan sivun pituus
-            "0", // Ei tunneleita
-            "0", // Tunnelin pituus
-            "2", //Luo kartta
-            "Nelio-dijkstra", // Kartan nimi
+                "1", // Luo kartta
+                "Nelio", // Kartan nimi
+                "2", // Kartan sivun pituus
+                "0", // Ei tunneleita
+                "0", // Tunnelin pituus
+                "2", // Luo kartta
+                "Nelio-dijkstra", // Kartan nimi
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
@@ -59,9 +59,9 @@ public class KayttoliittymaTest {
     }
 
     @Test
-    public void OlemassaOlevanKartanHakuKunKarttojaEiOle(){
+    public void OlemassaOlevanKartanHakuKunKarttojaEiOle() {
         String[] syotteet = {
-            "2", //Luo kartta
+                "2", // Luo kartta
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
@@ -70,33 +70,15 @@ public class KayttoliittymaTest {
         assertEquals("Yhtään karttaa ei ole vielä luotu. \n", io.tulosteet.get(7));
     }
 
-
     @Test
-    public void DijkstraNakyyKartalla() {
+    public void AlgoritmienVertailuValikkoAukeaa() {
         String[] syotteet = {
-            "1", //Luo kartta
-            "3", // Kartan nimi
-            "3", // Kartan sivun pituus
-            "10", // Paljonko polkuja
-            "3", // Polun pituus
-            // Näillä arvoilla syntyy 3x3 kartta, jossa keskellä yksi seinä.
+                "3", // Vertaile algoritmeja
         };
         IOStub io = new IOStub(syotteet);
         Kartat kartat = new Kartat(io);
         Kayttoliittyma ui = new Kayttoliittyma(io, kartat);
         ui.kaynnista();
-        assertEquals("\nKartan nimi: 3-dijkstra, koko 3*3\n", io.tulosteet.get(12));
-        assertEquals("R ", io.tulosteet.get(13));
-        assertEquals(". ", io.tulosteet.get(14));
-        assertEquals(". ", io.tulosteet.get(15));
-        assertEquals("\n", io.tulosteet.get(16));
-        assertEquals("R ", io.tulosteet.get(17));
-        assertEquals("x ", io.tulosteet.get(18));
-        assertEquals(". ", io.tulosteet.get(19));
-        assertEquals("\n", io.tulosteet.get(20));
-        assertEquals(". ", io.tulosteet.get(21));
-        assertEquals("R ", io.tulosteet.get(22));
-        assertEquals("R ", io.tulosteet.get(23));
+        assertEquals("a -- Haluan katsella tuloksia ruudulla (pieni aineisto) \n", io.tulosteet.get(7));
     }
-    
 }

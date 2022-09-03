@@ -11,11 +11,11 @@
 
 ## Mitä olen tehnyt tällä viikolla? / Miten ohjelma on edistynyt?
 
-JumpPoinSearchin korjauksia, vertailuajojen toteutusta ja analyysia, demon ja loppupalauksen valmistelua.
+JumpPointSearchin korjauksia, vertailuajojen toteutusta ja analyysia, demon ja loppupalauksen valmistelua.
 
 ## Mitä opin tällä viikolla / tänään?
 
-Algoritmien vertailuajo oli havainnollinen. Ymmärsin vielä aiempaa paremmin miten JPS käyttäytyy erilaislla kartoilla suhteessa Dijkstraan. Eli käytännössä miten kekoon vietävien solmujen määrä vaikuttaa kummankin performointiin.
+Algoritmien vertailuajo oli havainnollinen. Ymmärsin vielä aiempaa paremmin, miten JPS käyttäytyy erilaislla kartoilla suhteessa Dijkstraan. Eli käytännössä miten kekoon vietävien solmujen määrä vaikuttaa kummankin performointiin. Parhaimmillaan JPS on jopa 8-9 nopeampi kuin Dijkstra, pahimmillaan jopa hitaampi.
 
 ## Mikä jäi epäselväksi tai tuottanut vaikeuksia? 
 

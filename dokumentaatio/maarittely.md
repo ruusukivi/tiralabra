@@ -25,7 +25,7 @@ Kartat kuvaan solmuista koostuvana verkkona. Molempien algoritmien toteutuksessa
 
 Sovelluksessa tavoitteena löytää lyhyin reitti alkupisteestä päätepisteeseen.
 
-Sovelluksen valitut algoritmit ovat yleisesti käytössä olevia ja siksi kiinnostavia oppia.
+Sovelluksen valitut algoritmit ovat yleisesti käytössä olevia ja siksi kiinnostavia.
 
 ## Mitä syötteitä ohjelma saa ja miten näitä käytetään?
 

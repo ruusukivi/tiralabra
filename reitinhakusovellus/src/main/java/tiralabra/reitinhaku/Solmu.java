@@ -8,7 +8,6 @@ public class Solmu {
 
     private int x;
     private int y;
-    private boolean seina;
     private boolean kuljettava;
     private Solmu edeltaja;
     private boolean kasitelty;
@@ -32,7 +31,6 @@ public class Solmu {
         }
         this.x = x;
         this.y = y;
-        this.seina = seina;
         this.kuljettava = kuljettava;
         this.etaisyys = Integer.MAX_VALUE;
         this.reitilla = false;

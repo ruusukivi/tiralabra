@@ -2,8 +2,6 @@ package tiralabra;
 
 import static org.junit.Assert.assertEquals;
 
-import java.security.spec.ECFieldF2m;
-
 import org.junit.Test;
 
 import tiralabra.karttojenpiirto.RandomWalk;

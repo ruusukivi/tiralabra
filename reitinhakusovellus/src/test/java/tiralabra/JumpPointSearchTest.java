@@ -97,16 +97,16 @@ public class JumpPointSearchTest {
 
     @Test
     public void ReitinPituusSamaAlustaLoppuunJaLopustaAlkuun() {
-        RandomWalk satunnainen = new RandomWalk(10, 20, 10, "satunnainen");
+        RandomWalk satunnainen = new RandomWalk(1000, 5000, 1000, "satunnainen");
         Verkko verkko1 = satunnainen.muodostaKartastaVerkko("jps");
         JumpPointSearch kartta1 = new JumpPointSearch(verkko1);
         kartta1.etsiLyhyinReitti();
         kartta1.setAloitus(0,0);
-        kartta1.setLopetus(9, 9);
+        kartta1.setLopetus(999, 999);
         double pituus1 = kartta1.getReitinPituus();
         Verkko verkko2 = satunnainen.muodostaKartastaVerkko("jps");
         JumpPointSearch kartta2 = new JumpPointSearch(verkko2);
-        kartta2.setAloitus(9,9);
+        kartta2.setAloitus(999,999);
         kartta2.setLopetus(0, 0);
         kartta2.etsiLyhyinReitti();
         double pituus2 = kartta2.getReitinPituus();

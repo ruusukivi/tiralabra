@@ -6,13 +6,23 @@ Sovellus on paketoitu tiralabra-domaiin, jonka alla vielä paketit karttojen pii
 
 ![Ohjelman rakenne](kuvat/rakenne.png)
 
+## Saavutetut aika- ja tilavaativuudet
+
+Dijkstran algoritmin aikavaativuus on pahimmillaan O(n + m log n), joissa n on solmujen lukumäärä ja m kaarien lukumäärä. JPS-algoritmin aikavaativuus on heikoimmillaan yhtä suuri kuin Dijkstrassa, mutta usein se on nopeampi, koska algoritmi vie kekoon pääsääntöisetsi huomattavasti vähemmän solmuja. 
+
+Tilavaativuus molemmissa on sama, koska kartta tallennetaan martiisitaulukkona, jossa n solmua. Myös keon maksimikoko on sama kuin solmujen määrä. Tilavaativuus molemmille on O(n). 
+
+[Testausdokumentti](testaus.md)
+
 ## Puutteet ja parannusehdotukset
 
-Ohjelma etsii tällä hetkellä reittejä origosta kartan vastakkaiseen kulmaan. Testeissä reittejä etsitään myös toiseen suuntaan. JPS:ssä lienee vielä jokin puute, joka ilmenee tällä hetkellä vain etsittäessä käänteistä reittiä isolla kartalla. Jos jatkaisin ohjelman kehitystä, rakentaisin seuraavaksi tuen aloitus- ja lopetuspisteen valintaan, jotta algoritmien toimintaa voisi testata vielä monipuolisemmin.
+Ohjelma etsii tällä hetkellä reittejä origosta kartan vastakkaiseen kulmaan. Testeissä reittejä etsitään myös toiseen suuntaan. Jos jatkaisin ohjelman kehitystä, rakentaisin seuraavaksi tuen aloitus- ja lopetuspisteen valintaan, jotta algoritmien toimintaa voisi testata vielä monipuolisemmin. 
 
 Laajempi vertailuaineisto kannattaisi tulostaa tiedostoon.
 
 Kartat olisi fiksua tallentaa tietokantaan, jotta niihin voisi palata myös session päätyttyä. Kartoilla ei ole tällä hetkellä yksilöllistä tunnistetta.
+
+Hieman hämäävää on, että kartat tulostetaan ruudulle niin, että origo on vasemmassa yläkulmassa eli reitit kulkevat ylhäältä vasemmalta oikealle alas.
 
 Käyttöliittymän virheensieto ei vielä ole kovin hyvä, koska syötteitä ei validoida.
 

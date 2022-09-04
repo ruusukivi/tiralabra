@@ -33,21 +33,21 @@ Algoritmi testataan yksikkötesteissä seuraavilla aineistoilla:
 1) Kartalla, jossa ei ole reittiä lainkaan 
 2) 3x3 kartalla, jossa keskellä seinä 
 3) 100x100 kartalla, jossa ei ole esteitä lainkaan 
-4) Satunnaisesti generoidulla 10x10 kartalla 
+4) Satunnaisesti generoidulla 1000x1000 kartalla 
 
-Testeissä 2-4 reitti etsitään ensin aloituspisteestä 0.0 lopetuspisteeseen (sivu-1).(sivu-1) ja sen jälkeen vaihdetaan aloitus- ja lopetuspisteet keskenään ja varmistetaan, että löydetyt reitit ovat samanmittaiset. Isoilla kartoilla JPS:n käänteiset reitit eivät aina täsmää pituudeltaan - kurssiajan puitteissa en onnistunut löytämään tämän aiheuttavaa bugia ja siksi testi ajetaan pienemmällä kartalla kuin Dijkstran vastaava.  
+Testeissä 2-4 reitti etsitään ensin aloituspisteestä 0.0 lopetuspisteeseen (sivu-1).(sivu-1) ja sen jälkeen vaihdetaan aloitus- ja lopetuspisteet keskenään ja etsitään reitti uudestaan. Testit menevät läpi, jos reitit ovat samanmittaiset. 
 
-##  Algoritmien suorituskyky
+##  Algoritmien suorituskykytestaus
 
 Yksikkötesteihin kuuluva [AlgoritmitTest.java](../reitinhakusovellus/src/test/java/tiralabra/AlgoritmitTest.java) luo 2 000 isoa karttaa ja varmistaa, että molemmat algoritmit tuottavat saman tuloksen reitin löytymisen ja pituuden osalta. Testillä arvioidaan sekä algoritmien toiminnan oikeellisuutta että suorituskykyä. 
 
 Testin ajaminen kestää lähes kymmenen minuuttia ja se on merkitty @Ignore-annotaatiolla eli sitä ei oletusarvoisesti ajeta. 
 
-Olen ajanut testin muutaman kerran läpi ja suoritukset ovat menneet ongelmatta läpi. 
+Olen ajanut testin muutaman kerran läpi ja suoritukset ovat menneet ongelmitta läpi. 
 ![Algoritmit-testi](kuvat/algoritmittesti.png)
 
 
-##  Algoritmien toimivuuden vertailu
+##  Algoritmien nopeuden ja tehokkuuden vertailu
 
 Algoritmien nopeus- ja tehokkuusvertailua varten on luotu Vertailu-luokka, jolla voi tulostaa joko laajemman csv-muotoillun aineiston tai luettavammaksi muotoillun suppeamman aineiston.
 

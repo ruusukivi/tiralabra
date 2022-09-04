@@ -100,7 +100,7 @@ public class JumpPointSearch {
      * kartalla.
      * 
      * @param kasiteltava Solmu josta etsintä aloitetaan
-     * @param y Siirtymän pituus y-akselilla
+     * @param y           Siirtymän pituus y-akselilla
      * @return Solmu Palautetaan löytynyt hyppysolmu
      */
     private Solmu etsiVertikaalisesti(Solmu kasiteltava, int y) {
@@ -122,25 +122,36 @@ public class JumpPointSearch {
         }
 
         // Tutkitaan onko solmu hyppypiste
-        if (kartta[seuraavaX][seuraavaY].getX() + 1 <= sivu - 1 && kartta[seuraavaX][seuraavaY].getY() + 1 <= sivu - 1) {
-            boolean kuljettavaOikealle = kartta[kartta[seuraavaX][seuraavaY].getX() + 1][kartta[seuraavaX][seuraavaY].getY() + 1].getKuljettava();
-            boolean  seinaOikeallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX() + 1][kartta[seuraavaX][seuraavaY].getY()].getKuljettava());
+        if (kartta[seuraavaX][seuraavaY].getX() + y <= sivu - 1 && kartta[seuraavaX][seuraavaY].getX() + y >= 0
+                && kartta[seuraavaX][seuraavaY].getY() + y <= sivu - 1
+                && kartta[seuraavaX][seuraavaY].getY() + y >= 0) {
+            boolean kuljettavaOikealle = kartta[kartta[seuraavaX][seuraavaY].getX() + y][kartta[seuraavaX][seuraavaY]
+                    .getY() + y].getKuljettava();
+            boolean seinaOikeallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX() + y][kartta[seuraavaX][seuraavaY]
+                    .getY()].getKuljettava());
             if (kuljettavaOikealle && seinaOikeallaTakana) {
-                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys() + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
+                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys()
+                        + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
                 hyppypisteet.add(kartta[seuraavaX][seuraavaY]);
                 return kartta[seuraavaX][seuraavaY]; // Palautetaan löydetty hyppysolmu
             }
         }
-        if (kartta[seuraavaX][seuraavaY].getX() - 1 >= 0 && kartta[seuraavaX][seuraavaY].getY() + 1 <= sivu - 1) {
-            boolean  kuljettavaVasemmalle = kartta[kartta[seuraavaX][seuraavaY].getX() - 1][kartta[seuraavaX][seuraavaY].getY() + 1].getKuljettava();
-            boolean  seinaVasemmallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX() - 1][kartta[seuraavaX][seuraavaY].getY()].getKuljettava());
+        if (kartta[seuraavaX][seuraavaY].getX() - y >= 0 && kartta[seuraavaX][seuraavaY].getX() - y <= sivu - 1
+                && kartta[seuraavaX][seuraavaY].getY() + y <= sivu - 1
+                && kartta[seuraavaX][seuraavaY].getY() + y >= 0) {
+            boolean kuljettavaVasemmalle = kartta[kartta[seuraavaX][seuraavaY].getX() - y][kartta[seuraavaX][seuraavaY]
+                    .getY() + y].getKuljettava();
+            boolean seinaVasemmallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX()
+                    - y][kartta[seuraavaX][seuraavaY].getY()].getKuljettava());
             if (kuljettavaVasemmalle && seinaVasemmallaTakana) {
-                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys() + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
+                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys()
+                        + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
                 hyppypisteet.add(kartta[seuraavaX][seuraavaY]);
                 return kartta[seuraavaX][seuraavaY]; // Palautetaan löydetty hyppysolmu
             }
         }
-        return etsiVertikaalisesti(kartta[seuraavaX][seuraavaY], y); //Ei löytynyt hyppysolmua, otetaan uusi askel samaan suuntaan
+        return etsiVertikaalisesti(kartta[seuraavaX][seuraavaY], y); // Ei löytynyt hyppysolmua, otetaan uusi askel
+                                                                     // samaan suuntaan
     }
 
     /**
@@ -150,7 +161,7 @@ public class JumpPointSearch {
      * kartalla.
      * 
      * @param kasiteltava Solmu josta etsintä alkaa
-     * @param x Siirtymän pituus x-akselilla
+     * @param x           Siirtymän pituus x-akselilla
      * @return Solmu Palautetaan löytynyt hyppysolmu
      */
     private Solmu etsiHorisontaalisesti(Solmu kasiteltava, int x) {
@@ -172,25 +183,36 @@ public class JumpPointSearch {
             return kartta[seuraavaX][seuraavaY];
         }
         // Tutkitaan onko solmu hyppypiste
-        if (kartta[seuraavaX][seuraavaY].getX() + 1 <= sivu - 1 && kartta[seuraavaX][seuraavaY].getY() + 1 <= sivu - 1) {
-            boolean kuljettavaYlos = kartta[kartta[seuraavaX][seuraavaY].getX() + 1][kartta[seuraavaX][seuraavaY].getY() + 1].getKuljettava();
-            boolean seinaAlhaallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX()][kartta[seuraavaX][seuraavaY].getY() + 1].getKuljettava());
+        if (kartta[seuraavaX][seuraavaY].getX() + x <= sivu - 1 && kartta[seuraavaX][seuraavaY].getX() + x >= 0
+                && kartta[seuraavaX][seuraavaY].getY() + x <= sivu - 1
+                && kartta[seuraavaX][seuraavaY].getY() + x >= 0) {
+            boolean kuljettavaYlos = kartta[kartta[seuraavaX][seuraavaY].getX() + x][kartta[seuraavaX][seuraavaY].getY()
+                    + x].getKuljettava();
+            boolean seinaAlhaallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX()][kartta[seuraavaX][seuraavaY]
+                    .getY() + x].getKuljettava());
             if (kuljettavaYlos && seinaAlhaallaTakana) {
-                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys() + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
+                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys()
+                        + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
                 hyppypisteet.add(kartta[seuraavaX][seuraavaY]);
                 return kartta[seuraavaX][seuraavaY]; // Palautetaan löydetty hyppysolmu
             }
         }
-        if (kartta[seuraavaX][seuraavaY].getX() - 1 >= 0 && kartta[seuraavaX][seuraavaY].getY() - 1 >= 0) {
-            boolean kuljettavaAlas = kartta[kartta[seuraavaX][seuraavaY].getX() - 1][kartta[seuraavaX][seuraavaY].getY() - 1].getKuljettava();
-            boolean seinaYlhaallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX()][kartta[seuraavaX][seuraavaY].getY() - 1].getKuljettava());
+        if (kartta[seuraavaX][seuraavaY].getX() - x >= 0 && kartta[seuraavaX][seuraavaY].getX() - x <= sivu - 1
+                && kartta[seuraavaX][seuraavaY].getY() - x >= 0
+                && kartta[seuraavaX][seuraavaY].getY() - x <= sivu - 1) {
+            boolean kuljettavaAlas = kartta[kartta[seuraavaX][seuraavaY].getX() - x][kartta[seuraavaX][seuraavaY].getY()
+                    - x].getKuljettava();
+            boolean seinaYlhaallaTakana = !(kartta[kartta[seuraavaX][seuraavaY].getX()][kartta[seuraavaX][seuraavaY]
+                    .getY() - x].getKuljettava());
             if (kuljettavaAlas && seinaYlhaallaTakana) {
-                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys() + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
+                kartta[seuraavaX][seuraavaY].paivitaPrioriteetti(kartta[seuraavaX][seuraavaY].getEtaisyys()
+                        + laskeDiagonaalinenEtaisyys(kartta[seuraavaX][seuraavaY]));
                 hyppypisteet.add(kartta[seuraavaX][seuraavaY]);
                 return kartta[seuraavaX][seuraavaY]; // Palautetaan löydetty hyppysolmu
             }
         }
-        return etsiHorisontaalisesti(kartta[seuraavaX][seuraavaY], x); //Ei löytynyt hyppysolmua, otetaan uusi askel samaan suuntaan
+        return etsiHorisontaalisesti(kartta[seuraavaX][seuraavaY], x); // Ei löytynyt hyppysolmua, otetaan uusi askel
+                                                                       // samaan suuntaan
     }
 
     /**
@@ -198,8 +220,8 @@ public class JumpPointSearch {
      * diagonaalisesti seuraavaan solmuun ja aloitetaan uudestaan etsintä
      * 
      * @param kasiteltava Solmu josta etsintä alkaa
-     * @param x Siirtymä x-akselilla
-     * @param y Siirtymä y-akselilla
+     * @param x           Siirtymä x-akselilla
+     * @param y           Siirtymä y-akselilla
      */
     private void etsiDiagonaalisesti(Solmu kasiteltava, int x, int y) {
         int seuraavaX = kasiteltava.getX() + x;
@@ -239,12 +261,12 @@ public class JumpPointSearch {
 
     /**
      * Metodi tarkistaa onko käsiteltävä solmu sama kuin lopetussolmu
+     * 
      * @param tutkittava
-     * @return boolean 
+     * @return boolean
      */
     private boolean onkoMaalissa(Solmu tutkittava) {
         if (tutkittava.getX() == lopetus.getX() && tutkittava.getY() == lopetus.getY()) {
-            System.out.print("Reitti löytyi");
             loytyi = true;
             reitinpituus = tutkittava.getEtaisyys();
             return true;
@@ -280,7 +302,7 @@ public class JumpPointSearch {
                 + " ja etäisyys alusta on: " + lopetus.getEtaisyys());
         Solmu edeltaja = lopetus.getEdeltaja();
         int i = 0;
-        while (i < sivu * sivu) { 
+        while (i < sivu * sivu) {
             if (edeltaja == aloitus || edeltaja == null) {
                 break;
             }
@@ -321,7 +343,7 @@ public class JumpPointSearch {
         return this.reitinpituus;
     }
 
-        /**
+    /**
      * Metodi vaihtaa aloitussolmun paikkaa edellyttäen, että uusi aloitus solmu on
      * kuljettava.
      * 
@@ -344,7 +366,6 @@ public class JumpPointSearch {
      */
     public void setLopetus(int x, int y) {
         if (onkoKuljettava(x, y)) {
-            System.out.print("Lopetus asetettu");
             this.lopetus = kartta[x][y];
         }
 

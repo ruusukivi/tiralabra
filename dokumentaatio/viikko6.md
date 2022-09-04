@@ -1,5 +1,5 @@
 
-# Viikko 5
+# Viikko 6
 
 ## Käytetty työaika:
 
@@ -9,7 +9,7 @@
 
 ## Mitä olen tehnyt tällä viikolla? / Miten ohjelma on edistynyt?
 
-- Suurin osa ajasta on edelleen mennyt JumpPointSearchiin. Löysin yhden ajatusvirheen, jonka korjaaminen auttoi. Pystyn nyt tulostamaan jonkinlaisen version reitistä kartalle ja sitä kautta on helpompi nyt hahmottaa, mikä mättää. Kuten arvelin edeltäjän valinnassa on pulmia. Välillä käy niin että kaksi solmua ovat toistensa edeltäjiä ristiin, jolloin reitinpiirto jää luuppuun. Välillä vaihtoehtoiset reitit jotenkin hassusti sekottuvat toisiinsa, jolloin lyhyt reitti on liian pitkä verrattuna dijkstraan.
+- Suurin osa ajasta on edelleen mennyt JumpPointSearchiin. Löysin yhden ajatusvirheen, jonka korjaaminen auttoi. Pystyn nyt tulostamaan jonkinlaisen version reitistä kartalle ja sitä kautta on helpompi nyt hahmottaa, mikä mättää. Kuten arvelin edeltäjän valinnassa on pulmia. Välillä käy niin että kaksi solmua ovat toistensa edeltäjiä ristiin, jolloin reitinpiirto jää luuppiin. Välillä vaihtoehtoiset reitit jotenkin hassusti sekottuvat toisiinsa, jolloin lyhyt reitti on liian pitkä verrattuna dijkstraan.
 
 Esimerkkinä yksi ongelmatilanne, jossa reitin pituus kuitenkin oikein.
 
